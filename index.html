@@ -54,6 +54,16 @@
       padding: 10px;
       color: gray;
     }
+    /* Base style (Mobile First) */
+    .media-container {
+      width: 100%;
+      height: auto;
+    }
+    video, iframe {
+      width: 100%; /* Full width on mobile */
+      height: 100%;
+      aspect-ratio: 16 / 9; /* Maintains aspect ratio */
+    }
     /* Desktop View */
     @media screen and (min-width: 769px) {
     .media-container {
