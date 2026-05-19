@@ -360,8 +360,8 @@
   
   <div id="tips" class="tab" style="display:none;">
     <section class="ai-tools-section">
-      <!-- Wrapped in a form to natively support the Enter key -->
-      <form class="search-container" onsubmit="event.preventDefault(); searchTips();">
+      <!-- Standard search form structure -->
+      <form class="search-container" id="searchForm" onsubmit="event.preventDefault(); searchTips();">
         <input type="text" id="searchInput" placeholder="Search MapleStorySEA tips..." />
         <button type="submit">Search</button>
       </form>
@@ -379,8 +379,8 @@
           </div>
         </div>
 
-        <!-- Wrapped in a form to natively support the Enter key -->
-        <form class="chat-input-area" onsubmit="event.preventDefault(); sendMessage();">
+        <!-- Standard chat form structure -->
+        <form class="chat-input-area" id="chatForm" onsubmit="event.preventDefault(); sendMessage();">
           <input type="text" id="chatInput" placeholder="Ask a question..." />
           <button type="submit">Send</button>
         </form>
@@ -549,47 +549,35 @@
     }
   ];
 
-function sendMessage() {
-    const input = document.getElementById("chatInput");
-    const message = input.value.trim();
-    if (message === "") return;
+  function searchTips() {
+    const input = document.getElementById("searchInput").value.toLowerCase().trim();
+    const results = document.getElementById("searchResults");
+    results.innerHTML = "";
+    let found = false;
 
-    const chatMessages = document.getElementById("chatMessages");
-    chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
+    if (input === "") return;
 
-    let botReply = "I could not find a matching answer yet.";
-    let botImages = [];
-    let matchFound = false;
-    
-    // Scan through database items
-    for (let i = 0; i < tipsDatabase.length; i++) {
-      const item = tipsDatabase[i];
-      
-      for (let j = 0; j < item.keywords.length; j++) {
-        if (message.toLowerCase().includes(item.keywords[j].toLowerCase())) {
-          botReply = item.answer;
-          botImages = item.images || [];
-          matchFound = true;
-          break; // Stop scanning through keywords for this specific item
+    tipsDatabase.forEach(item => {
+      for (let i = 0; i < item.keywords.length; i++) {
+        if (input.includes(item.keywords[i].toLowerCase())) {
+          let imageHTML = "";
+          if (item.images && item.images.length > 0) {
+            imageHTML = `<div class="search-result-images">` + 
+              item.images.map(img => `<img src="${img}" alt="Related Image">`).join("") + 
+              `</div>`;
+          }
+          results.innerHTML += `<div class="search-result-card">${item.answer}${imageHTML}</div>`;
+          found = true;
+          break; // Stop looking at other keywords for this entry
         }
       }
-      if (matchFound) {
-        break; // Stop looking through other categories once a match is locked in
-      }
-    }
+    });
 
-    let imageHTML = "";
-    if (botImages.length > 0) {
-      imageHTML = `<div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">` + 
-        botImages.map(img => `<img src="${img}" alt="Related Image">`).join("") + 
-        `</div>`;
+    if (!found) {
+      results.innerHTML = `<div class="search-result-card">No matching tips found.<br><br>Try searching for:<br>mesos<br>union<br>bossing<br>bishop<br>gear<br>link skills</div>`;
     }
-
-    chatMessages.innerHTML += `<div class="bot-message">${botReply}${imageHTML}</div>`;
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    input.value = "";
   }
-  
+
   function sendMessage() {
     const input = document.getElementById("chatInput");
     const message = input.value.trim();
@@ -602,21 +590,17 @@ function sendMessage() {
     let botImages = [];
     let matchFound = false;
     
-    // Scan through database items
     for (let i = 0; i < tipsDatabase.length; i++) {
       const item = tipsDatabase[i];
-      
       for (let j = 0; j < item.keywords.length; j++) {
         if (message.toLowerCase().includes(item.keywords[j].toLowerCase())) {
           botReply = item.answer;
           botImages = item.images || [];
           matchFound = true;
-          break; // Stop scanning through keywords for this specific item
+          break; 
         }
       }
-      if (matchFound) {
-        break; // Stop looking through other categories once a match is locked in
-      }
+      if (matchFound) break; 
     }
 
     let imageHTML = "";
@@ -630,12 +614,6 @@ function sendMessage() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
     input.value = "";
   }
-  
-  function handleChatKey(event) {
-    if (event.key === "Enter") {
-      sendMessage();
-    }
-  }
 
   function showTab(tab) {
     document.querySelectorAll(".tab").forEach(el => {
@@ -643,6 +621,29 @@ function sendMessage() {
     });
     document.getElementById(tab).style.display = "block";
   }
+
+  // --- NATIVE KEY AND FORM INTERCEPTORS ---
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+      searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          searchTips();
+        }
+      });
+    }
+
+    const chatInput = document.getElementById("chatInput");
+    if (chatInput) {
+      chatInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          sendMessage();
+        }
+      });
+    }
+  });
 </script>
 
 </body>
