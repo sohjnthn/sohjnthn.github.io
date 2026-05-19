@@ -547,36 +547,6 @@
     }
   ];
 
-function searchTips() {
-    const input = document.getElementById("searchInput").value.toLowerCase().trim();
-    const results = document.getElementById("searchResults");
-    results.innerHTML = "";
-    let found = false;
-
-    if (input === "") return; // Prevents processing empty searches
-
-    tipsDatabase.forEach(item => {
-      // Loop over keywords
-      for (let i = 0; i < item.keywords.length; i++) {
-        if (input.includes(item.keywords[i].toLowerCase())) {
-          let imageHTML = "";
-          if (item.images && item.images.length > 0) {
-            imageHTML = `<div class="search-result-images">` + 
-              item.images.map(img => `<img src="${img}" alt="Related Image">`).join("") + 
-              `</div>`;
-          }
-          results.innerHTML += `<div class="search-result-card">${item.answer}${imageHTML}</div>`;
-          found = true;
-          break; // Stop checking this item's keywords once a match is found!
-        }
-      }
-    });
-
-    if (!found) {
-      results.innerHTML = `<div class="search-result-card">No matching tips found.<br><br>Try searching for:<br>mesos<br>union<br>bossing<br>bishop<br>gear<br>link skills</div>`;
-    }
-  }
-
 function sendMessage() {
     const input = document.getElementById("chatInput");
     const message = input.value.trim();
@@ -589,23 +559,66 @@ function sendMessage() {
     let botImages = [];
     let matchFound = false;
     
-    // Find matching tips
+    // Scan through database items
     for (let i = 0; i < tipsDatabase.length; i++) {
       const item = tipsDatabase[i];
+      
       for (let j = 0; j < item.keywords.length; j++) {
         if (message.toLowerCase().includes(item.keywords[j].toLowerCase())) {
           botReply = item.answer;
           botImages = item.images || [];
           matchFound = true;
-          break; // Stop looking at keywords for this item
+          break; // Stop scanning through keywords for this specific item
         }
       }
-      if (matchFound) break; // Exit main database loop once an answer is found
+      if (matchFound) {
+        break; // Stop looking through other categories once a match is locked in
+      }
     }
 
     let imageHTML = "";
     if (botImages.length > 0) {
-      // Wrap your images nicely inside a breaking layout block or flex spacing if desired
+      imageHTML = `<div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">` + 
+        botImages.map(img => `<img src="${img}" alt="Related Image">`).join("") + 
+        `</div>`;
+    }
+
+    chatMessages.innerHTML += `<div class="bot-message">${botReply}${imageHTML}</div>`;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    input.value = "";
+  }
+  
+  function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    if (message === "") return;
+
+    const chatMessages = document.getElementById("chatMessages");
+    chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
+
+    let botReply = "I could not find a matching answer yet.";
+    let botImages = [];
+    let matchFound = false;
+    
+    // Scan through database items
+    for (let i = 0; i < tipsDatabase.length; i++) {
+      const item = tipsDatabase[i];
+      
+      for (let j = 0; j < item.keywords.length; j++) {
+        if (message.toLowerCase().includes(item.keywords[j].toLowerCase())) {
+          botReply = item.answer;
+          botImages = item.images || [];
+          matchFound = true;
+          break; // Stop scanning through keywords for this specific item
+        }
+      }
+      if (matchFound) {
+        break; // Stop looking through other categories once a match is locked in
+      }
+    }
+
+    let imageHTML = "";
+    if (botImages.length > 0) {
       imageHTML = `<div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">` + 
         botImages.map(img => `<img src="${img}" alt="Related Image">`).join("") + 
         `</div>`;
