@@ -199,7 +199,32 @@
 
 }
 
-            <div class="chatbot-header">
+<!-- ========================= -->
+<!-- SEARCH BAR + AI CHATBOT -->
+<!-- ========================= -->
+
+<section class="ai-tools-section">
+
+    <!-- SEARCH BAR -->
+    <div class="search-container">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search MapleStorySEA tips..."
+        />
+
+        <button onclick="searchTips()">
+            Search
+        </button>
+    </div>
+
+    <!-- SEARCH RESULTS -->
+    <div id="searchResults"></div>
+
+    <!-- CHATBOT -->
+    <div class="chatbot-container">
+
+        <div class="chatbot-header">
             MapleStorySEA Tips Assistant
         </div>
 
@@ -227,7 +252,6 @@
     </div>
 
 </section>
-    
 
   </style>
 </head>
