@@ -291,6 +291,190 @@
 
 </section>
 
+<script>
+
+/* ========================================= */
+/* SEARCH DATABASE */
+/* ========================================= */
+
+const tipsDatabase = [
+
+{
+    keywords: ["mesos", "farming", "money"],
+    answer: `
+    Early Mesos Farming:
+    Focus on grinding at high spawn-density maps.
+    Sell boss crystals, equipment drops, crafting materials,
+    and event rewards through Maple Auction.
+    `
+},
+
+{
+    keywords: ["union", "maple union"],
+    answer: `
+    Maple Union:
+    Prioritize Critical Damage, Boss Damage,
+    Ignore DEF, and main stats.
+    Build multiple level 200 characters steadily over time.
+    `
+},
+
+{
+    keywords: ["bishop"],
+    answer: `
+    Bishop Tips:
+    Focus on survivability, party utility,
+    buff duration, Ignore DEF, and bossing consistency.
+    `
+},
+
+{
+    keywords: ["bossing", "boss"],
+    answer: `
+    Bossing Progression:
+    Improve Ignore DEF, Critical Damage,
+    and Boss Damage before pushing higher-tier bosses.
+    `
+},
+
+{
+    keywords: ["link skills", "links"],
+    answer: `
+    Important Link Skills:
+    Mercedes, Evan, Aran, Demon Avenger,
+    Ark, Illium, Explorer Magicians,
+    and Phantom are commonly prioritised.
+    `
+}
+
+];
+
+
+/* ========================================= */
+/* SEARCH FUNCTION */
+/* ========================================= */
+
+function searchTips(){
+
+    const input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const results =
+        document.getElementById("searchResults");
+
+    results.innerHTML = "";
+
+    let found = false;
+
+    tipsDatabase.forEach(item => {
+
+        item.keywords.forEach(keyword => {
+
+            if(input.includes(keyword)){
+
+                results.innerHTML += `
+                    <div class="bot-message">
+                        ${item.answer}
+                    </div>
+                `;
+
+                found = true;
+            }
+
+        });
+
+    });
+
+    if(!found){
+
+        results.innerHTML = `
+            <div class="bot-message">
+                No matching tips found.
+                Try searching for:
+                mesos, union, bossing, bishop,
+                or link skills.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* CHATBOT */
+/* ========================================= */
+
+function sendMessage(){
+
+    const input =
+        document.getElementById("chatInput");
+
+    const message =
+        input.value.trim();
+
+    if(message === "") return;
+
+    const chatMessages =
+        document.getElementById("chatMessages");
+
+    /* USER MESSAGE */
+
+    chatMessages.innerHTML += `
+        <div class="user-message">
+            ${message}
+        </div>
+    `;
+
+    /* BOT RESPONSE */
+
+    let botReply =
+        "I could not find a matching answer yet.";
+
+    tipsDatabase.forEach(item => {
+
+        item.keywords.forEach(keyword => {
+
+            if(message.toLowerCase().includes(keyword)){
+
+                botReply = item.answer;
+
+            }
+
+        });
+
+    });
+
+    chatMessages.innerHTML += `
+        <div class="bot-message">
+            ${botReply}
+        </div>
+    `;
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+    input.value = "";
+
+}
+
+
+/* ENTER KEY */
+
+function handleChatKey(event){
+
+    if(event.key === "Enter"){
+
+        sendMessage();
+
+    }
+
+}
+
+</script>
+  
 <header>
   <h1>MapleStorySEA Unfunded Player Tips</h1>
   <nav>
