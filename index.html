@@ -200,6 +200,7 @@
 }
   </style>
 </head>
+  
   <body>
     
 <audio id="audioPlayer"></audio>
@@ -565,6 +566,185 @@ function handleChatKey(event){
 <!-- SEARCH BAR + AI CHATBOT -->
 <!-- ========================= -->
 
+<script>
+
+/* ========================================= */
+/* SEARCH DATABASE */
+/* ========================================= */
+
+const tipsDatabase = [
+
+{
+    keywords: ["mesos", "farming", "money"],
+    answer: `
+    Early Mesos Farming:
+    Focus on grinding at high spawn-density maps.
+    Sell Glowing Soul Crystals from expedition boss monsters to NPC Collector in the Free Market via Ardentmill, equipment drops, crafting materials,
+    and event rewards through Maple Auction.`
+},
+
+{
+    keywords: ["union", "maple union"],
+    answer: `
+    Maple Union:
+    Prioritise MATT/ATT (according to the Magic damage type; or Weapon damage type Maple Union configurations), Primary Stat, Secondary Stat, HP 
+    (at least 40k buffed HP is required to tank the damage from the Mechanical Heaven's Remodeled Giant Android, and Georgi), Critical Damage+%, 
+    Boss Damage+%, Ignore DEF+%, in this order.
+    Build 42 lv200 characters steadily over time.
+},
+
+{
+    keywords: ["bishop"],
+    answer: `
+    Bishop Tips:
+    Focus on survivability (do not use the 2nd job skill Heal, and do not allocate Heal to a keyboard settings key, use the 4th job main 
+    attack skill Angel Ray to recover a % of Max HP, even if the attack does not hit any monster). `
+},
+
+{
+    keywords: ["bossing", "boss"],
+    answer: `
+    Bossing Progression:
+    Improve Critical Damage+%, Boss Damage+%, and Ignore DEF+%.
+    The non-Chaos mode expedition boss monsters up to Normal Cygnus can be defeated by using the second 6th job attack skill once, which is the Ascent skill, by the time the character has carried out the 6th job advancement; and has reached the maximum levels for the first two Authentic Symbols for Cernium and Arcs.
+    Always use the attack skill which causes the highest total % skill damage for all hits for the initial attack; while taking note of the related cooldown duration.
+},
+
+{
+    keywords: ["link skills", "links"],
+    answer: `
+    Essential links: Kanna, Ark, Illium, 3 Explorer Magicians, Hayato, Demon Avenger, 5 Cygnus Knights (excluding Mihile), Adele, Xenon, Khali, Lara, and Explorer Pirates.
+}
+
+];
+
+
+/* ========================================= */
+/* SEARCH FUNCTION */
+/* ========================================= */
+
+function searchTips(){
+
+    const input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const results =
+        document.getElementById("searchResults");
+
+    results.innerHTML = "";
+
+    let found = false;
+
+    tipsDatabase.forEach(item => {
+
+        item.keywords.forEach(keyword => {
+
+            if(input.includes(keyword)){
+
+                results.innerHTML += `
+                    <div class="bot-message">
+                        ${item.answer}
+                    </div>
+                `;
+
+                found = true;
+            }
+
+        });
+
+    });
+
+    if(!found){
+
+        results.innerHTML = `
+            <div class="bot-message">
+                No matching tips found.
+                Try searching for:
+                mesos, union, bossing, bishop,
+                or link skills.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* ========================================= */
+/* CHATBOT */
+/* ========================================= */
+
+function sendMessage(){
+
+    const input =
+        document.getElementById("chatInput");
+
+    const message =
+        input.value.trim();
+
+    if(message === "") return;
+
+    const chatMessages =
+        document.getElementById("chatMessages");
+
+    /* USER MESSAGE */
+
+    chatMessages.innerHTML += `
+        <div class="user-message">
+            ${message}
+        </div>
+    `;
+
+    /* BOT RESPONSE */
+
+    let botReply =
+        "I could not find a matching answer yet.";
+
+    tipsDatabase.forEach(item => {
+
+        item.keywords.forEach(keyword => {
+
+            if(message.toLowerCase().includes(keyword)){
+
+                botReply = item.answer;
+
+            }
+
+        });
+
+    });
+
+    chatMessages.innerHTML += `
+        <div class="bot-message">
+            ${botReply}
+        </div>
+    `;
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+    input.value = "";
+
+}
+
+
+/* ENTER KEY */
+
+function handleChatKey(event){
+
+    if(event.key === "Enter"){
+
+        sendMessage();
+
+    }
+
+}
+
+</script>
+
+    
 <section class="ai-tools-section">
 
     <!-- SEARCH BAR -->
@@ -757,5 +937,7 @@ function handleChatKey(event){
   }
 </script>
 
+
+           
 </body>
 </html>
