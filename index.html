@@ -240,7 +240,7 @@
     </nav>
   </header>
     
-<audio id="audioPlayer"></audio>
+  <audio id="audioPlayer"></audio>
 
 <div class="container">
   <div id="home" class="tab">
@@ -501,7 +501,10 @@
 
   function playTrack(index) {
     player.src = tracks[index];
-    player.play();
+    // Wrapped in a catch block to prevent the browser from crashing the whole script if it blocks the autoplay sequence
+    player.play().catch(err => {
+      console.log("Audio play blocked by browser guidelines until active user click:", err);
+    });
   }
 
   player.addEventListener("ended", () => {
@@ -512,48 +515,51 @@
     playTrack(currentTrack);
   });
 
+  // Safe fallback wrapper for initial interaction assignment
   document.addEventListener("click", () => {
-    playTrack(currentTrack);
+    if(player && !player.src) {
+      playTrack(currentTrack);
+    }
   }, { once: true });
 
   const tipsDatabase = [
     {
-      keywords: ["meso", "Meso", "mesos", "Mesos", "farming", "Farming"],
+      keywords: ["meso", "mesos", "farming"],
       answer: "Early Mesos Farming:<br><br>Focus on grinding at level range normal monster maps.<br>Sell Glowing Soul Crystals from expedition bosses to NPC Collector.<br>Sell disassembled equipment (which are mainly the expedition boss equipment which can only be sold for 1 Meso to an NPC shop) through Maple Auction.",
       images: ["received_735084553007492.jpeg", "alchemy_extraction.jpg"]
     },
     {
-      keywords: ["union", "Union", "maple union", "Maple Union", "artifact", "Artifact", "union artifact", "Union Artifact", "artifact crystal", "Artifact Crystal", "maple union artifact crystal", "Maple Union Artifact Crystal"],
+      keywords: ["union", "maple union", "artifact", "union artifact", "artifact crystal", "maple union artifact crystal"],
       answer: "Maple Union:<br><br>Prioritise MATT/ATT according to your damage type.<br>Then, focus on Primary Stat, Secondary Stat, HP (about 40k buffed HP is required to tank the damage from the Mechanical Haven's Remodeled Giant Android, and Georgi), Critical Damage+%, Boss Damage+%, and Ignore DEF+%, in this order.<br><br>Build 42 level 200 characters steadily over time.",
       images: ["union_strategy.jpg", "union_artifact.jpg"]
     },
     {
-      keywords: ["bishop", "Bishop"],
+      keywords: ["bishop"],
       answer: "Bishop Tips:<br><br>Focus on survivability.<br>Do not use 2nd job Heal as this may cause the Bishop and any other party member(s) to die, if the Bishop and any other party member(s) are affected by the Zombify abnormal status effect by normal monster map Boss monsters, Elite monsters, Elite Boss monsters, or Expedition Boss monsters.<br>Use Angel Ray to recover HP even when attacks do not hit.",
       images: ["FB_IMG_1777005553625.jpg"]
     },
     {
-      keywords: ["bossing", "Bossing", "boss", "Boss", "expedition", "Expedition"],
+      keywords: ["bossing", "boss", "expedition"],
       answer: "Bossing Progression:<br><br>Improve Critical Damage+%, Boss Damage+%, and Ignore DEF+%, in this order.<br><br>The Ascent skill clears many non-Chaos bosses efficiently after 6th job advancement.",
       images: ["FB_IMG_1775036218395.jpg", "Maple_100526_140123.jpg", "FB_IMG_1778924688621.jpg"]
     },
     {
-      keywords: ["link skills", "Link Skills", "link", "Link", "links", "Links"],
+      keywords: ["link skills", "link", "links"],
       answer: "Essential Link Skills:<br><br>Kanna, Ark, Illium, Explorer Magicians, Hayato, Demon Avenger, Knights of Cygnus (excluding Mihile), Adele, Xenon, Khali, Lara, and Explorer Pirates.",
       images: ["essential_link_skills.jpg"]
     },
     {
-      keywords: ["gear", "Gear", "equipment", "Equipment"],
+      keywords: ["gear", "equipment"],
       answer: "Efficient Gear Progression:<br><br>Progress equipment using naturally obtained gear and boss drops.<br><br>Early: Fensalir equipment<br>Mid: Arcaneshade and Root Abyss<br>Long-term: Gradual Mesos-based upgrades",
       images: ["FB_IMG_1771654388149.jpg", "FB_IMG_1771654392720.jpg", "FB_IMG_1773890578891.jpg", "FB_IMG_1773890584328.jpg"]
     },
     {
-      keywords: ["main", "Main", "character", "Character", "main character", "Main Character", "unfunded", "Unfunded", "progression", "Progression", "unfunded progression", "Unfunded Progression", "unfunded main character progression", "Unfunded Main Character Progression"],
+      keywords: ["main", "character", "main character", "unfunded", "progression", "unfunded progression", "unfunded main character progression"],
       answer: "Purchase the following cheapest, clean (non-spell trace/star force/normal potential/additional potential-enhanced, but can have additional stats in blue text) equipment from the Maple Auction:<br>1. lv200 Archanshade hat, shoes, gloves, cape, and shoulder decoration<br>2. lv150 Root Abyss top, and bottom<br><br>Enhance the main character's untradable equipment with event items such as:<br>1. The scroll which has a 100% passing chance to provide 20 or less stars to an untradable equipment which is up to lv160<br>2. THe scroll which has a 100% passing chance to provide Unique normal potential to untradable equipment<br>3. Karma Black Resurrection Flames<br>4.Karma Choice Cubes<br>5. Karma Choice Additional Cubes<br><br>For the case of any remanining tradable equipment, use the Daily Gift's:<br>1. Choice Cubes<br>Choice Additional Cubes<br><br>Ensure that the 6th job advancement is carried out; and that the first two Authentic Symbols for Cernium, and Arcs have reached the maximum levels, before using the at least lv9 second 6th job attack skill (which is the Ascent skill), to defeat non-Chaos mode expedition boss monsters up to Normal Cygnus",
       images: ["received_735084553007492.jpeg"]
     },
     {
-      keywords: ["guild", "Guild"],
+      keywords: ["guild"],
       answer: "Create your own guild if you have not done so, preferably with the main character as the guild leader.<br>The non-main characters for the same server, for the same MapleSEA game account, can send the guild join requests for the guild leader to accept.<br>Use the Guild SP (Skill Points) for only the damage range boosting; and Meso-saving guild skills.",
       images: ["guild_benefits.jpg"]
     }
