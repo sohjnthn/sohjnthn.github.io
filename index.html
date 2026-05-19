@@ -360,10 +360,11 @@
   
   <div id="tips" class="tab" style="display:none;">
     <section class="ai-tools-section">
-      <div class="search-container">
+      <!-- Wrapped in a form to natively support the Enter key -->
+      <form class="search-container" onsubmit="event.preventDefault(); searchTips();">
         <input type="text" id="searchInput" placeholder="Search MapleStorySEA tips..." />
-        <button onclick="searchTips()">Search</button>
-      </div>
+        <button type="submit">Search</button>
+      </form>
 
       <div id="searchResults"></div>
 
@@ -378,10 +379,11 @@
           </div>
         </div>
 
-        <div class="chat-input-area">
-          <input type="text" id="chatInput" placeholder="Ask a question..." onkeypress="handleChatKey(event)" />
-          <button onclick="sendMessage()">Send</button>
-        </div>
+        <!-- Wrapped in a form to natively support the Enter key -->
+        <form class="chat-input-area" onsubmit="event.preventDefault(); sendMessage();">
+          <input type="text" id="chatInput" placeholder="Ask a question..." />
+          <button type="submit">Send</button>
+        </form>
       </div>
     </section>
     
