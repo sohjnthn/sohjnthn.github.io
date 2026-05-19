@@ -547,15 +547,18 @@
     }
   ];
 
-  function searchTips() {
+function searchTips() {
     const input = document.getElementById("searchInput").value.toLowerCase().trim();
     const results = document.getElementById("searchResults");
     results.innerHTML = "";
     let found = false;
 
+    if (input === "") return; // Prevents processing empty searches
+
     tipsDatabase.forEach(item => {
-      item.keywords.forEach(keyword => {
-        if (input.includes(keyword.toLowerCase())) {
+      // Loop over keywords
+      for (let i = 0; i < item.keywords.length; i++) {
+        if (input.includes(item.keywords[i].toLowerCase())) {
           let imageHTML = "";
           if (item.images && item.images.length > 0) {
             imageHTML = `<div class="search-result-images">` + 
@@ -564,8 +567,9 @@
           }
           results.innerHTML += `<div class="search-result-card">${item.answer}${imageHTML}</div>`;
           found = true;
+          break; // Stop checking this item's keywords once a match is found!
         }
-      });
+      }
     });
 
     if (!found) {
@@ -573,7 +577,7 @@
     }
   }
 
-  function sendMessage() {
+function sendMessage() {
     const input = document.getElementById("chatInput");
     const message = input.value.trim();
     if (message === "") return;
@@ -583,26 +587,35 @@
 
     let botReply = "I could not find a matching answer yet.";
     let botImages = [];
+    let matchFound = false;
     
-    tipsDatabase.forEach(item => {
-      item.keywords.forEach(keyword => {
-        if (message.toLowerCase().includes(keyword.toLowerCase())) {
+    // Find matching tips
+    for (let i = 0; i < tipsDatabase.length; i++) {
+      const item = tipsDatabase[i];
+      for (let j = 0; j < item.keywords.length; j++) {
+        if (message.toLowerCase().includes(item.keywords[j].toLowerCase())) {
           botReply = item.answer;
           botImages = item.images || [];
+          matchFound = true;
+          break; // Stop looking at keywords for this item
         }
-      });
-    });
+      }
+      if (matchFound) break; // Exit main database loop once an answer is found
+    }
 
     let imageHTML = "";
     if (botImages.length > 0) {
-      imageHTML = botImages.map(img => `<img src="${img}" alt="Related Image">`).join("");
+      // Wrap your images nicely inside a breaking layout block or flex spacing if desired
+      imageHTML = `<div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">` + 
+        botImages.map(img => `<img src="${img}" alt="Related Image">`).join("") + 
+        `</div>`;
     }
 
     chatMessages.innerHTML += `<div class="bot-message">${botReply}${imageHTML}</div>`;
     chatMessages.scrollTop = chatMessages.scrollHeight;
     input.value = "";
   }
-
+  
   function handleChatKey(event) {
     if (event.key === "Enter") {
       sendMessage();
