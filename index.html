@@ -113,6 +113,29 @@
       padding:10px;
     }
 
+    .search-result-card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #2563eb;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .search-result-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .search-result-images img {
+      max-width: 150px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
     .chatbot-container{
       border:1px solid #ccc;
       border-radius:12px;
@@ -152,6 +175,14 @@
       margin-left:auto;
     }
 
+    .bot-message img {
+      max-width: 120px;
+      margin-top: 8px;
+      margin-right: 5px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
     .chat-input-area{
       display:flex;
       gap:10px;
@@ -185,6 +216,14 @@
 
       .chat-input-area{
         flex-direction:column;
+      }
+
+      .search-result-images img {
+        max-width: 100px;
+      }
+
+      .bot-message img {
+        max-width: 80px;
       }
     }
   </style>
@@ -483,20 +522,28 @@
     },
     {
       keywords: ["union", "maple union"],
-      answer: `Maple Union:<br><br>Prioritise MATT/ATT according to your damage type.<br>Focus on Primary Stat, Secondary Stat, HP, Critical Damage+%, Boss Damage+%, and Ignore DEF+%, in this order.<br><br>Build 42 level 200 characters steadily.`
+      answer: `Maple Union:<br><br>Prioritise MATT/ATT according to your damage type.<br>Focus on Primary Stat, Secondary Stat, HP, Critical Damage+%, Boss Damage+%, and Ignore DEF+%.<br><br>Build 42 level 200 characters steadily over time.`,
+      images: []
     },
     {
       keywords: ["bishop"],
-      answer: `Bishop Tips:<br><br>Focus on survivability.<br>Do not use 2nd job Heal during bossing.<br>Use Angel Ray to recover HP even when attacks do not hit.`,
+      answer: `Bishop Tips:<br><br>Focus on survivability.<br>Do not use 2nd job Heal during bossing to prevent character death.<br>Use Angel Ray to recover HP even when attacks do not hit.`,
       images: ["FB_IMG_1777005553625.jpg"]
     },
     {
       keywords: ["bossing", "boss", "expedition"],
-      answer: `Bossing Progression:<br><br>Improve Critical Damage+%, Boss Damage+%, and Ignore DEF+%, in this order.<br><br>The Ascent skill clears many non-Chaos bosses efficiently after 6th job.`
+      answer: `Bossing Progression:<br><br>Improve Critical Damage+%, Boss Damage+%, and Ignore DEF+%, in this order.<br><br>The Ascent skill clears many non-Chaos bosses efficiently after 6th job advancement.`,
+      images: ["FB_IMG_1775036218395.jpg", "Maple_100526_140123.jpg", "FB_IMG_1778924688621.jpg"]
     },
     {
       keywords: ["link skills", "link", "links"],
-      answer: `Essential Link Skills:<br><br>Kanna, Ark, Illium, Explorer Magicians, Hayato, Demon Avenger, Cygnus Knights, Adele, Xenon, Khali, Lara, and Explorer Pirates.`
+      answer: `Essential Link Skills:<br><br>Kanna, Ark, Illium, Explorer Magicians, Hayato, Demon Avenger, Cygnus Knights, Adele, Xenon, Khali, Lara, and Explorer Pirates.`,
+      images: []
+    },
+    {
+      keywords: ["gear", "equipment"],
+      answer: `Efficient Gear Progression:<br><br>Progress equipment using naturally obtained gear and boss drops.<br><br>Early: Fensalir equipment<br>Mid: Arcaneshade and Root Abyss<br>Long-term: Gradual Mesos-based upgrades`,
+      images: ["FB_IMG_1771654388149.jpg", "FB_IMG_1771654392720.jpg", "FB_IMG_1773890578891.jpg", "FB_IMG_1773890584328.jpg"]
     }
   ];
 
@@ -509,46 +556,52 @@
     tipsDatabase.forEach(item => {
       item.keywords.forEach(keyword => {
         if (input.includes(keyword.toLowerCase())) {
-          results.innerHTML += `<div class="bot-message">${item.answer}</div>`;
+          let imageHTML = "";
+          if (item.images && item.images.length > 0) {
+            imageHTML = `<div class="search-result-images">` + 
+              item.images.map(img => `<img src="${img}" alt="Related Image">`).join("") + 
+              `</div>`;
+          }
+          results.innerHTML += `<div class="search-result-card">${item.answer}${imageHTML}</div>`;
           found = true;
         }
       });
     });
 
     if (!found) {
-      results.innerHTML = `<div class="bot-message">No matching tips found.<br><br>Try searching for:<br>mesos<br>union<br>bossing<br>bishop<br>link skills</div>`;
+      results.innerHTML = `<div class="search-result-card">No matching tips found.<br><br>Try searching for:<br>mesos<br>union<br>bossing<br>bishop<br>gear<br>link skills</div>`;
     }
   }
 
-function sendMessage() {
-  const input = document.getElementById("chatInput");
-  const message = input.value.trim();
-  if (message === "") return;
+  function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    if (message === "") return;
 
-  const chatMessages = document.getElementById("chatMessages");
-  chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
+    const chatMessages = document.getElementById("chatMessages");
+    chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
 
-  let botReply = "I could not find a matching answer yet.";
-  let botImages = [];
-  
-  tipsDatabase.forEach(item => {
-    item.keywords.forEach(keyword => {
-      if (message.toLowerCase().includes(keyword.toLowerCase())) {
-        botReply = item.answer;
-        botImages = item.images || [];
-      }
+    let botReply = "I could not find a matching answer yet.";
+    let botImages = [];
+    
+    tipsDatabase.forEach(item => {
+      item.keywords.forEach(keyword => {
+        if (message.toLowerCase().includes(keyword.toLowerCase())) {
+          botReply = item.answer;
+          botImages = item.images || [];
+        }
+      });
     });
-  });
 
-  let imageHTML = "";
-  if (botImages.length > 0) {
-    imageHTML = botImages.map(img => `<img src="${img}" style="max-width:100%; margin-top:10px; border-radius:8px;" alt="Related Image">`).join("");
+    let imageHTML = "";
+    if (botImages.length > 0) {
+      imageHTML = botImages.map(img => `<img src="${img}" alt="Related Image">`).join("");
+    }
+
+    chatMessages.innerHTML += `<div class="bot-message">${botReply}${imageHTML}</div>`;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    input.value = "";
   }
-
-  chatMessages.innerHTML += `<div class="bot-message">${botReply}${imageHTML}</div>`;
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-  input.value = "";
-}
 
   function handleChatKey(event) {
     if (event.key === "Enter") {
