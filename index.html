@@ -519,32 +519,32 @@
   const tipsDatabase = [
     {
       keywords: ["meso", "mesos", "farming"],
-      answer: `Early Mesos Farming:<br><br>Focus on grinding at high spawn-density maps.<br>Sell Glowing Soul Crystals from expedition bosses to NPC Collector.<br>Sell disassembled equipment items through Maple Auction.`,
+      answer: "Early Mesos Farming:<br><br>Focus on grinding at high spawn-density maps.<br>Sell Glowing Soul Crystals from expedition bosses to NPC Collector.<br>Sell disassembled equipment items through Maple Auction.",
       images: ["received_735084553007492.jpeg"]
     },
     {
       keywords: ["union", "maple union"],
-      answer: `Maple Union:<br><br>Prioritise MATT/ATT according to your damage type.<br>Focus on Primary Stat, Secondary Stat, HP, Critical Damage+%, Boss Damage+%, and Ignore DEF+%.<br><br>Build 42 level 200 characters steadily over time.`,
+      answer: "Maple Union:<br><br>Prioritise MATT/ATT according to your damage type.<br>Focus on Primary Stat, Secondary Stat, HP, Critical Damage+%, Boss Damage+%, and Ignore DEF+%.<br><br>Build 42 level 200 characters steadily over time.",
       images: []
     },
     {
       keywords: ["bishop"],
-      answer: `Bishop Tips:<br><br>Focus on survivability.<br>Do not use 2nd job Heal during bossing to prevent character death.<br>Use Angel Ray to recover HP even when attacks do not hit.`,
+      answer: "Bishop Tips:<br><br>Focus on survivability.<br>Do not use 2nd job Heal during bossing to prevent character death.<br>Use Angel Ray to recover HP even when attacks do not hit.",
       images: ["FB_IMG_1777005553625.jpg"]
     },
     {
       keywords: ["bossing", "boss", "expedition"],
-      answer: `Bossing Progression:<br><br>Improve Critical Damage+%, Boss Damage+%, and Ignore DEF+%, in this order.<br><br>The Ascent skill clears many non-Chaos bosses efficiently after 6th job advancement.`,
+      answer: "Bossing Progression:<br><br>Improve Critical Damage+%, Boss Damage+%, and Ignore DEF+%, in this order.<br><br>The Ascent skill clears many non-Chaos bosses efficiently after 6th job advancement.",
       images: ["FB_IMG_1775036218395.jpg", "Maple_100526_140123.jpg", "FB_IMG_1778924688621.jpg"]
     },
     {
       keywords: ["link skills", "link", "links"],
-      answer: `Essential Link Skills:<br><br>Kanna, Ark, Illium, Explorer Magicians, Hayato, Demon Avenger, Cygnus Knights, Adele, Xenon, Khali, Lara, and Explorer Pirates.`,
+      answer: "Essential Link Skills:<br><br>Kanna, Ark, Illium, Explorer Magicians, Hayato, Demon Avenger, Cygnus Knights, Adele, Xenon, Khali, Lara, and Explorer Pirates.",
       images: []
     },
     {
       keywords: ["gear", "equipment"],
-      answer: `Efficient Gear Progression:<br><br>Progress equipment using naturally obtained gear and boss drops.<br><br>Early: Fensalir equipment<br>Mid: Arcaneshade and Root Abyss<br>Long-term: Gradual Mesos-based upgrades`,
+      answer: "Efficient Gear Progression:<br><br>Progress equipment using naturally obtained gear and boss drops.<br><br>Early: Fensalir equipment<br>Mid: Arcaneshade and Root Abyss<br>Long-term: Gradual Mesos-based upgrades",
       images: ["FB_IMG_1771654388149.jpg", "FB_IMG_1771654392720.jpg", "FB_IMG_1773890578891.jpg", "FB_IMG_1773890584328.jpg"]
     }
   ];
@@ -559,16 +559,16 @@
 
     tipsDatabase.forEach(item => {
       for (let i = 0; i < item.keywords.length; i++) {
-        if (input.includes(item.keywords[i].toLowerCase())) {
+        if (input.includes(item.keywords[i])) {
           let imageHTML = "";
           if (item.images && item.images.length > 0) {
-            imageHTML = `<div class="search-result-images">` + 
+            imageHTML = '<div class="search-result-images">' + 
               item.images.map(img => `<img src="${img}" alt="Related Image">`).join("") + 
-              `</div>`;
+              '</div>';
           }
           results.innerHTML += `<div class="search-result-card">${item.answer}${imageHTML}</div>`;
           found = true;
-          break; // Stop looking at other keywords for this entry
+          break;
         }
       }
     });
@@ -593,7 +593,7 @@
     for (let i = 0; i < tipsDatabase.length; i++) {
       const item = tipsDatabase[i];
       for (let j = 0; j < item.keywords.length; j++) {
-        if (message.toLowerCase().includes(item.keywords[j].toLowerCase())) {
+        if (message.toLowerCase().includes(item.keywords[j])) {
           botReply = item.answer;
           botImages = item.images || [];
           matchFound = true;
@@ -619,10 +619,12 @@
     document.querySelectorAll(".tab").forEach(el => {
       el.style.display = "none";
     });
-    document.getElementById(tab).style.display = "block";
+    const selectedTab = document.getElementById(tab);
+    if (selectedTab) {
+      selectedTab.style.display = "block";
+    }
   }
 
-  // --- NATIVE KEY AND FORM INTERCEPTORS ---
   document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("searchInput");
     if (searchInput) {
