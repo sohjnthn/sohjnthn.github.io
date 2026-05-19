@@ -520,27 +520,35 @@
     }
   }
 
-  function sendMessage() {
-    const input = document.getElementById("chatInput");
-    const message = input.value.trim();
-    if (message === "") return;
+function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const message = input.value.trim();
+  if (message === "") return;
 
-    const chatMessages = document.getElementById("chatMessages");
-    chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
+  const chatMessages = document.getElementById("chatMessages");
+  chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
 
-    let botReply = "I could not find a matching answer yet.";
-    tipsDatabase.forEach(item => {
-      item.keywords.forEach(keyword => {
-        if (message.toLowerCase().includes(keyword.toLowerCase())) {
-          botReply = item.answer;
-        }
-      });
+  let botReply = "I could not find a matching answer yet.";
+  let botImages = [];
+  
+  tipsDatabase.forEach(item => {
+    item.keywords.forEach(keyword => {
+      if (message.toLowerCase().includes(keyword.toLowerCase())) {
+        botReply = item.answer;
+        botImages = item.images || [];
+      }
     });
+  });
 
-    chatMessages.innerHTML += `<div class="bot-message">${botReply}</div>`;
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    input.value = "";
+  let imageHTML = "";
+  if (botImages.length > 0) {
+    imageHTML = botImages.map(img => `<img src="${img}" style="max-width:100%; margin-top:10px; border-radius:8px;" alt="Related Image">`).join("");
   }
+
+  chatMessages.innerHTML += `<div class="bot-message">${botReply}${imageHTML}</div>`;
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  input.value = "";
+}
 
   function handleChatKey(event) {
     if (event.key === "Enter") {
