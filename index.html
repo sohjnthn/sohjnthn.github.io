@@ -11,7 +11,6 @@
       background: linear-gradient(to bottom, #d1fae5, #ffedd5);
       overflow-x: hidden;
       width: 100%;
-      margin: 0;
     }
     p, span, div {
       word-wrap: break-word;
@@ -32,6 +31,7 @@
     }
     .container {
       padding: 20px;
+      min-height: calc(100vh - 200px);
     }
     .images-section {
       display: flex;
@@ -60,203 +60,157 @@
       text-align: center;
       padding: 10px;
       color: gray;
+      background: white;
+      margin-top: 20px;
     }
-    /*As per the related Google search for how to display the desktop view for videos and PowerPoint slides in webpages properly*/
-    /* Base style (Mobile First) */
     .media-container {
       width: 100%;
       height: auto;
     }
     video, iframe {
-      width: 100%; /* Full width on mobile */
+      width: 100%;
       height: 100%;
-      aspect-ratio: 16 / 9; /* Maintains aspect ratio */
+      aspect-ratio: 16 / 9;
     }
-    /* Desktop View */
     @media screen and (min-width: 769px) {
-    .media-container {
-      width: 800px; /* Fixed width on desktop */
-      height: 450px;
+      .media-container {
+        width: 800px;
+        height: 450px;
+      }
     }
-  }
 
-  .ai-tools-section{
-    width:100%;
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
-  }
-
-  /* SEARCH */
-
-  .search-container{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-  }
-
-  .search-container input{
-    flex:1;
-    padding:12px;
-    border-radius:8px;
-    border:1px solid #ccc;
-    font-size:16px;
-  }
-
- .search-container button{
-    padding:12px 20px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
- }
-
- /* SEARCH RESULTS */
-
- #searchResults{
-    margin-bottom:30px;
-    padding:10px;
- }
-
- /* CHATBOT */
-
- .chatbot-container{
-    border:1px solid #ccc;
-    border-radius:12px;
-    overflow:hidden;
-    background:#ffffff;
- }
-
- .chatbot-header{
-    padding:15px;
-    font-size:20px;
-    font-weight:bold;
-    border-bottom:1px solid #ddd;
- }
-
- .chat-messages{
-    height:400px;
-    overflow-y:auto;
-    padding:15px;
-    background:#f7f7f7;
- }
-
- .bot-message,
- .user-message{
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:12px;
-    max-width:85%;
-    line-height:1.5;
- }
-
- .bot-message{
-     background:#e6f0ff;
- }
-
- .user-message{
-    background:#d9ffe0;
-    margin-left:auto;
- }
-
- .chat-input-area{
-    display:flex;
-    gap:10px;
-    padding:15px;
-    border-top:1px solid #ddd;
- }
-
- .chat-input-area input{
-    flex:1;
-    padding:12px;
-    border-radius:8px;
-    border:1px solid #ccc;
- }
-
- .chat-input-area button{
-    padding:12px 20px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
- }
-
- /* MOBILE */
-
- @media(max-width:768px){
-
-    .chat-messages{
-        height:320px;
+    .ai-tools-section{
+      width:100%;
+      max-width:1000px;
+      margin:auto;
+      padding:20px;
     }
 
     .search-container{
-        flex-direction:column;
+      display:flex;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .search-container input{
+      flex:1;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      font-size:16px;
+    }
+
+    .search-container button{
+      padding:12px 20px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    #searchResults{
+      margin-bottom:30px;
+      padding:10px;
+    }
+
+    .chatbot-container{
+      border:1px solid #ccc;
+      border-radius:12px;
+      overflow:hidden;
+      background:#ffffff;
+    }
+
+    .chatbot-header{
+      padding:15px;
+      font-size:20px;
+      font-weight:bold;
+      border-bottom:1px solid #ddd;
+    }
+
+    .chat-messages{
+      height:400px;
+      overflow-y:auto;
+      padding:15px;
+      background:#f7f7f7;
+    }
+
+    .bot-message,
+    .user-message{
+      padding:12px;
+      border-radius:10px;
+      margin-bottom:12px;
+      max-width:85%;
+      line-height:1.5;
+    }
+
+    .bot-message{
+      background:#e6f0ff;
+    }
+
+    .user-message{
+      background:#d9ffe0;
+      margin-left:auto;
     }
 
     .chat-input-area{
-        flex-direction:column;
+      display:flex;
+      gap:10px;
+      padding:15px;
+      border-top:1px solid #ddd;
     }
 
-}
+    .chat-input-area input{
+      flex:1;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid #ccc;
+    }
+
+    .chat-input-area button{
+      padding:12px 20px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    @media(max-width:768px){
+      .chat-messages{
+        height:320px;
+      }
+
+      .search-container{
+        flex-direction:column;
+      }
+
+      .chat-input-area{
+        flex-direction:column;
+      }
+    }
   </style>
 </head>
   
 <body>
 
   <header>
-   <h1>MapleStorySEA Unfunded Player Tips</h1>
-
-   <nav>
-     <button onclick="showTab('home')">Home</button>
-     <button onclick="showTab('tips')">Tips</button>
-     <button onclick="showTab('about')">About</button>
-   </nav>
+    <h1>MapleStorySEA Unfunded Player Tips</h1>
+    <nav>
+      <button onclick="showTab('home')">Home</button>
+      <button onclick="showTab('tips')">Tips</button>
+      <button onclick="showTab('about')">About</button>
+    </nav>
   </header>
     
 <audio id="audioPlayer"></audio>
 
-<script>
-  const tracks = [
-    "MapleStorySEA Unfunded Bishop Gameplay Tips - Mandarin.mp3",
-    "MapleStorySEA Bishop unfunded gameplay tips - English.mp3"
-  ];
-
-  let currentTrack = 0;
-  const player = document.getElementById("audioPlayer");
-
-  function playTrack(index) {
-    player.src = tracks[index];
-    player.play();
-  }
-
-  // When a track ends, go to next
-  player.addEventListener("ended", () => {
-    currentTrack++;
-
-    // If finished all tracks, loop back
-    if (currentTrack >= tracks.length) {
-      currentTrack = 0;
-    }
-
-    playTrack(currentTrack);
-  });
-
-  // Start playback (user interaction may be required in browsers)
-  document.addEventListener("click", () => {
-    playTrack(currentTrack);
-  }, { once: true });
-
-</script>
-
 <div class="container">
   <div id="home" class="tab">
     <div class="card">
-
       <p>Video and PowerPoint slides alignment for the Home webpage; and text alignment for the Tips webpage - references for the desktop/mobile web browser view(s) were found via Google searches.</p>
       
       <p>Acknowledgement - This website was created with the ChatGPT - New chat - Canvas prompt:</p>
       
-      <p>Design a website for my company. My company is "MapleStorySEA unfunded player tips", offering unfunded player tips for MapleStorySEA, which only requires using Mesos at most; and does not[...]
+      <p>Design a website for my company. My company is "MapleStorySEA unfunded player tips", offering unfunded player tips for MapleStorySEA, which only requires using Mesos at most; and does not require Cash.</p>
       
       <p>=</p>
 
@@ -266,16 +220,15 @@
     
       <p>Our strategies focus on Mesos-only gameplay tailored specifically for unfunded players who are unable to defeat Story Mode Kalos.</p>
 
-      <p>Reaching lv11 for both the Authentic Symbols for Cernium; and Arcs, should provide enough clean damage range to defeat Normal Papulatus, Normal Arkarium, Normal Magnus, Hard Von Leon, and Nor[...]
+      <p>Reaching lv11 for both the Authentic Symbols for Cernium; and Arcs, should provide enough clean damage range to defeat Normal Papulatus, Normal Arkarium, Normal Magnus, Hard Von Leon, and more.</p>
       
       <p>Please kindly click on the Tips button or tab at the top right corner of this webpage.</p>
 
-      <p>For the actual details, please kindly check <a href="https://maplestoryseatips.blogspot.com/2016/03/maplesea-contents-page-of-facebook-notes.html?m=1">MapleStorySEA (South-East Asia) tips [Fa[...]
+      <p>For the actual details, please kindly check <a href="https://maplestoryseatips.blogspot.com/2016/03/maplesea-contents-page-of-facebook-notes.html?m=1">MapleStorySEA (South-East Asia) tips</a></p>
 
       <p><a href="https://maplestoryseatips.blogspot.com/2016/03/maplesea-numerous-non-cash-ways-to-earn.html">[MapleStorySEA] The numerous non-@cash ways to earn Mesos</a></p>
 
       <p>Thank you.</p>
-     
     </div>
 
     <div class="images-section">
@@ -292,7 +245,7 @@
 
     <div class="card">
       <p>The following is an image which was generated with Google Gemini, with the following prompt:</p>
-      <p>As a professional photographer, create a clear comic style image of a MapleStorySEA Bishop character using Holy Advent, and then Angel Ray VI to defeat Normal Pink Bean in the Time Temple, wi[...]
+      <p>As a professional photographer, create a clear comic style image of a MapleStorySEA Bishop character using Holy Advent, and then Angel Ray VI to defeat Normal Pink Bean in the Time Temple.</p>
     </div>
     
     <div class="images-section">
@@ -300,7 +253,7 @@
     </div>
 
     <div class="card">
-      <p>The following is for Google Gemini replacing the Bishop in the comic, with the Bishop from the game Character Info window (only send the text prompt after ensuring that both images are upload[...]
+      <p>The following is for Google Gemini replacing the Bishop in the comic, with the Bishop from the game Character Info window.</p>
       <p>"Replace the Bishop in the comic picture, with the game user interface Bishop."</p>
     </div>
 
@@ -309,15 +262,13 @@
     </div>
     
     <div class="card">
-      <p>The following is an attempt for a prompt (via ChatGPT - New Chat) to generate a video, but only the screenshot images can be generated for the 10 scenes instead.</p>
+      <p>The following is an attempt for a prompt to generate a video with 10 scenes:</p>
       <p>1. Subject</p>
       <p>2. Motion</p>
       <p>3. Scene</p>
       <p>4. Environment Details</p>
       <p>5. Camera movement</p> 
-      <p>My idea is that a MapleStorySEA Bishop character in Dead Mine fighting Normal Zakum with the Crest of the Solar attack skill, after summoning Normal Zakum with the Eye of Fire item from the r[...]
-      <p>Ask me questions with tailor choices for me to choose, if I miss out any structures above.</p>
-      <p>Then provide me a video prompt in text for me.</p>
+      <p>MapleStorySEA Bishop character in Dead Mine fighting Normal Zakum with Crest of the Solar attack skill.</p>
     </div>
 
     <div class="images-section">
@@ -325,7 +276,7 @@
     </div>
 
     <div class="card">
-      <p>However, Meta AI (via the smartphone application) - Create section, when provided with the following query, is able to animate the 10 scenes of the image, but the other parts of the image suc[...]
+      <p>Meta AI video animation of the 10 scenes:</p>
     </div>
 
     <div style="display: flex; justify-content: center;">
@@ -335,10 +286,7 @@
     </div>
 
     <div class="card">
-      <p>Meta AI is able to create another video.</p>
-      <p>Prompt:</p>
-      <p>Help to extend the video by 25 more seconds.</p>
-      <p>However, since Meta AI is unable to do so, there was an option to re-create the video, as shown by the following video</p>
+      <p>Meta AI created another video extending the animation.</p>
     </div>
     
     <div style="display: flex; justify-content: center;">
@@ -349,151 +297,98 @@
 
     <div class="card">
       <p>PowerPoint slide by ChatGPT - New Chat</p>
-      <p>Prompt:</p>
-      <p>Create a 5-slide PowerPoint to explain why MapleStorySEA Bishop can survive monster attacks better than other jobs (classes)</p>
-      <p>Download the file into Google Slides, to click on File > Share > Embed (to check/tick the related checkboxes)</p>
+      <p>Prompt: Create a 5-slide PowerPoint to explain why MapleStorySEA Bishop can survive monster attacks better than other jobs (classes)</p>
     </div>
 
     <div style="display: flex; justify-content: center;">
-      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSYWbsgVv3dmd82ClG0kWcurTLM_JD1vBBh1sT5iqbFroxOK1dVcILZLJCBcMQohk5RnrNmW8obRaOw/pubembed?start=true&loop=true&delayms=3000" frameborder="0"></iframe>
+      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSYWbsgVv3dmd82ClG0kWcurTLM_JD1vBBh1sT5iqbFroxOK1dVcILZLJCBcMQohk5RnrNmW8obRaOw/pubembed?start=true&loop=true&delayms=3000" frameborder="0" allowfullscreen="true"></iframe>
     </div>
       
     <div class="card">
       <p>Gamma - Generate - 10-slides Presentation</p>
-      <p>Prompt:</p>
-      <p>MapleStorySEA Bishop gameplay tips</p>
-      <p>Note: The Gamma embed weblink would display the Gamma login webpage which does not work even after trying to login with Google.</p>
+      <p>Prompt: MapleStorySEA Bishop gameplay tips</p>
     </div>
 
     <div style="display: flex; justify-content: center;">
-      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSLUzabmZC8YzYvIsrMY5GAmiWVGQ9Kr5Oxn9yRLaivbHl95EQYoiJAom9jIBi0QEsQsDJbuxWj85FV/pubembed?start=true&loop=true&delayms=3000" frameborder="0"></iframe>
+      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSLUzabmZC8YzYvIsrMY5GAmiWVGQ9Kr5Oxn9yRLaivbHl95EQYoiJAom9jIBi0QEsQsDJbuxWj85FV/pubembed?start=true&loop=true&delayms=3000" frameborder="0" allowfullscreen="true"></iframe>
     </div>
       
     <div class="card">
-      <p>ChatGPT - New Project - "MapleStorySEA Gameplay Guidance" Chatbot which uses the related Google Blogger, Facebook photo albums, and manually uploaded gameplay screenshot images as the knowled[...]
-      <p><a href="https://chatgpt.com/share/69ecc79a-ef58-8321-9bb3-5026efc54b1a">ChatGPT - New Project - "MapleStorySEA Gameplay Guidance" Chatbot</a></p>
-      <p>But this seems to require logging in with Google for a free ChatGPT account.</p>
-      <p>Note: ChatGPT - New Project - Desktop web browser; and mobile is for chatbot, based on the uploaded files.</p>
-      <p>Other note: Google Gemini - Only for desktop web browser - GEMS is for chatbot creation, based on the uploaded files.</p>
+      <p>ChatGPT - New Project - "MapleStorySEA Gameplay Guidance" Chatbot</p>
+      <p><a href="https://chatgpt.com/share/69ecc79a-ef58-8321-9bb3-5026efc54b1a">ChatGPT Project Link</a></p>
     </div>
   </div>
   
-  
   <div id="tips" class="tab" style="display:none;">
+    <section class="ai-tools-section">
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search MapleStorySEA tips..." />
+        <button onclick="searchTips()">Search</button>
+      </div>
 
-    
-  <section class="ai-tools-section">
+      <div id="searchResults"></div>
 
-    <!-- SEARCH BAR -->
-    <div class="search-container">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search MapleStorySEA tips..."
-        />
-
-        <button onclick="searchTips()">
-            Search
-        </button>
-    </div>
-
-    <!-- SEARCH RESULTS -->
-    <div id="searchResults"></div>
-
-    <!-- CHATBOT -->
-    <div class="chatbot-container">
-
+      <div class="chatbot-container">
         <div class="chatbot-header">
-            MapleStorySEA Tips Assistant
+          MapleStorySEA Tips Assistant
         </div>
 
         <div id="chatMessages" class="chat-messages">
-            <div class="bot-message">
-                Hello! Ask me about Mesos farming, progression, Maple Union, defeating expedition boss monsters, equipment for the main character, link skills, and more.
-            </div>
+          <div class="bot-message">
+            Hello! Ask me about Mesos farming, progression, Maple Union, defeating expedition boss monsters, equipment for the main character, link skills, and more.
+          </div>
         </div>
 
         <div class="chat-input-area">
-
-            <input
-                type="text"
-                id="chatInput"
-                placeholder="Ask a question..."
-                onkeypress="handleChatKey(event)"
-            />
-
-            <button onclick="sendMessage()">
-                Send
-            </button>
-
+          <input type="text" id="chatInput" placeholder="Ask a question..." onkeypress="handleChatKey(event)" />
+          <button onclick="sendMessage()">Send</button>
         </div>
-    </div>
+      </div>
     </section>
     
-    <iframe width="320" height="210" 
-      src="https://www.youtube.com/embed/wZiIDkbclDU"
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+    <iframe width="320" height="210" src="https://www.youtube.com/embed/wZiIDkbclDU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-    <iframe width="320" height="210" 
-      src="https://www.youtube.com/embed/oRqOKkCFuK4"
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+    <iframe width="320" height="210" src="https://www.youtube.com/embed/oRqOKkCFuK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     
     <div class="card">
-      <p>Prompt for ChatGPT to enhance the Tips webpage text further with the mentioned Blogger notes' weblinks:</p>
-      <p>Taking note that this website has been edited further in GitHub.</p>
+      <p>Prompt for ChatGPT to enhance the Tips webpage:</p>
       <p>The website is https://sohjnthn.github.io/</p>
-      <p>For the Tips webpage (which is accessed by clicking on the Tips button at the top right corner of the Home webpage), please kindly help to refine further the displayed text for the three sect[...]
-      <p>https://maplestoryseatips.blogspot.sg/2016/03/maplesea-numerous-non-cash-ways-to-earn.html ,</p> 
-      <p>https://maplestoryseatips.blogspot.com/2026/02/maplestorysea-permanent-game-content.html?m=1 ,</p> 
-      <p>https://maplestoryseatips.blogspot.com/2026/04/maplestorysea-typed-some-extra-things.html?m=1 ,</p> 
-      <p>https://maplestoryseatips.blogspot.sg/2017/05/maplestorysea-my-maple-union-character.html?m=0 ,</p> 
-      <p>https://maplestoryseatips.blogspot.com/2016/03/maplesea-boosting-your-mains-damage_7.html</p>
-    </div>  
+      <p>For the Tips webpage, please help refine the displayed text with these references:</p>
+      <p><a href="https://maplestoryseatips.blogspot.sg/2016/03/maplesea-numerous-non-cash-ways-to-earn.html">Mesos Earning Methods</a></p>
+      <p><a href="https://maplestoryseatips.blogspot.com/2026/02/maplestorysea-permanent-game-content.html?m=1">Permanent Game Content</a></p>
+      <p><a href="https://maplestoryseatips.blogspot.com/2026/04/maplestorysea-typed-some-extra-things.html?m=1">Extra Things</a></p>
+      <p><a href="https://maplestoryseatips.blogspot.sg/2017/05/maplestorysea-my-maple-union-character.html?m=0">Maple Union Guide</a></p>
+      <p><a href="https://maplestoryseatips.blogspot.com/2016/03/maplesea-boosting-your-mains-damage_7.html">Boosting Damage</a></p>
+    </div>
 
-    
     <div class="grid">
-      
       <div class="card">
         <h3>Early Mesos Farming</h3>
-          <p>Prioritise level-appropriate training maps with stable mob density to obtain equipment drops. Unused equipment should be processed via Ardentmill extraction into item crystals, which can [...]
-          <p>Make use of permanent systems:</p> 
-            <ul>
-              <li>1. Maple Auction (selling item crystals and materials)</li>
-              <li>2. Ardentmill professions (Alchemy (requires learning Herbalism first) - extraction and material conversion)</li>
-              <li>3. Daily bossing (Glowing Soul Crystal drops for direct Mesos)</li>
-            </ul> 
-          <p>Avoid unnecessary spending, and instead build Mesos steadily through regular farming, consistent extraction, and monitoring market prices before selling.</p> 
-          <p>The overall intent is to maintain a self-sustaining Mesos flow without reliance on Cash Shop systems.</p>
-          <div class="images-section">
-            <img src="received_735084553007492.jpeg" alt="Image 6">
-          </div>
+        <p>Prioritise level-appropriate training maps with stable mob density to obtain equipment drops. Unused equipment should be processed via Ardentmill extraction into item crystals.</p>
+        <p>Make use of permanent systems:</p> 
+        <ul>
+          <li>1. Maple Auction (selling item crystals and materials)</li>
+          <li>2. Ardentmill professions (Alchemy - extraction and material conversion)</li>
+          <li>3. Daily bossing (Glowing Soul Crystal drops for direct Mesos)</li>
+        </ul> 
+        <p>Avoid unnecessary spending, and instead build Mesos steadily through regular farming, consistent extraction, and monitoring market prices before selling.</p> 
+        <div class="images-section">
+          <img src="received_735084553007492.jpeg" alt="Image 6">
+        </div>
       </div>
       
       <div class="card">
         <h3>Efficient Gear Progression</h3>
-        <p>Progress equipment using naturally obtained gear, boss drops, and system-based upgrades, without dependence on Cash Shop boosts which require spending real money (legal tender) for @Cash.[...]
-
+        <p>Progress equipment using naturally obtained gear, boss drops, and system-based upgrades.</p>
         <p>Follow a structured upgrade path:</p> 
-
         <p>Early-term → Fensalir equipment and expedition boss drops</p> 
-        <p>Mid-term → Only for the main character, purchase the following cheapest, clean (non-spell trace, star force, normal potential, and additional potential-enhanced; but can have additional s[...]
-          <ul>
-            <li>1. lv200 Arcaneshade hat, shoes, gloves, cape, and shoulder decoration</li>
-            <li>2. lv150 Root Abyss top, and bottom</li>
-          </ul> 
-        <p>Long-term → Long-term → Gradual Mesos-based upgrades through enhancement systems</p> 
-
-        <p>Enhance (using the event scroll for providing Unique normal potential with a 100% chance for untradable equipment), star force (using the event scrolls for providing 20 or less stars to unt[...]
-
-        <p>Make full use of Maple Union (including Maple Union Artifact); and link skills to strengthen your overall account instead of overspending on a single character.</p>
+        <p>Mid-term → For the main character, purchase:</p>
+        <ul>
+          <li>1. lv200 Arcaneshade hat, shoes, gloves, cape, and shoulder decoration</li>
+          <li>2. lv150 Root Abyss top, and bottom</li>
+        </ul> 
+        <p>Long-term → Gradual Mesos-based upgrades through enhancement systems</p>
+        <p>Make full use of Maple Union and link skills to strengthen your overall account.</p>
         <div class="images-section">
           <img src="FB_IMG_1771654388149.jpg" alt="Image 7">
         </div>
@@ -510,31 +405,19 @@
       
       <div class="card">
         <h3>Daily Bossing</h3>
-        <p>Clear daily (at least until Normal Papulatus, Normal Arkarium, Hard Von Leon, Normal Magnus, and Normal Pink Bean can be defeated with about up to three times of using the lv9 VI version of[...]
-
+        <p>Clear daily bosses to generate consistent Mesos and build progression.</p>
         <p>Start with easier expedition bosses:</p>
-          <ul>
-            <li>Requires at least 0.6m to 1.0m clean damage range (the lower to the higher numbers are the Stat ATT as compared to the Combat Power for the Character Info window): Normal Zakum</li>
-            <li>Requires at least 2.0m lower clean damage range: Normal Hilla, Normal Ranmaru, and Normal Horntail</li>
-            <li>Requires at least 19.5m lower clean damage range before carrying out the 6th job advancement: Normal Von Bon, Normal Pierre, Normal Crimson Queen, and Normal Vellum</li>
-          </ul>
-        <p>Progress into core expedition bosses (it is safer to fight the following expedition boss monsters after carrying out the 6th job advancment; and after reaching lv11 for the Authentic Symbol[...]
-         <ul>
-           <li>Requires at least 19.5m lower clean damage range: Hard Von Leon, Normal Magnus, Normal Arkarium, and Normal Papulatus</li>
-           <li>Requires at least 19.5m lower clean damage range (remember to use the (at least lv9) first 6th job attack skill (which is not the later released Ascent skill) first; then to attack with[...]
-           <li>Requires at least 19.5m lower clean damage range (remember to use the (at least lv9) second 6th job attack skill (which is the Ascent skill)): Hard Ranmaru, Normal Kawoong, Easy Cygnus,[...]
-         </ul>
-        <p>
-          These bosses provide Glowing Soul Crystals for direct Mesos via the NPC Collector in the Free Market (which can be accessed via Ardentmill), expedition boss accessory set equipment drops for[...]
-        </p>
-
-        <p>
-          Even lower-tier bosses contribute consistently over time. Focus on routine completion rather than difficulty scaling.
-        </p>
-
-        <p>
-          Bossing should be treated as a daily Mesos generation system, integrated with Maple Auction selling, Ardentmill extraction, and overall account progression systems.
-        </p>
+        <ul>
+          <li>Normal Zakum - Requires 0.6m to 1.0m clean damage range</li>
+          <li>Normal Hilla, Normal Ranmaru, Normal Horntail - Requires 2.0m</li>
+          <li>Normal Von Bon, Normal Pierre, Normal Crimson Queen, Normal Vellum - Requires 19.5m before 6th job</li>
+        </ul>
+        <p>Progress into core expedition bosses after 6th job advancement:</p>
+        <ul>
+          <li>Hard Von Leon, Normal Magnus, Normal Arkarium, Normal Papulatus - Requires 19.5m</li>
+          <li>Hard Ranmaru, Normal Kawoong, Easy Cygnus - Requires 19.5m with Ascent skill</li>
+        </ul>
+        <p>Even lower-tier bosses contribute consistently over time. Focus on routine completion rather than difficulty scaling.</p>
         <div class="images-section">
           <img src="FB_IMG_1775036218395.jpg" alt="Image 11">
         </div>
@@ -547,258 +430,129 @@
         <div class="images-section">
           <img src="FB_IMG_1778924688621.jpg" alt="Image 14">
         </div>
-           
-        <p>This is the Bishop main character's reduced clean (without active skill buffs) damage range after the MapleStory Japan - Kanna, and Hayato jobs' link skills have been changed.</p>
         <div class="images-section">
           <img src="FB_IMG_1777005553625.jpg" alt="Image 15">
         </div>
       </div>
-
-    </div> <!-- CLOSE grid -->
-
-  </div> <!-- CLOSE tips tab -->
+    </div>
+  </div>
         
-  <!-- ABOUT TAB -->
   <div id="about" class="tab" style="display:none;">
     <div class="card">
       <h2>About Us</h2>
-
-      <p>
-        We help MapleStorySEA players progress without relying on Cash Shop systems,
-        focusing on consistency and efficient Mesos management.
-      </p>
-
+      <p>We help MapleStorySEA players progress without relying on Cash Shop systems, focusing on consistency and efficient Mesos management.</p>
     </div>
   </div>
-      
-</div> <!-- container -->
-
-<script>
-
-/* ========================================= */
-/* SEARCH DATABASE */
-/* ========================================= */
-
-const tipsDatabase = [
-
-{
-    keywords: ["mesos", "farming"],
-    answer: `
-    Early Mesos Farming:<br><br>
-
-    Focus on grinding at high spawn-density maps.<br>
-    Sell Glowing Soul Crystals from expedition boss monsters to NPC Collector in the Free Market via Ardentmill.<br>
-    Sell disassembled equipment's obtained items with at least lv6 Alchemy (which requires learning lv1 Herbalism) - 
-    Only if these items can be sold for 1 Mesos each via an NPC shop and are currenty tradable; and through Maple 
-    Auction.
-    `
-},
-
-{
-    keywords: ["union", "maple union"],
-    answer: `
-    Maple Union:<br><br>
-
-    Prioritise MATT/ATT according to your damage type configuration.<br>
-    Focus on Primary Stat, Secondary Stat, HP, Critical Damage+%, Boss Damage+%, and Ignore DEF+%, in this order.<br><br>
-
-    Build 42 level 200 characters steadily over time.
-    `
-},
-
-{
-    keywords: ["bishop"],
-    answer: `
-    Bishop Tips:<br><br>
-
-    Focus on survivability.<br>
-    Do not use the 2nd job Heal skill during bossing, to prevent character death to the Bishop character and the party, if the Bishop or at least one party member is affected with the Zombify abnormal[...]
-    Use Angel Ray to recover HP even when attacks do not hit monsters.
-    `
-},
-
-{
-    keywords: ["bossing", "boss", "expedition"],
-    answer: `
-    Bossing Progression:<br><br>
-
-    Improve Critical Damage+%, Boss Damage+%, and Ignore DEF+%.<br><br>
-
-    The Ascent skill can clear many non-Chaos bosses efficiently after 6th job advancement.
-    `
-},
-
-{
-    keywords: ["link skills", "link", "links"],
-    answer: `
-    Essential Link Skills:<br><br>
-
-    Kanna, Ark, Illium, Explorer Magicians, Hayato, Demon Avenger,
-    Cygnus Knights, Adele, Xenon, Khali, Lara, and Explorer Pirates.
-    `
-}
-
-];
-
-
-/* ========================================= */
-/* SEARCH FUNCTION */
-/* ========================================= */
-
-function searchTips() {
-
-    const input =
-        document
-            .getElementById("searchInput")
-            .value
-            .toLowerCase()
-            .trim();
-
-    const results =
-        document.getElementById("searchResults");
-
-    results.innerHTML = "";
-
-    let found = false;
-
-    tipsDatabase.forEach(item => {
-
-        item.keywords.forEach(keyword => {
-
-            if (input.includes(keyword.toLowerCase())) {
-
-                results.innerHTML += `
-                    <div class="bot-message">
-                        ${item.answer}
-                    </div>
-                `;
-
-                found = true;
-
-            }
-
-        });
-
-    });
-
-    if (!found) {
-
-        results.innerHTML = `
-            <div class="bot-message">
-                No matching tips found.<br><br>
-
-                Try searching for:<br>
-                mesos<br>
-                union<br>
-                bossing<br>
-                bishop<br>
-                link skills
-            </div>
-        `;
-
-    }
-
-}
-
-
-/* ========================================= */
-/* CHATBOT */
-/* ========================================= */
-
-function sendMessage() {
-
-    const input =
-        document.getElementById("chatInput");
-
-    const message =
-        input.value.trim();
-
-    if (message === "") return;
-
-    const chatMessages =
-        document.getElementById("chatMessages");
-
-    /* USER MESSAGE */
-
-    chatMessages.innerHTML += `
-        <div class="user-message">
-            ${message}
-        </div>
-    `;
-
-    let botReply =
-        "I could not find a matching answer yet.";
-
-    tipsDatabase.forEach(item => {
-
-        item.keywords.forEach(keyword => {
-
-            if (
-                message
-                    .toLowerCase()
-                    .includes(keyword.toLowerCase())
-            ) {
-
-                botReply = item.answer;
-
-            }
-
-        });
-
-    });
-
-    /* BOT MESSAGE */
-
-    chatMessages.innerHTML += `
-        <div class="bot-message">
-            ${botReply}
-        </div>
-    `;
-
-    chatMessages.scrollTop =
-        chatMessages.scrollHeight;
-
-    input.value = "";
-
-}
-
-
-/* ========================================= */
-/* ENTER KEY SUPPORT */
-/* ========================================= */
-
-function handleChatKey(event) {
-
-    if (event.key === "Enter") {
-
-        sendMessage();
-
-    }
-
-}
-
-
-/* ========================================= */
-/* TAB SWITCHING */
-/* ========================================= */
-
-function showTab(tab) {
-
-    document.querySelectorAll(".tab").forEach(el => {
-
-        el.style.display = "none";
-
-    });
-
-    document.getElementById(tab).style.display = "block";
-
-}
-
-</script>
+</div>
 
 <footer>
   © 2026 MapleStorySEA Unfunded Player Tips
 </footer>
+
+<script>
+  const tracks = [
+    "MapleStorySEA Unfunded Bishop Gameplay Tips - Mandarin.mp3",
+    "MapleStorySEA Bishop unfunded gameplay tips - English.mp3"
+  ];
+
+  let currentTrack = 0;
+  const player = document.getElementById("audioPlayer");
+
+  function playTrack(index) {
+    player.src = tracks[index];
+    player.play();
+  }
+
+  player.addEventListener("ended", () => {
+    currentTrack++;
+    if (currentTrack >= tracks.length) {
+      currentTrack = 0;
+    }
+    playTrack(currentTrack);
+  });
+
+  document.addEventListener("click", () => {
+    playTrack(currentTrack);
+  }, { once: true });
+
+  const tipsDatabase = [
+    {
+      keywords: ["mesos", "farming"],
+      answer: `Early Mesos Farming:<br><br>Focus on grinding at high spawn-density maps.<br>Sell Glowing Soul Crystals from expedition bosses to NPC Collector.<br>Sell disassembled equipment items through Maple Auction.`
+    },
+    {
+      keywords: ["union", "maple union"],
+      answer: `Maple Union:<br><br>Prioritise MATT/ATT according to your damage type.<br>Focus on Primary Stat, Secondary Stat, HP, Critical Damage+%, Boss Damage+%, and Ignore DEF+%.<br><br>Build 42 level 200 characters steadily.`
+    },
+    {
+      keywords: ["bishop"],
+      answer: `Bishop Tips:<br><br>Focus on survivability.<br>Do not use 2nd job Heal during bossing.<br>Use Angel Ray to recover HP even when attacks do not hit.`
+    },
+    {
+      keywords: ["bossing", "boss", "expedition"],
+      answer: `Bossing Progression:<br><br>Improve Critical Damage+%, Boss Damage+%, and Ignore DEF+%.<br><br>The Ascent skill clears many non-Chaos bosses efficiently after 6th job.`
+    },
+    {
+      keywords: ["link skills", "link", "links"],
+      answer: `Essential Link Skills:<br><br>Kanna, Ark, Illium, Explorer Magicians, Hayato, Demon Avenger, Cygnus Knights, Adele, Xenon, Khali, Lara, and Explorer Pirates.`
+    }
+  ];
+
+  function searchTips() {
+    const input = document.getElementById("searchInput").value.toLowerCase().trim();
+    const results = document.getElementById("searchResults");
+    results.innerHTML = "";
+    let found = false;
+
+    tipsDatabase.forEach(item => {
+      item.keywords.forEach(keyword => {
+        if (input.includes(keyword.toLowerCase())) {
+          results.innerHTML += `<div class="bot-message">${item.answer}</div>`;
+          found = true;
+        }
+      });
+    });
+
+    if (!found) {
+      results.innerHTML = `<div class="bot-message">No matching tips found.<br><br>Try searching for:<br>mesos<br>union<br>bossing<br>bishop<br>link skills</div>`;
+    }
+  }
+
+  function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    if (message === "") return;
+
+    const chatMessages = document.getElementById("chatMessages");
+    chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
+
+    let botReply = "I could not find a matching answer yet.";
+    tipsDatabase.forEach(item => {
+      item.keywords.forEach(keyword => {
+        if (message.toLowerCase().includes(keyword.toLowerCase())) {
+          botReply = item.answer;
+        }
+      });
+    });
+
+    chatMessages.innerHTML += `<div class="bot-message">${botReply}</div>`;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    input.value = "";
+  }
+
+  function handleChatKey(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  }
+
+  function showTab(tab) {
+    document.querySelectorAll(".tab").forEach(el => {
+      el.style.display = "none";
+    });
+    document.getElementById(tab).style.display = "block";
+  }
+</script>
 
 </body>
 </html>
