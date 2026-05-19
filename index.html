@@ -199,6 +199,36 @@
 
 }
 
+            <div class="chatbot-header">
+            MapleStorySEA Tips Assistant
+        </div>
+
+        <div id="chatMessages" class="chat-messages">
+            <div class="bot-message">
+                Hello! Ask me about mesos farming, progression, Union, bossing, gears, events, link skills, and more.
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Ask a question..."
+                onkeypress="handleChatKey(event)"
+            />
+
+            <button onclick="sendMessage()">
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+    
+
   </style>
 </head>
 <body>
