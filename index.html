@@ -30,6 +30,10 @@
       margin-left: 10px;
       padding: 8px 12px;
       cursor: pointer;
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
     }
     .container {
       padding: 20px;
@@ -230,7 +234,6 @@
       justify-content: center;
       z-index: 99;
       transition: all 0.3s ease;
-      pointer-events: auto;
     }
 
     .floating-chat-button:hover {
@@ -244,22 +247,20 @@
 
     /* Modal Overlay */
     .chat-modal-overlay {
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.5);
-      display: none;
       z-index: 1000;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
     }
 
     .chat-modal-overlay.active {
       display: flex;
-      pointer-events: auto;
     }
 
     /* Modal Chatbot */
@@ -273,7 +274,6 @@
       flex-direction: column;
       box-shadow: 0 5px 40px rgba(0,0,0,0.3);
       animation: slideUp 0.3s ease-out;
-      pointer-events: auto;
     }
 
     @keyframes slideUp {
@@ -355,6 +355,14 @@
 
     .chat-modal-messages .bot-message img {
       max-width: 100px;
+    }
+
+    .tab {
+      display: none;
+    }
+
+    .tab.active {
+      display: block;
     }
 
     @media(max-width:768px){
@@ -448,7 +456,7 @@
   </div>
 
 <div class="container">
-  <div id="home" class="tab">
+  <div id="home" class="tab active">
     <div class="card">
       <p>Video and PowerPoint slides alignment for the Home webpage; and text alignment for the Tips webpage - references for the desktop/mobile web browser view(s) were found via Google searches.[...]
       
@@ -597,7 +605,7 @@
     </div>
   </div>
   
-  <div id="tips" class="tab" style="display:none;">
+  <div id="tips" class="tab">
     <section class="ai-tools-section">
       <!-- Standard search form structure -->
       <form class="search-container" id="searchForm" onsubmit="event.preventDefault(); searchTips();">
@@ -734,7 +742,7 @@
     </div>
   </div>
         
-  <div id="about" class="tab" style="display:none;">
+  <div id="about" class="tab">
     <div class="card">
       <h2>About Us</h2>
       <p>We help MapleStorySEA players progress without relying on Cash Shop systems, focusing on consistency and efficient Mesos management.</p>
@@ -929,20 +937,25 @@
   }
 
   function closeChatModal(event) {
-    // Close if clicking overlay background or close button
     if (!event || event.target.id === "chatModalOverlay" || event.currentTarget.classList.contains("chat-modal-close")) {
       document.getElementById("chatModalOverlay").classList.remove("active");
     }
   }
 
   function showTab(tab) {
+    // Hide all tabs
     document.querySelectorAll(".tab").forEach(el => {
-      el.style.display = "none";
+      el.classList.remove("active");
     });
+    
+    // Show selected tab
     const selectedTab = document.getElementById(tab);
     if (selectedTab) {
-      selectedTab.style.display = "block";
+      selectedTab.classList.add("active");
     }
+
+    // Close modal when switching tabs
+    closeChatModal();
 
     // Show/hide floating chat button based on tab
     const floatingBtn = document.getElementById("floatingChatBtn");
@@ -950,7 +963,6 @@
       floatingBtn.style.display = "flex";
     } else {
       floatingBtn.style.display = "none";
-      closeChatModal();
     }
   }
 
