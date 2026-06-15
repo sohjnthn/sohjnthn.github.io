@@ -214,13 +214,13 @@
       font-weight:bold;
     }
 
-    /* Tab visibility */
+    /* Tab visibility - FIXED: Removed !important conflict */
     .tab {
-      display: none !important;
+      display: none;
     }
 
     .tab.active {
-      display: block !important;
+      display: block;
     }
 
     /* Floating Chatbot Button */
@@ -237,7 +237,7 @@
       font-size: 28px;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      display: none !important;
+      display: none;
       align-items: center;
       justify-content: center;
       z-index: 99;
@@ -435,12 +435,10 @@
     
   <audio id="audioPlayer"></audio>
 
-  <!-- Floating Chat Button (visible on Tips page) -->
   <button class="floating-chat-button" id="floatingChatBtn" onclick="openChatModal()" title="Open Tips Assistant">
     💬
   </button>
 
-  <!-- Chat Modal Overlay -->
   <div class="chat-modal-overlay" id="chatModalOverlay" onclick="closeChatModal(event)">
     <div class="chat-modal-container" onclick="event.stopPropagation()">
       <div class="chat-modal-header">
@@ -471,7 +469,6 @@
   
   <div id="tips" class="tab">
     <section class="ai-tools-section">
-      <!-- Standard search form structure -->
       <form class="search-container" id="searchForm" onsubmit="event.preventDefault(); searchTips();">
         <input type="text" id="searchInput" placeholder="Search MapleStorySEA tips..." />
         <button type="submit">Search</button>
@@ -490,7 +487,6 @@
           </div>
         </div>
 
-        <!-- Standard chat form structure -->
         <form class="chat-input-area" id="chatForm" onsubmit="event.preventDefault(); sendMessage();">
           <input type="text" id="chatInput" placeholder="Ask a question..." />
           <button type="submit">Send</button>
