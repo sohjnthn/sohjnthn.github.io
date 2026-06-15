@@ -23,6 +23,8 @@
       padding: 16px;
       background: white;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 100;
     }
     nav button {
       margin-left: 10px;
@@ -32,6 +34,8 @@
     .container {
       padding: 20px;
       min-height: calc(100vh - 200px);
+      position: relative;
+      z-index: 1;
     }
     .images-section {
       display: flex;
@@ -62,6 +66,8 @@
       color: gray;
       background: white;
       margin-top: 20px;
+      position: relative;
+      z-index: 1;
     }
     .media-container {
       width: 100%;
@@ -222,8 +228,9 @@
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 999;
+      z-index: 99;
       transition: all 0.3s ease;
+      pointer-events: auto;
     }
 
     .floating-chat-button:hover {
@@ -247,10 +254,12 @@
       z-index: 1000;
       align-items: center;
       justify-content: center;
+      pointer-events: none;
     }
 
     .chat-modal-overlay.active {
       display: flex;
+      pointer-events: auto;
     }
 
     /* Modal Chatbot */
@@ -264,6 +273,7 @@
       flex-direction: column;
       box-shadow: 0 5px 40px rgba(0,0,0,0.3);
       animation: slideUp 0.3s ease-out;
+      pointer-events: auto;
     }
 
     @keyframes slideUp {
@@ -940,6 +950,7 @@
       floatingBtn.style.display = "flex";
     } else {
       floatingBtn.style.display = "none";
+      closeChatModal();
     }
   }
 
