@@ -256,7 +256,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-shrink: 0; /* Prevents header from resizing */
+      flex-shrink: 0;
     }
     .floating-chat-close {
       background: none;
@@ -269,13 +269,13 @@
     /* Dedicated internal body scroll rule to contain the overflow */
     #floatingChatMessages {
       flex: 1;
-      height: auto; /* Overrides the fixed 400px layout constraint */
+      height: auto;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch; /* Ensures fluid response scrolling on mobile views */
+      -webkit-overflow-scrolling: touch;
     }
     
     .floating-chat-box .chat-input-area {
-      flex-shrink: 0; /* Prevents the input tray layout from shrinking */
+      flex-shrink: 0;
     }
 
     @media(max-width:768px){
@@ -705,7 +705,6 @@
       }
     }
 
-    // ORIGINAL MAIN CHATBOT LOGIC
     function sendMessage() {
       const input = document.getElementById("chatInput");
       const message = input.value.trim();
@@ -786,7 +785,6 @@
       input.value = "";
     }
 
-    // FIXED NAVIGATION TAB SWITCHER
     function showTab(tab) {
       document.querySelectorAll(".tab").forEach(el => {
         el.style.display = "none";
@@ -798,7 +796,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Initialize layout view showing 'home' page initially
       showTab('home');
 
       const searchInput = document.getElementById("searchInput");
