@@ -241,12 +241,12 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
       z-index: 9998;
       display: none;
-      flex-direction: column; /* Locks children into a straight vertical stack */
-      overflow: hidden;
+      flex-direction: column !important; /* Strictly forces a flexbox column tracking model */
+      overflow: hidden !important;
       border: 1px solid #e5e7eb;
     }
     .floating-chat-box.active {
-      display: flex;
+      display: flex !important;
     }
     .floating-chat-header {
       background: #2563eb;
@@ -257,7 +257,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-shrink: 0; /* Keeps header from shrinking */
+      flex-shrink: 0 !important;
     }
     .floating-chat-close {
       background: none;
@@ -267,18 +267,21 @@
       cursor: pointer;
     }
     
-    /* NEW DETACHED SCROLL FIX CLASS FOR FLOATING CONVERSIONS ONLY */
+    /* RE-ENGINEERED SCROLL CONTAINER WITH DEFINED HEIGHT CONSTRAINTS */
     .floating-chat-messages {
-      flex: 1 !important;          /* Commands the container to fill all remaining vertical empty area */
-      height: auto !important;      /* Severes connection to desktop height constraints */
-      overflow-y: scroll !important; /* Explicitly forces visible native scrollbars on window overflow */
+      flex: 1 1 auto !important;
+      height: auto !important;
+      max-height: calc(100% - 110px) !important; /* Subtracts header & footer layout to block expansion */
+      overflow-y: auto !important;               /* Dynamically pops visible bars when content overflows */
       padding: 15px;
       background: #f7f7f7;
-      -webkit-overflow-scrolling: touch; /* Keeps momentum swiping responsive on mobile screens */
+      display: block !important;
+      -webkit-overflow-scrolling: touch;
     }
     
     .floating-chat-box .chat-input-area {
-      flex-shrink: 0; /* Holds input form layout rigid at the bottom boundary */
+      flex-shrink: 0 !important;
+      margin-top: auto !important; /* Locks input field cleanly to the absolute base floor */
     }
 
     @media(max-width:768px){
@@ -335,6 +338,7 @@
     
   <audio id="audioPlayer"></audio>
 
+  <!-- PERSISTENT FLOATING CHAT UI ELEMENTS -->
   <button class="floating-chat-toggle" id="floatingChatToggle" onclick="toggleFloatingChat()">💬</button>
   
   <div class="floating-chat-box" id="floatingChatBox">
