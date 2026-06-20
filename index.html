@@ -270,9 +270,7 @@
     /* RE-ENGINEERED SCROLL CONTAINER WITH DEFINED HEIGHT CONSTRAINTS */
     .floating-chat-messages {
       flex: 1 1 auto !important;
-      height: auto !important;
-      max-height: calc(100% - 110px) !important; /* Subtracts header & footer layout to block expansion */
-      overflow-y: auto !important;               /* Dynamically pops visible bars when content overflows */
+      overflow-y: auto !important;         /* Dynamically pops visible bars when content overflows */
       padding: 15px;
       background: #f7f7f7;
       display: block !important;
@@ -338,7 +336,6 @@
     
   <audio id="audioPlayer"></audio>
 
-  <!-- PERSISTENT FLOATING CHAT UI ELEMENTS -->
   <button class="floating-chat-toggle" id="floatingChatToggle" onclick="toggleFloatingChat()">💬</button>
   
   <div class="floating-chat-box" id="floatingChatBox">
@@ -356,7 +353,7 @@
       <button type="submit">Send</button>
     </form>
   </div>
-     
+       
   <div class="container">
     <div id="home" class="tab">
       <div class="card">
@@ -382,7 +379,7 @@
       <div class="card">
         <p>With Google Gemini (desktop web browser version), by copying and pasting an image to be treated as the first image, with the entering of the prompt "Create the prompt based on the picture attached"</p>
       </div>
-       
+        
       <div class="images-section">
         <img src="fa6dbaee-070a-4814-9232-87731ba18794.jpeg" alt="Image 2">
       </div>
@@ -399,7 +396,7 @@
         <p>The following is an image which was generated with Google Gemini, with the following prompt:</p>
         <p>As a professional photographer, create a clear comic style image of a MapleStorySEA Bishop character using Holy Advent, and then Angel Ray VI to defeat Normal Pink Bean in the Time Temple.</p>
       </div>
-       
+        
       <div class="images-section">
         <img src="c843555a-e97d-4148-96d8-f3e11e01024b.jpeg" alt="Image 4">
       </div>
@@ -412,7 +409,7 @@
       <div class="images-section">
         <img src="1777502530969.png" alt="Image 5">
       </div>
-       
+        
       <div class="card">
         <p>The following is an attempt for a prompt to generate a video with 10 scenes:</p>
         <p>1. Subject</p>
@@ -440,7 +437,7 @@
       <div class="card">
         <p>Meta AI created another video extending the animation.</p>
       </div>
-       
+        
       <div style="display: flex; justify-content: center;">
         <video controls autoplay muted loop playsinline width="320" height="630">
           <source src="The other video.mp4" type="video/mp4">
@@ -460,11 +457,11 @@
         <p>Gamma - Generate - 10-slides Presentation</p>
         <p>Prompt: MapleStorySEA Bishop gameplay tips</p>
       </div>
-       
+        
       <div style="display: flex; justify-content: center; margin-bottom: 20px;">
         <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSYWbsgVv3dmd82ClG0kWcurTLM_JD1vBBh1sT5iqbFroxOK1dVcILZLJCBcMQohk5RnrNmW8obRaOw/embed?start=true&loop=true&delayms=5000" style="width: 800px; height: 450px;" frameborder="0" allowfullscreen></iframe>
       </div>
-       
+        
       <div class="card">
         <p>ChatGPT - New Project - "MapleStorySEA Gameplay Guidance" Chatbot</p>
         <p><a href="https://chatgpt.com/share/69ecc79a-ef58-8321-9bb3-5026efc54b1a">ChatGPT Project Link</a></p>
@@ -495,13 +492,13 @@
           </form>
         </div>
       </section>
-       
+        
       <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 20px;">
         <iframe width="320" height="210" src="https://www.youtube.com/embed/wZiIDkbclDU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <iframe width="320" height="210" src="https://www.youtube.com/embed/oRqOKkCFuK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <iframe width="320" height="210" src="https://www.youtube.com/embed/2vl-uhVJIZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
-       
+        
       <div class="card">
         <p>Prompt for ChatGPT to enhance the Tips webpage:</p>
         <p>The website is https://sohjnthn.github.io/</p>
@@ -526,12 +523,12 @@
           <p>Avoid unnecessary spending, and instead build Mesos steadily through regular farming, consistent extraction, and monitoring market prices before selling.</p>
           <div class="images-section">
             <img src="received_735084553007492.jpeg" alt="Image 7">
-            <img src="alchemy_extraction.jpg" alt "Image 8">
-            <img src="boss_mileage.jpg" alt "Image 9">
-            <img src="Maple_140626_155808.jpg" alt "Image 10">
+            <img src="alchemy_extraction.jpg" alt="Image 8">
+            <img src="boss_mileage.jpg" alt="Image 9">
+            <img src="Maple_140626_155808.jpg" alt="Image 10">
           </div>
         </div>
-         
+          
         <div class="card">
           <h3>Efficient Gear Progression</h3>
           <p>Progress equipment using naturally obtained gear, boss drops, and system-based upgrades.</p>
@@ -557,7 +554,7 @@
             <img src="FB_IMG_1773890584328.jpg" alt="Image 14">
           </div>
         </div>
-         
+          
         <div class="card">
           <h3>Daily Bossing</h3>
           <p>Clear daily bosses to generate consistent Mesos and build progression.</p>
@@ -685,6 +682,11 @@
       }
     ];
 
+    function showTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
+      document.getElementById(tabId).style.display = 'block';
+    }
+
     function searchTips() {
       const input = document.getElementById("searchInput").value.toLowerCase().trim();
       const results = document.getElementById("searchResults");
@@ -725,7 +727,7 @@
       let botReply = "I could not find a matching answer yet.";
       let botImages = [];
       let matchFound = false;
-     
+      
       for (let i = 0; i < tipsDatabase.length; i++) {
         const item = tipsDatabase[i];
         for (let j = 0; j < item.keywords.length; j++) {
@@ -768,7 +770,7 @@
       let botReply = "I could not find a matching answer yet.";
       let botImages = [];
       let matchFound = false;
-
+      
       for (let i = 0; i < tipsDatabase.length; i++) {
         const item = tipsDatabase[i];
         for (let j = 0; j < item.keywords.length; j++) {
@@ -793,41 +795,6 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
       input.value = "";
     }
-
-    function showTab(tab) {
-      document.querySelectorAll(".tab").forEach(el => {
-        el.style.display = "none";
-      });
-      const selectedTab = document.getElementById(tab);
-      if (selectedTab) {
-        selectedTab.style.display = "block";
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      showTab('home');
-
-      const searchInput = document.getElementById("searchInput");
-      if (searchInput) {
-        searchInput.addEventListener("keydown", (event) => {
-          if (event.key === "Enter") {
-            event.preventDefault();
-            searchTips();
-          }
-        });
-      }
-
-      const chatInput = document.getElementById("chatInput");
-      if (chatInput) {
-        chatInput.addEventListener("keydown", (event) => {
-          if (event.key === "Enter") {
-            event.preventDefault();
-            sendMessage();
-          }
-        });
-      }
-    });
   </script>
-
 </body>
 </html>
