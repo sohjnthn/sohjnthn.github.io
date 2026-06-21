@@ -84,6 +84,7 @@
       max-width:1000px;
       margin:auto;
       padding:20px;
+      display: block; /* Ensures standard document flow blocks */
     }
 
     .search-container{
@@ -141,6 +142,10 @@
       border-radius:12px;
       overflow:hidden;
       background:#ffffff;
+      display: flex;
+      flex-direction: column;
+      height: auto; /* Allow dynamic expansion of background container bounds */
+      margin-bottom: 30px; /* Forces spacing directly above the YouTube section layout block */
     }
 
     .chatbot-header{
@@ -150,10 +155,11 @@
       border-bottom:1px solid #ddd;
     }
 
-    /* Standard Desktop Page Chat messages box */
+    /* Message box constraints */
     .chat-messages{
-      height:400px;
-      overflow-y:auto;
+      min-height:360px;
+      height: auto; /* Switch to auto layout so box bounds scale to contain injected HTML nodes */
+      overflow-y:visible; /* Prevents container-clipping scroll bars within the web container */
       padding:15px;
       background:#f7f7f7;
     }
@@ -189,6 +195,7 @@
       gap:10px;
       padding:15px;
       border-top:1px solid #ddd;
+      background: #ffffff;
     }
 
     .chat-input-area input{
@@ -204,6 +211,18 @@
       border-radius:8px;
       cursor:pointer;
       font-weight:bold;
+    }
+
+    /* Video display wrapper layout */
+    .youtube-videos-wrapper {
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 20px; 
+      margin-top: 20px;
+      margin-bottom: 30px;
+      clear: both;
+      width: 100%;
     }
 
     /* PERSISTENT FLOATING CHATBOT INTERFACE STYLES (SCROLL FIXED) */
@@ -241,7 +260,7 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
       z-index: 9998;
       display: none;
-      flex-direction: column !important; /* Strictly forces a flexbox column tracking model */
+      flex-direction: column !important;
       overflow: hidden !important;
       border: 1px solid #e5e7eb;
     }
@@ -267,10 +286,11 @@
       cursor: pointer;
     }
     
-    /* RE-ENGINEERED SCROLL CONTAINER WITH DEFINED HEIGHT CONSTRAINTS */
     .floating-chat-messages {
       flex: 1 1 auto !important;
-      overflow-y: auto !important;         /* Dynamically pops visible bars when content overflows */
+      height: auto !important;
+      max-height: calc(100% - 110px) !important;
+      overflow-y: auto !important;               
       padding: 15px;
       background: #f7f7f7;
       display: block !important;
@@ -279,12 +299,13 @@
     
     .floating-chat-box .chat-input-area {
       flex-shrink: 0 !important;
-      margin-top: auto !important; /* Locks input field cleanly to the absolute base floor */
+      margin-top: auto !important;
     }
 
     @media(max-width:768px){
       .chat-messages{
-        height:320px;
+        min-height:280px;
+        height: auto;
       }
       .search-container, .chat-input-area{
         flex-direction:column;
@@ -336,6 +357,7 @@
     
   <audio id="audioPlayer"></audio>
 
+  <!-- PERSISTENT FLOATING CHAT UI ELEMENTS -->
   <button class="floating-chat-toggle" id="floatingChatToggle" onclick="toggleFloatingChat()">💬</button>
   
   <div class="floating-chat-box" id="floatingChatBox">
@@ -477,6 +499,7 @@
 
         <div id="searchResults"></div>
 
+        <!-- Chatbot container structure that dynamically flows downward -->
         <div class="chatbot-container">
           <div class="chatbot-header">
             MapleStorySEA Tips Assistant
@@ -491,22 +514,23 @@
             <button type="submit">Send</button>
           </form>
         </div>
+
+        <!-- Embedded YouTube videos placed inside document stream underneath chatbot layout bounds -->
+        <div class="youtube-videos-wrapper">
+          <iframe width="320" height="210" src="https://www.youtube.com/embed/wZiIDkbclDU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="320" height="210" src="https://www.youtube.com/embed/oRqOKkCFuK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="320" height="210" src="https://www.youtube.com/embed/2vl-uhVJIZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </section>
-        
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 20px;">
-        <iframe width="320" height="210" src="https://www.youtube.com/embed/wZiIDkbclDU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="320" height="210" src="https://www.youtube.com/embed/oRqOKkCFuK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="320" height="210" src="https://www.youtube.com/embed/2vl-uhVJIZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
         
       <div class="card">
         <p>Prompt for ChatGPT to enhance the Tips webpage:</p>
         <p>The website is https://sohjnthn.github.io/</p>
         <p>For the Tips webpage, please help refine the displayed text with these references:</p>
-        <p><a href="https://maplestoryseatips.blogspot.sg/2016/03/maplesea-numerous-non-cash-ways-to-earn.html">Mesos Earning Methods</a></p>
+        <p><a href="https://maplestoryseatips.blogspot.com/2016/03/maplesea-numerous-non-cash-ways-to-earn.html">Mesos Earning Methods</a></p>
         <p><a href="https://maplestoryseatips.blogspot.com/2026/02/maplestorysea-permanent-game-content.html?m=1">Permanent Game Content</a></p>
         <p><a href="https://maplestoryseatips.blogspot.com/2026/04/maplestorysea-typed-some-extra-things.html?m=1">Extra Things</a></p>
-        <p><a href="https://maplestoryseatips.blogspot.sg/2017/05/maplestorysea-my-maple-union-character.html?m=0">Maple Union Guide</a></p>
+        <p><a href="https://maplestoryseatips.blogspot.com/2017/05/maplestorysea-my-maple-union-character.html?m=0">Maple Union Guide</a></p>
         <p><a href="https://maplestoryseatips.blogspot.com/2016/03/maplesea-boosting-your-mains-damage_7.html">Boosting Damage</a></p>
       </div>
 
@@ -753,7 +777,6 @@
       input.value = "";
     }
 
-    // NEW PERSISTENT FLOATING CHATBOX ACTIONS
     function toggleFloatingChat() {
       const chatBox = document.getElementById("floatingChatBox");
       chatBox.classList.toggle("active");
