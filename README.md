@@ -22,3 +22,6 @@ https://ais-dev-rfkgzszdffpwhuxay3kjt4-270049344261.asia-southeast1.run.app/
 
 Google AI Studio - Android smartphone application (created purely with text prompts; and file uploads):
 https://drive.google.com/file/d/14hhqSrR0f7v06ONUI65gz6J6tBO3lR-Q/view?usp=drive_link
+
+Related Google AI Studio weblink:
+https://aistudio.google.com/apps/7079d3b3-a1c6-4a40-ba78-b948a6ebab22
