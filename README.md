@@ -4,7 +4,7 @@ Practice based on two on-site AI Tools learning courses -
 
 2) Second learning course (Skills Developement Academy - Advanced Prompting Strategies) for using the message chunking (chunk-process-return) text prompt method, so that there would be no need to actually type out the full filename(s) to be uploaded, for the requested assistance for editing the code.
 
-All of the following should now have the same YouTube videos; music (songs' lyrics by ChatGPT; music, and female unison voices by Suno); and the same PowerPoint Slides files from Google Slides -
+All of the following should now have the same YouTube videos; music (songs' lyrics by ChatGPT for the first to second songs, and Google - Gemini for the third to fourth songs); music, and female unison voices by Suno); and the same PowerPoint Slides files from Google Slides -
 
 [1]
 
