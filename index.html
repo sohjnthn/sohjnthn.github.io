@@ -357,7 +357,6 @@
     
   <audio id="audioPlayer"></audio>
 
-  <!-- PERSISTENT FLOATING CHAT UI ELEMENTS -->
   <button class="floating-chat-toggle" id="floatingChatToggle" onclick="toggleFloatingChat()">💬</button>
   
   <div class="floating-chat-box" id="floatingChatBox">
@@ -471,8 +470,10 @@
         <p>Prompt: Create a 5-slide PowerPoint to explain why MapleStorySEA Bishop can survive monster attacks better than other jobs (classes)</p>
       </div>
 
-      <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <iframe src="https://docs.google.com/presentation/d/1QCfXAMhfIsWvuLECFaB7nThwHHu8jhoQ0zySfVBuBrg/embed?start=true&loop=true&delayms=5000" style="width: 800px; height: 450px;" frameborder="0" allowfullscreen></iframe>
+      <div style="display: flex; justify-content: center; margin-bottom: 20px; width: 100%;">
+        <div class="media-container">
+          <iframe src="https://docs.google.com/presentation/d/1QCfXAMhfIsWvuLECFaB7nThwHHu8jhoQ0zySfVBuBrg/embed?start=true&loop=true&delayms=5000" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
      
       <div class="card">
@@ -480,8 +481,10 @@
         <p>Prompt: MapleStorySEA Bishop gameplay tips</p>
       </div>
         
-      <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSYWbsgVv3dmd82ClG0kWcurTLM_JD1vBBh1sT5iqbFroxOK1dVcILZLJCBcMQohk5RnrNmW8obRaOw/embed?start=true&loop=true&delayms=5000" style="width: 800px; height: 450px;" frameborder="0" allowfullscreen></iframe>
+      <div style="display: flex; justify-content: center; margin-bottom: 20px; width: 100%;">
+        <div class="media-container">
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSYWbsgVv3dmd82ClG0kWcurTLM_JD1vBBh1sT5iqbFroxOK1dVcILZLJCBcMQohk5RnrNmW8obRaOw/embed?start=true&loop=true&delayms=5000" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
         
       <div class="card">
@@ -509,7 +512,6 @@
 
         <div id="searchResults"></div>
 
-        <!-- Chatbot container structure that dynamically flows downward -->
         <div class="chatbot-container">
           <div class="chatbot-header">
             MapleStorySEA Tips Assistant
@@ -525,7 +527,6 @@
           </form>
         </div>
 
-        <!-- Embedded YouTube videos placed inside document stream underneath chatbot layout bounds -->
         <div class="youtube-videos-wrapper">
           <iframe width="320" height="210" src="https://www.youtube.com/embed/wZiIDkbclDU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <iframe width="320" height="210" src="https://www.youtube.com/embed/oRqOKkCFuK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
