@@ -17,6 +17,8 @@ https://sohjnthn.github.io
 Google AI Studio - Website (created purely with text prompts; and file uploads):
 https://ais-dev-rfkgzszdffpwhuxay3kjt4-270049344261.asia-southeast1.run.app/
 
+(The website is unable to load on a mobile device due to the chat prompts; so please kindly use a desktop computer, or a laptop to view the website).
+
 [3]
 
 Google AI Studio - Android smartphone application (created purely with text prompts; and file uploads):
