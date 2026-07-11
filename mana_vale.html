@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Mana Vale: Monster Hunt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#180F2E;
+    --bg-mid:#241a42;
+    --panel:#2c2050;
+    --mint:#4ade80;
+    --coral:#f87171;
+    --gold:#fbbf24;
+    --cream:#f3ecdd;
+    --violet:#8b6cf0;
+    --line:#4a3d7a;
+    --boss:#f472b6;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none;}
+  html,body{
+    margin:0; padding:0; width:100%; height:100%;
+    background:var(--bg-deep);
+    overflow:hidden;
+    font-family:'Nunito',sans-serif;
+    color:var(--cream);
+    touch-action:none;
+  }
+  #game-root{
+    position:fixed; inset:0;
+    display:flex; flex-direction:column;
+    background:
+      radial-gradient(ellipse at 50% 0%, var(--bg-mid) 0%, var(--bg-deep) 65%);
+  }
+  .pixel{ font-family:'Press Start 2P', monospace; }
+
+  /* ---------- HUD ---------- */
+  #hud{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 12px 8px 12px;
+    z-index:5;
+  }
+  .hud-block{
+    background:var(--panel);
+    border:2px solid var(--line);
+    border-radius:10px;
+    padding:6px 10px;
+    flex:1;
+    min-width:0;
+  }
+  .hud-label{
+    font-size:9px;
+    letter-spacing:1px;
+    opacity:.7;
+    margin-bottom:4px;
+  }
+  .bar-track{
+    height:12px;
+    background:#150c28;
+    border-radius:6px;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .bar-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--coral), #fca5a5);
+    width:100%;
+    transition:width .25s ease;
+  }
+  .bar-fill.hp-buffed{
+    background:linear-gradient(90deg, var(--mint), #86efac);
+  }
+  #hp-text{
+    font-size:10px;
+    text-align:right;
+    margin-top:3px;
+    opacity:.85;
+  }
+  .stat-box{
+    text-align:center;
+    min-width:64px;
+  }
+  .stat-num{
+    font-size:14px;
+    color:var(--gold);
+  }
+
+  /* ---------- Arena ---------- */
+  #arena-wrap{
+    flex:1;
+    position:relative;
+    margin:0 10px;
+    border-radius:16px;
+    overflow:hidden;
+    border:2px solid var(--line);
+    background:linear-gradient(180deg, #241a42 0%, #1c1338 60%, #150c28 100%);
+  }
+  #arena{
+    width:100%; height:100%; display:block;
+  }
+  #stage-banner{
+    position:absolute; top:14px; left:50%; transform:translateX(-50%);
+    font-size:10px;
+    background:rgba(20,12,40,.75);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:6px 14px;
+    letter-spacing:1px;
+    text-align:center;
+    pointer-events:none;
+  }
+  #stage-banner .sub{ color:var(--violet); font-size:8px; margin-top:4px;}
+
+  #boss-bar-wrap{
+    position:absolute; top:14px; left:50%; transform:translateX(-50%);
+    width:82%;
+    display:none;
+    pointer-events:none;
+    text-align:center;
+  }
+  #boss-name{
+    font-size:11px;
+    color:var(--boss);
+    letter-spacing:1px;
+    margin-bottom:6px;
+    text-shadow:0 2px 0 rgba(0,0,0,.6);
+  }
+  #boss-bar-track{
+    height:16px;
+    background:#150c28;
+    border:2px solid var(--boss);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  #boss-bar-fill{
+    height:100%;
+    width:100%;
+    background:linear-gradient(90deg, var(--boss), #fb7185);
+    transition:width .2s ease;
+  }
+
+  /* ---------- Floating damage / toast ---------- */
+  .float-text{
+    position:absolute;
+    font-family:'Press Start 2P', monospace;
+    font-size:12px;
+    pointer-events:none;
+    text-shadow:0 2px 0 rgba(0,0,0,.5);
+    animation:floatUp .8s ease-out forwards;
+  }
+  @keyframes floatUp{
+    0%{ transform:translateY(0); opacity:1;}
+    100%{ transform:translateY(-46px); opacity:0;}
+  }
+
+  /* ---------- Controls ---------- */
+  #controls{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px;
+  }
+  .move-pad{
+    display:flex; gap:8px;
+  }
+  .ctrl-btn{
+    border:none;
+    border-radius:14px;
+    font-family:'Press Start 2P', monospace;
+    font-size:16px;
+    color:var(--cream);
+    background:var(--panel);
+    border:2px solid var(--line);
+    width:58px; height:58px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .ctrl-btn:active{ background:#3a2d63; transform:scale(.94); }
+  #attack-btn{
+    width:84px; height:84px;
+    border-radius:50%;
+    background:linear-gradient(160deg, var(--coral), #b91c1c);
+    font-size:11px;
+    border:3px solid #fecaca;
+    box-shadow:0 4px 0 #7f1d1d;
+    display:flex; flex-direction:column; gap:2px; color:#fff;
+  }
+  #attack-btn:active{ box-shadow:0 1px 0 #7f1d1d; transform:translateY(3px) scale(.98); }
+  #attack-icon{ font-size:18px; }
+  #elixir-btn{
+    width:66px; height:66px;
+    border-radius:50%;
+    background:linear-gradient(160deg, var(--mint), #15803d);
+    font-size:9px;
+    border:3px solid #bbf7d0;
+    box-shadow:0 4px 0 #14532d;
+    display:flex; flex-direction:column; gap:2px;
+    color:#052e13;
+  }
+  #elixir-btn:active{ box-shadow:0 1px 0 #14532d; transform:translateY(3px) scale(.98); }
+  #elixir-count{ font-size:11px; }
+
+  #dodge-btn{
+    width:58px; height:58px;
+    border-radius:14px;
+    background:linear-gradient(160deg, #93c5fd, #2563eb);
+    font-size:9px;
+    border:3px solid #bfdbfe;
+    box-shadow:0 4px 0 #1e3a8a;
+    display:flex; flex-direction:column; gap:1px;
+    color:#0b1a3d;
+  }
+  #dodge-btn:active{ box-shadow:0 1px 0 #1e3a8a; transform:translateY(3px) scale(.98); }
+  #dodge-btn:disabled{ opacity:.4; }
+  #dodge-icon{ font-size:15px; }
+
+  /* ---------- Overlays ---------- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(12,7,26,.92);
+    display:flex; align-items:center; justify-content:center;
+    z-index:20;
+    padding:20px;
+    overflow-y:auto;
+  }
+  .card{
+    background:var(--panel);
+    border:2px solid var(--line);
+    border-radius:18px;
+    padding:26px 20px;
+    max-width:380px;
+    width:100%;
+    text-align:center;
+    margin:auto;
+  }
+  .card h1{
+    font-size:18px;
+    line-height:1.6;
+    color:var(--gold);
+    margin:0 0 8px 0;
+  }
+  .card h2{
+    font-size:14px;
+    line-height:1.6;
+    margin:0 0 14px 0;
+  }
+  .card p{
+    font-size:13px;
+    line-height:1.7;
+    opacity:.85;
+    margin:0 0 16px 0;
+  }
+  .card .score-line{
+    font-size:22px;
+    color:var(--mint);
+    margin:14px 0;
+  }
+  .big-btn{
+    font-family:'Press Start 2P', monospace;
+    font-size:12px;
+    color:#052e13;
+    background:linear-gradient(160deg, var(--mint), #22c55e);
+    border:none;
+    border-radius:12px;
+    padding:16px 20px;
+    width:100%;
+    box-shadow:0 4px 0 #14532d;
+    margin-top:6px;
+    cursor:pointer;
+  }
+  .big-btn:disabled{ opacity:.4; }
+  .big-btn:active{ box-shadow:0 1px 0 #14532d; transform:translateY(3px); }
+  .hint{
+    font-size:10px;
+    opacity:.6;
+    line-height:1.7;
+    text-align:left;
+    background:rgba(0,0,0,.2);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-top:16px;
+  }
+  .hint b{ color:var(--gold); }
+
+  /* class select */
+  #class-list{
+    display:flex; flex-direction:column; gap:10px;
+    margin:16px 0 6px 0;
+  }
+  .class-card{
+    text-align:left;
+    background:rgba(0,0,0,.22);
+    border:2px solid var(--line);
+    border-radius:12px;
+    padding:12px 14px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    cursor:pointer;
+  }
+  .class-card.selected{
+    border-color:var(--gold);
+    background:rgba(251,191,36,.1);
+  }
+  .class-icon{ font-size:26px; width:34px; text-align:center; flex-shrink:0; }
+  .class-info{ flex:1; }
+  .class-name{ font-size:12px; color:var(--cream); margin-bottom:4px; }
+  .class-desc{ font-size:11px; opacity:.75; line-height:1.5; }
+  .class-stats{ font-size:9.5px; opacity:.6; margin-top:5px; letter-spacing:.5px;}
+
+  /* high scores */
+  #hs-panel{
+    margin-top:18px;
+    text-align:left;
+    background:rgba(0,0,0,.22);
+    border-radius:10px;
+    padding:12px 14px;
+  }
+  #hs-panel .hs-title{
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:1px;
+    margin-bottom:8px;
+  }
+  .hs-row{
+    display:flex; justify-content:space-between;
+    font-size:11.5px;
+    padding:4px 0;
+    border-bottom:1px dashed rgba(255,255,255,.08);
+  }
+  .hs-row:last-child{ border-bottom:none; }
+  .hs-rank{ color:var(--violet); width:20px; flex-shrink:0; }
+  .hs-empty{ font-size:11px; opacity:.55; }
+  #new-hs-badge{
+    display:none;
+    font-size:10px;
+    color:var(--gold);
+    margin-top:6px;
+    letter-spacing:1px;
+  }
+</style>
+</head>
+<body>
+<div id="game-root">
+
+  <div id="hud">
+    <div class="hud-block" style="flex:2;">
+      <div class="hud-label">VITALITY</div>
+      <div class="bar-track"><div id="hp-fill" class="bar-fill"></div></div>
+      <div id="hp-text">100 / 100</div>
+    </div>
+    <div class="hud-block stat-box">
+      <div class="hud-label">TIME</div>
+      <div id="timer-num" class="stat-num pixel">60</div>
+    </div>
+    <div class="hud-block stat-box">
+      <div class="hud-label">SCORE</div>
+      <div id="score-num" class="stat-num pixel">0</div>
+    </div>
+  </div>
+
+  <div id="arena-wrap">
+    <canvas id="arena"></canvas>
+    <div id="stage-banner" class="pixel">
+      STAGE <span id="stage-num">1</span>
+      <div class="sub"><span id="kills-num">0</span>/<span id="kills-total">5</span> DEFEATED</div>
+    </div>
+    <div id="boss-bar-wrap">
+      <div id="boss-name" class="pixel">VALE GUARDIAN</div>
+      <div id="boss-bar-track"><div id="boss-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <div id="controls">
+    <div class="move-pad">
+      <button class="ctrl-btn" id="left-btn">◀</button>
+      <button class="ctrl-btn" id="right-btn">▶</button>
+    </div>
+    <button id="dodge-btn" class="pixel">
+      <span id="dodge-icon">⤴</span>
+      <span>DODGE</span>
+    </button>
+    <button id="attack-btn" class="pixel">
+      <span id="attack-icon">⚔️</span>
+      <span id="attack-label">HIT</span>
+    </button>
+    <button id="elixir-btn" class="pixel">
+      <span>ELIXIR</span>
+      <span id="elixir-count">x∞</span>
+    </button>
+  </div>
+
+</div>
+
+<!-- START / CLASS SELECT SCREEN -->
+<div class="overlay" id="start-overlay">
+  <div class="card">
+    <h1 class="pixel">MANA VALE</h1>
+    <h2 class="pixel" style="color:var(--cream); font-size:11px;">MONSTER HUNT</h2>
+    <p>Clear every monster in each vale before the clock runs out. Every 5th vale hides a boss. Drink Power Elixirs to heal and empower your strikes.</p>
+
+    <div id="class-list"></div>
+
+    <button class="big-btn" id="start-btn">START HUNT</button>
+
+    <div class="hint">
+      <div><b>◀ ▶</b> — move along the vale</div>
+      <div><b>ATTACK</b> — weapon depends on your class</div>
+      <div><b>ELIXIR</b> — heal + temporary power boost (limited use)</div>
+      <div>Game over if Vitality hits 0, or the stage timer runs out first.</div>
+    </div>
+
+    <div id="hs-panel">
+      <div class="hs-title pixel">TOP HUNTERS</div>
+      <div id="hs-list"><div class="hs-empty">No scores yet — be the first!</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE CLEAR -->
+<div class="overlay" id="clear-overlay" style="display:none;">
+  <div class="card">
+    <h1 class="pixel">VALE CLEARED!</h1>
+    <p id="clear-msg">All monsters defeated with time to spare.</p>
+    <div class="score-line pixel" id="clear-score">SCORE 0</div>
+    <button class="big-btn" id="next-btn">NEXT VALE ▶</button>
+  </div>
+</div>
+
+<!-- GAME OVER -->
+<div class="overlay" id="over-overlay" style="display:none;">
+  <div class="card">
+    <h1 class="pixel" style="color:var(--coral);">GAME OVER</h1>
+    <p id="over-reason">Your vitality ran out.</p>
+    <div class="score-line pixel" id="over-score">SCORE 0</div>
+    <div id="new-hs-badge" class="pixel">★ NEW HIGH SCORE ★</div>
+    <div id="hs-panel-over" class="hs-panel-over" style="margin-top:16px; text-align:left; background:rgba(0,0,0,.22); border-radius:10px; padding:12px 14px;">
+      <div class="hs-title pixel" style="font-size:10px; color:var(--gold); letter-spacing:1px; margin-bottom:8px;">TOP HUNTERS</div>
+      <div id="hs-list-over"></div>
+    </div>
+    <button class="big-btn" id="retry-btn" style="margin-top:16px;">HUNT AGAIN</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ================= CLASSES =================
+  const CLASSES = [
+    {
+      id:'warrior', name:'Blade Warrior', icon:'⚔️', mode:'melee', atkLabel:'SLASH',
+      baseDmg:16, range:60, cooldown:0.26, maxHp:130, moveSpeed:130,
+      desc:'Heavy melee striker. Highest vitality, strong hits, short reach.',
+      statLine:'DMG 16 · RANGE SHORT · HP 130'
+    },
+    {
+      id:'archer', name:'Wind Archer', icon:'🏹', mode:'ranged', atkLabel:'SHOOT',
+      baseDmg:11, range:520, cooldown:0.4, maxHp:95, moveSpeed:150, projectileSpeed:560,
+      desc:'Fires arrows from a distance. Lower vitality, long reach, steady damage.',
+      statLine:'DMG 11 · RANGE LONG · HP 95'
+    },
+    {
+      id:'mage', name:'Arcane Mage', icon:'🔮', mode:'aoe', atkLabel:'BURST',
+      baseDmg:9, range:105, cooldown:0.85, maxHp:80, moveSpeed:120,
+      desc:'Arcane bursts hit every monster nearby. Fragile, but devastating in crowds.',
+      statLine:'DMG 9xALL · RANGE MED · HP 80'
+    }
+  ];
+  let selectedClassId = 'warrior';
+  function getClass(){ return CLASSES.find(c=>c.id===selectedClassId); }
+
+  function renderClassList(){
+    const wrap = document.getElementById('class-list');
+    wrap.innerHTML = '';
+    CLASSES.forEach(c=>{
+      const el = document.createElement('div');
+      el.className = 'class-card' + (c.id===selectedClassId ? ' selected' : '');
+      el.innerHTML = `
+        <div class="class-icon">${c.icon}</div>
+        <div class="class-info">
+          <div class="class-name pixel">${c.name}</div>
+          <div class="class-desc">${c.desc}</div>
+          <div class="class-stats">${c.statLine}</div>
+        </div>`;
+      el.addEventListener('click', ()=>{ selectedClassId = c.id; renderClassList(); });
+      wrap.appendChild(el);
+    });
+  }
+
+  // ================= HIGH SCORES (persistent) =================
+  const HS_KEY = 'manaVale_highScores_v1';
+  let highScores = [];
+  let hsMemoryOnly = false;
+
+  function loadHighScores(){
+    try{
+      const raw = localStorage.getItem(HS_KEY);
+      highScores = raw ? JSON.parse(raw) : [];
+    }catch(e){
+      highScores = [];
+      hsMemoryOnly = true; // storage blocked in this environment; scores persist for this session only
+    }
+  }
+  function persistHighScores(){
+    if(hsMemoryOnly) return;
+    try{ localStorage.setItem(HS_KEY, JSON.stringify(highScores)); }
+    catch(e){ hsMemoryOnly = true; }
+  }
+  function submitScore(finalScore, stageReached){
+    const cls = getClass();
+    const wasTop = highScores.length===0 || finalScore > highScores[0].score;
+    highScores.push({score:finalScore, className:cls.name, icon:cls.icon, stage:stageReached, ts:Date.now()});
+    highScores.sort((a,b)=>b.score-a.score);
+    highScores = highScores.slice(0,5);
+    persistHighScores();
+    return wasTop;
+  }
+  function renderHighScores(targetId){
+    const el = document.getElementById(targetId);
+    if(!highScores.length){
+      el.innerHTML = '<div class="hs-empty">No scores yet — be the first!</div>';
+      return;
+    }
+    el.innerHTML = highScores.map((h,i)=>`
+      <div class="hs-row">
+        <span><span class="hs-rank pixel">${i+1}</span>${h.icon} ${h.className} — Vale ${h.stage}</span>
+        <span class="pixel">${h.score}</span>
+      </div>`).join('');
+  }
+
+  // ================= Canvas setup =================
+  const canvas = document.getElementById('arena');
+  const ctx = canvas.getContext('2d');
+  const wrap = document.getElementById('arena-wrap');
+
+  function resizeCanvas(){
+    const rect = wrap.getBoundingClientRect();
+    canvas.width = rect.width * devicePixelRatio;
+    canvas.height = rect.height * devicePixelRatio;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    W = rect.width; H = rect.height;
+    groundY = H * 0.78;
+  }
+  let W=0,H=0,groundY=0;
+  window.addEventListener('resize', resizeCanvas);
+
+  // ================= Audio =================
+  let audioCtx = null;
+  function beep(freq, dur, type, vol){
+    try{
+      if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = type||'square';
+      o.frequency.value = freq;
+      g.gain.value = vol!=null?vol:0.06;
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+      o.stop(audioCtx.currentTime + dur);
+    }catch(e){}
+  }
+  const sfx = {
+    hit: ()=>beep(220,0.08,'square',0.05),
+    shoot: ()=>beep(340,0.06,'triangle',0.04),
+    burst: ()=>beep(280,0.18,'sawtooth',0.05),
+    kill: ()=>beep(440,0.15,'triangle',0.06),
+    hurt: ()=>beep(120,0.18,'sawtooth',0.07),
+    elixir: ()=>beep(660,0.25,'sine',0.06),
+    stageClear: ()=>{beep(523,0.12,'triangle');setTimeout(()=>beep(659,0.12,'triangle'),120);setTimeout(()=>beep(784,0.2,'triangle'),240);},
+    bossRoar: ()=>{beep(90,0.4,'sawtooth',0.09);setTimeout(()=>beep(70,0.5,'sawtooth',0.08),150);},
+    slam: ()=>beep(80,0.3,'square',0.09),
+    gameOver: ()=>{beep(220,0.3,'sawtooth');setTimeout(()=>beep(140,0.4,'sawtooth'),180);}
+  };
+
+  // ================= Stage definitions =================
+  const STAGES = [
+    { name:"Whisper Meadow", killsNeeded:5, timeLimit:45, monsterHp:18, monsterDmg:6, monsterSpeed:38, spawnGap:1400, palette:['#7dd3a0','#4ade80'] },
+    { name:"Thistle Hollow", killsNeeded:7, timeLimit:50, monsterHp:26, monsterDmg:8, monsterSpeed:46, spawnGap:1250, palette:['#f0abfc','#c084fc'] },
+    { name:"Ember Crag",     killsNeeded:8, timeLimit:55, monsterHp:34, monsterDmg:10, monsterSpeed:52, spawnGap:1150, palette:['#fca5a5','#f87171'] },
+    { name:"Frost Hollow",   killsNeeded:9, timeLimit:58, monsterHp:42, monsterDmg:12, monsterSpeed:58, spawnGap:1050, palette:['#93c5fd','#60a5fa'] },
+  ];
+  const BOSS_NAMES = ['Vale Guardian','Ember Warden','Frost Sovereign','Gloom Colossus','Thistle King','Storm Reaver'];
+
+  function stageFor(i){
+    const num = i + 1;
+    if(num % 5 === 0){
+      const tier = Math.floor(num/5) - 1;
+      return {
+        isBoss:true,
+        name: BOSS_NAMES[tier % BOSS_NAMES.length],
+        killsNeeded:1,
+        timeLimit: 75 + tier*8,
+        monsterHp: 240 + tier*160,
+        monsterDmg: 15 + tier*4,
+        monsterSpeed: 40 + tier*3,
+        palette:['#f472b6','#fb7185'],
+      };
+    }
+    const t = STAGES[i % STAGES.length];
+    const cycle = Math.floor(i / STAGES.length);
+    const scale = 1 + cycle*0.35;
+    return {
+      isBoss:false,
+      name: t.name + (cycle>0 ? ` (Tier ${cycle+1})` : ''),
+      killsNeeded: t.killsNeeded + cycle*2,
+      timeLimit: t.timeLimit + cycle*5,
+      monsterHp: Math.round(t.monsterHp*scale),
+      monsterDmg: Math.round(t.monsterDmg*scale),
+      monsterSpeed: Math.round(t.monsterSpeed*(1+cycle*0.1)),
+      spawnGap: Math.max(500, t.spawnGap - cycle*60),
+      palette: t.palette,
+    };
+  }
+
+  // ================= Game state =================
+  let state = 'start'; // start | playing | clear | over
+  let stageIndex = 0;
+  let stage = stageFor(0);
+  let player, monsters, projectiles, aoeBursts;
+  let killCount = 0;
+  let score = 0;
+  let timeLeft = 0;
+  let elixirs = 3;
+  let lastSpawn = 0;
+  let lastTs = 0;
+  let attackCooldown = 0;
+  let screenShake = 0;
+
+  function newPlayer(){
+    const cls = getClass();
+    return {
+      x: 90,
+      hp: cls.maxHp,
+      maxHp: cls.maxHp,
+      baseDmg: cls.baseDmg,
+      buffTimer: 0,
+      facing: 1,
+      hitFlash: 0,
+      attackAnim: 0,
+    };
+  }
+
+  function resetRun(){
+    stageIndex = 0;
+    score = 0;
+    elixirs = 3;
+    player = newPlayer();
+    startStage();
+  }
+
+  function startStage(){
+    stage = stageFor(stageIndex);
+    monsters = [];
+    projectiles = [];
+    aoeBursts = [];
+    killCount = 0;
+    timeLeft = stage.timeLimit;
+    lastSpawn = -9999;
+    player.hp = player.maxHp;
+    updateHUDStatic();
+    document.getElementById('boss-bar-wrap').style.display = stage.isBoss ? 'block' : 'none';
+    document.getElementById('stage-banner').style.display = stage.isBoss ? 'none' : 'block';
+    if(stage.isBoss){
+      document.getElementById('boss-name').textContent = stage.name.toUpperCase();
+      spawnBoss();
+      sfx.bossRoar();
+    }
+  }
+
+  function updateHUDStatic(){
+    document.getElementById('stage-num').textContent = (stageIndex+1);
+    document.getElementById('kills-total').textContent = stage.killsNeeded;
+    document.getElementById('elixir-count').textContent = 'x' + elixirs;
+    document.getElementById('elixir-btn').disabled = elixirs <= 0;
+    const cls = getClass();
+    document.getElementById('attack-icon').textContent = cls.icon;
+    document.getElementById('attack-label').textContent = cls.atkLabel;
+  }
+
+  // ================= Monster / Boss factories =================
+  function spawnMonster(){
+    const hpVar = 0.85 + Math.random()*0.3;
+    const m = {
+      x: W - 30,
+      hp: Math.round(stage.monsterHp * hpVar),
+      maxHp: Math.round(stage.monsterHp * hpVar),
+      dmg: stage.monsterDmg,
+      speed: stage.monsterSpeed * (0.85 + Math.random()*0.3),
+      alive: true,
+      attackCd: 0,
+      hitFlash: 0,
+      bob: Math.random()*Math.PI*2,
+      kind: Math.floor(Math.random()*3),
+      dying: 0,
+      isBoss:false,
+    };
+    monsters.push(m);
+  }
+
+  function spawnBoss(){
+    monsters.push({
+      x: W - 60,
+      hp: stage.monsterHp,
+      maxHp: stage.monsterHp,
+      dmg: stage.monsterDmg,
+      speed: stage.monsterSpeed,
+      alive: true,
+      attackCd: 0,
+      hitFlash: 0,
+      bob: 0,
+      kind: 0,
+      dying: 0,
+      isBoss:true,
+      slamTimer: 4.5,
+      slamWindup: 0,
+      enraged:false,
+    });
+  }
+
+  // ================= Floating text =================
+  function spawnFloatText(x, y, text, color){
+    const el = document.createElement('div');
+    el.className = 'float-text';
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.color = color;
+    el.textContent = text;
+    wrap.appendChild(el);
+    setTimeout(()=>el.remove(), 850);
+  }
+
+  // ================= Input =================
+  let moveDir = 0;
+  const leftBtn = document.getElementById('left-btn');
+  const rightBtn = document.getElementById('right-btn');
+  const attackBtn = document.getElementById('attack-btn');
+  const elixirBtn = document.getElementById('elixir-btn');
+
+  function bindHold(btn, onDown, onUp){
+    btn.addEventListener('touchstart', e=>{e.preventDefault(); onDown();}, {passive:false});
+    btn.addEventListener('touchend', e=>{e.preventDefault(); onUp&&onUp();}, {passive:false});
+    btn.addEventListener('touchcancel', e=>{onUp&&onUp();});
+    btn.addEventListener('mousedown', e=>{e.preventDefault(); onDown();});
+    btn.addEventListener('mouseup', e=>{onUp&&onUp();});
+    btn.addEventListener('mouseleave', e=>{onUp&&onUp();});
+  }
+  bindHold(leftBtn, ()=>moveDir=-1, ()=>{ if(moveDir===-1) moveDir=0; });
+  bindHold(rightBtn, ()=>moveDir=1, ()=>{ if(moveDir===1) moveDir=0; });
+
+  attackBtn.addEventListener('click', doAttack);
+  attackBtn.addEventListener('touchstart', e=>{e.preventDefault(); doAttack();}, {passive:false});
+
+  elixirBtn.addEventListener('click', useElixir);
+  elixirBtn.addEventListener('touchstart', e=>{e.preventDefault(); useElixir();}, {passive:false});
+
+  // ================= Combat =================
+  function applyDamage(m, dmg, srcX){
+    m.hp -= dmg;
+    m.hitFlash = 0.15;
+    const px = (m.x / W) * wrap.clientWidth;
+    spawnFloatText(px, groundY - (m.isBoss?90:60), '-'+dmg, player.buffTimer>0 ? '#4ade80' : '#fbbf24');
+    if(m.hp <= 0 && m.alive){
+      m.alive = false;
+      m.dying = 0.001;
+      killCount++;
+      const bonus = m.isBoss ? 250 : 15;
+      score += bonus;
+      sfx.kill();
+      document.getElementById('kills-num').textContent = killCount;
+      spawnFloatText(px, groundY - (m.isBoss?120:90), '+'+bonus, '#fbbf24');
+      if(killCount >= stage.killsNeeded){
+        triggerStageClear();
+      }
+    }
+  }
+
+  function doAttack(){
+    if(state !== 'playing') return;
+    if(attackCooldown > 0) return;
+    const cls = getClass();
+    attackCooldown = cls.cooldown;
+    player.attackAnim = 0.18;
+
+    if(cls.mode === 'melee'){
+      let target = null, bestDist = 9999;
+      for(const m of monsters){
+        if(!m.alive) continue;
+        const d = Math.abs(m.x - player.x);
+        if(d < cls.range && d < bestDist){ bestDist = d; target = m; }
+      }
+      sfx.hit();
+      if(target){
+        const dmg = Math.round(player.baseDmg * (player.buffTimer>0?1.8:1) * (0.9+Math.random()*0.25));
+        applyDamage(target, dmg);
+      }
+    } else if(cls.mode === 'ranged'){
+      let target = null, bestDist = 9999;
+      for(const m of monsters){
+        if(!m.alive) continue;
+        const d = Math.abs(m.x - player.x);
+        if(d < bestDist){ bestDist = d; target = m; }
+      }
+      const dir = target ? Math.sign(target.x - player.x) || player.facing : player.facing;
+      projectiles.push({ x: player.x, y: -28, dir, speed: cls.projectileSpeed, life:1.6 });
+      sfx.shoot();
+    } else if(cls.mode === 'aoe'){
+      sfx.burst();
+      aoeBursts.push({ x: player.x, radius:0, maxRadius: cls.range, life:0.35 });
+      let hitAny = false;
+      for(const m of monsters){
+        if(!m.alive) continue;
+        const d = Math.abs(m.x - player.x);
+        if(d < cls.range){
+          hitAny = true;
+          const dmg = Math.round(player.baseDmg * (player.buffTimer>0?1.8:1) * (0.9+Math.random()*0.25));
+          applyDamage(m, dmg);
+        }
+      }
+    }
+  }
+
+  function useElixir(){
+    if(state !== 'playing') return;
+    if(elixirs <= 0) return;
+    elixirs--;
+    player.hp = Math.min(player.maxHp, player.hp + 35);
+    player.buffTimer = 6;
+    sfx.elixir();
+    updateHUDStatic();
+    const px = (player.x / W) * wrap.clientWidth;
+    spawnFloatText(px, groundY - 70, '+35 HP', '#4ade80');
+  }
+
+  // ================= Stage transitions =================
+  function triggerStageClear(){
+    state = 'clear';
+    sfx.stageClear();
+    const timeBonus = Math.round(timeLeft * 4);
+    score += timeBonus;
+    document.getElementById('clear-msg').textContent =
+      stage.isBoss ? `${stage.name} has fallen! Time bonus: +${timeBonus}` : `${stage.name} cleared! Time bonus: +${timeBonus}`;
+    document.getElementById('clear-score').textContent = 'SCORE ' + score;
+    document.getElementById('clear-overlay').style.display = 'flex';
+  }
+
+  document.getElementById('next-btn').addEventListener('click', ()=>{
+    document.getElementById('clear-overlay').style.display = 'none';
+    stageIndex++;
+    startStage();
+    state = 'playing';
+  });
+
+  function triggerGameOver(reason){
+    state = 'over';
+    sfx.gameOver();
+    document.getElementById('over-reason').textContent = reason;
+    document.getElementById('over-score').textContent = 'SCORE ' + score;
+    const wasTop = submitScore(score, stageIndex+1);
+    document.getElementById('new-hs-badge').style.display = wasTop ? 'block' : 'none';
+    renderHighScores('hs-list-over');
+    document.getElementById('over-overlay').style.display = 'flex';
+  }
+
+  document.getElementById('retry-btn').addEventListener('click', ()=>{
+    document.getElementById('over-overlay').style.display = 'none';
+    document.getElementById('start-overlay').style.display = 'flex';
+    renderHighScores('hs-list');
+  });
+
+  document.getElementById('start-btn').addEventListener('click', ()=>{
+    document.getElementById('start-overlay').style.display = 'none';
+    resetRun();
+    state = 'playing';
+    if(!audioCtx){ try{ audioCtx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+  });
+
+  // ================= Drawing helpers =================
+  function drawGround(){
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, groundY);
+    ctx.lineTo(W, groundY);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,0.05)';
+    for(let i=0;i<18;i++){
+      const gx = (i*57 + (Date.now()*0.01))%W;
+      const gy = groundY + 14 + (i%3)*10;
+      ctx.beginPath();
+      ctx.arc(gx, gy, 1.5, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function drawPlayer(){
+    const x = player.x;
+    const y = groundY;
+    const buffed = player.buffTimer > 0;
+    const cls = getClass();
+    const bodyColor = buffed ? '#4ade80' : '#8b6cf0';
+    const flash = player.hitFlash > 0;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(player.facing, 1);
+
+    ctx.fillStyle = 'rgba(0,0,0,0.35)';
+    ctx.beginPath();
+    ctx.ellipse(0, 4, 20, 6, 0, 0, Math.PI*2);
+    ctx.fill();
+
+    const bob = Math.sin(Date.now()/180) * 2;
+    const attackLean = player.attackAnim > 0 ? 8 : 0;
+
+    if(buffed){
+      ctx.fillStyle = 'rgba(74,222,128,0.25)';
+      ctx.beginPath();
+      ctx.arc(0, -34+bob, 30, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    ctx.fillStyle = flash ? '#ffffff' : bodyColor;
+    ctx.beginPath();
+    ctx.moveTo(-14, 0+bob);
+    ctx.quadraticCurveTo(-16,-30+bob,0,-32+bob);
+    ctx.quadraticCurveTo(16,-30+bob,14,0+bob);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = flash ? '#ffffff' : '#f3ecdd';
+    ctx.beginPath();
+    ctx.arc(0, -42+bob, 11, 0, Math.PI*2);
+    ctx.fill();
+
+    ctx.fillStyle = '#241a42';
+    ctx.beginPath();
+    ctx.arc(4, -43+bob, 1.6, 0, Math.PI*2);
+    ctx.fill();
+
+    // weapon
+    ctx.strokeStyle = flash ? '#ffffff' : '#fbbf24';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    if(cls.mode === 'melee'){
+      ctx.beginPath();
+      ctx.moveTo(10, -20+bob);
+      ctx.lineTo(24+attackLean, -26+bob - (player.attackAnim>0?10:0));
+      ctx.stroke();
+    } else if(cls.mode === 'ranged'){
+      ctx.beginPath();
+      ctx.arc(14, -22+bob, 10, -0.9, 0.9);
+      ctx.stroke();
+    } else if(cls.mode === 'aoe'){
+      ctx.beginPath();
+      ctx.moveTo(10, -18+bob);
+      ctx.lineTo(22, -34+bob - (player.attackAnim>0?6:0));
+      ctx.stroke();
+      ctx.fillStyle = flash ? '#ffffff' : '#c4b5fd';
+      ctx.beginPath();
+      ctx.arc(22, -36+bob - (player.attackAnim>0?6:0), 3.5, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+
+  function drawMonster(m){
+    const x = m.x;
+    const y = groundY;
+    if(m.isBoss){ drawBoss(m); return; }
+    const kindColors = [stage.palette[0], stage.palette[1], '#fca5a5'];
+    let col = kindColors[m.kind % kindColors.length];
+    if(m.hitFlash > 0) col = '#ffffff';
+    const bob = Math.sin(Date.now()/220 + m.bob) * 3;
+    const scale = m.dying > 0 ? Math.max(0, 1 - m.dying*4) : 1;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scale, scale);
+
+    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.beginPath();
+    ctx.ellipse(0, 4, 16, 5, 0, 0, Math.PI*2);
+    ctx.fill();
+
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    ctx.ellipse(0, -16+bob, 16, 15, 0, 0, Math.PI*2);
+    ctx.fill();
+
+    ctx.fillStyle = '#1c1338';
+    ctx.beginPath();
+    ctx.arc(-5, -18+bob, 2.4, 0, Math.PI*2);
+    ctx.arc(5, -18+bob, 2.4, 0, Math.PI*2);
+    ctx.fill();
+
+    if(m.kind === 1){
+      ctx.fillStyle = col;
+      ctx.beginPath();
+      ctx.moveTo(-8,-28+bob); ctx.lineTo(-4,-36+bob); ctx.lineTo(-1,-28+bob);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(8,-28+bob); ctx.lineTo(4,-36+bob); ctx.lineTo(1,-28+bob);
+      ctx.fill();
+    }
+    if(m.kind === 2){
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath();
+      ctx.ellipse(-5,-22+bob,3,2,0,0,Math.PI*2);
+      ctx.fill();
+    }
+    ctx.restore();
+
+    if(m.hp < m.maxHp && scale > 0.1){
+      const bw = 30;
+      ctx.save();
+      ctx.translate(x - bw/2, y - 44);
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(0,0,bw,4);
+      ctx.fillStyle = '#f87171';
+      ctx.fillRect(0,0, bw * Math.max(0,m.hp/m.maxHp), 4);
+      ctx.restore();
+    }
+  }
+
+  function drawBoss(m){
+    const x = m.x, y = groundY;
+    const bob = Math.sin(Date.now()/260) * 4;
+    const scale = (m.dying > 0 ? Math.max(0, 1 - m.dying*3) : 1) * 1.9;
+    let col = m.enraged ? '#ef4444' : (stage.palette[0] || '#f472b6');
+    if(m.hitFlash > 0) col = '#ffffff';
+    const windupPulse = m.slamWindup > 0 ? (1 + Math.sin(Date.now()/40)*0.06) : 1;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scale*windupPulse, scale*windupPulse);
+
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.beginPath();
+    ctx.ellipse(0, 5, 20, 6, 0, 0, Math.PI*2);
+    ctx.fill();
+
+    if(m.slamWindup > 0){
+      ctx.fillStyle = 'rgba(244,63,94,0.35)';
+      ctx.beginPath();
+      ctx.arc(0, -14+bob, 26, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    ctx.ellipse(0, -16+bob, 17, 16, 0, 0, Math.PI*2);
+    ctx.fill();
+
+    ctx.fillStyle = '#1c1338';
+    ctx.beginPath();
+    ctx.arc(-6, -18+bob, 2.8, 0, Math.PI*2);
+    ctx.arc(6, -18+bob, 2.8, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle = m.enraged ? '#fecaca' : '#ffffff';
+    ctx.beginPath();
+    ctx.arc(-6, -18+bob, 1, 0, Math.PI*2);
+    ctx.arc(6, -18+bob, 1, 0, Math.PI*2);
+    ctx.fill();
+
+    // crown spikes
+    ctx.fillStyle = col;
+    for(let i=-2;i<=2;i++){
+      ctx.beginPath();
+      ctx.moveTo(i*7-3, -30+bob);
+      ctx.lineTo(i*7, -30 - 8 - Math.abs(i)*1.5 + bob);
+      ctx.lineTo(i*7+3, -30+bob);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function drawProjectiles(){
+    for(const p of projectiles){
+      ctx.save();
+      ctx.translate(p.x, groundY - 26);
+      ctx.rotate(p.dir > 0 ? 0 : Math.PI);
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(-10,0);
+      ctx.lineTo(10,0);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(10,0); ctx.lineTo(5,-4); ctx.moveTo(10,0); ctx.lineTo(5,4);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  function drawAoeBursts(){
+    for(const b of aoeBursts){
+      const alpha = Math.max(0, b.life / 0.35) * 0.5;
+      ctx.save();
+      ctx.translate(b.x, groundY - 20);
+      ctx.strokeStyle = `rgba(196,181,253,${alpha})`;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(0, 0, b.radius, 0, Math.PI*2);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  // ================= Update =================
+  function update(dt){
+    if(state !== 'playing') return;
+
+    timeLeft -= dt;
+    if(timeLeft <= 0){
+      timeLeft = 0;
+      triggerGameOver(`Time's up! You defeated ${killCount}/${stage.killsNeeded} monsters.`);
+      return;
+    }
+
+    if(player.buffTimer > 0) player.buffTimer = Math.max(0, player.buffTimer - dt);
+    if(player.hitFlash > 0) player.hitFlash -= dt;
+    if(player.attackAnim > 0) player.attackAnim -= dt;
+    if(attackCooldown > 0) attackCooldown -= dt;
+
+    const cls = getClass();
+    player.x += moveDir * cls.moveSpeed * dt;
+    player.x = Math.max(30, Math.min(W-30, player.x));
+    if(moveDir !== 0) player.facing = moveDir;
+
+    // spawn regular monsters (non-boss stages)
+    if(!stage.isBoss){
+      lastSpawn += dt*1000;
+      const aliveCount = monsters.filter(m=>m.alive).length;
+      const stillNeeded = stage.killsNeeded - killCount;
+      if(lastSpawn > stage.spawnGap && aliveCount < Math.min(4, stillNeeded)){
+        spawnMonster();
+        lastSpawn = 0;
+      }
+    }
+
+    // projectiles
+    for(const p of projectiles){
+      p.x += p.dir * p.speed * dt;
+      p.life -= dt;
+    }
+    for(const p of projectiles){
+      if(p.hit) continue;
+      for(const m of monsters){
+        if(!m.alive) continue;
+        if(Math.abs(m.x - p.x) < (m.isBoss?30:18)){
+          const dmg = Math.round(player.baseDmg * (player.buffTimer>0?1.8:1) * (0.9+Math.random()*0.25));
+          applyDamage(m, dmg);
+          p.hit = true;
+          break;
+        }
+      }
+    }
+    projectiles = projectiles.filter(p => !p.hit && p.life > 0 && p.x > -20 && p.x < W+20);
+
+    // aoe visuals
+    for(const b of aoeBursts){
+      b.life -= dt;
+      b.radius = b.maxRadius * (1 - Math.max(0,b.life)/0.35);
+    }
+    aoeBursts = aoeBursts.filter(b => b.life > 0);
+
+    // monsters
+    for(const m of monsters){
+      if(!m.alive){
+        if(m.dying < 0.3) m.dying += dt;
+        continue;
+      }
+      if(m.hitFlash > 0) m.hitFlash -= dt;
+
+      if(m.isBoss){
+        updateBoss(m, dt);
+        continue;
+      }
+
+      const d = m.x - player.x;
+      const dist = Math.abs(d);
+      if(dist > 40){
+        m.x -= Math.sign(d) * m.speed * dt;
+      } else {
+        m.attackCd -= dt;
+        if(m.attackCd <= 0){
+          m.attackCd = 1.0;
+          dealDamageToPlayer(m.dmg);
+        }
+      }
+    }
+    monsters = monsters.filter(m => m.alive || m.dying < 0.3);
+
+    score += Math.round(dt * 4);
+    if(screenShake > 0) screenShake = Math.max(0, screenShake - dt*30);
+  }
+
+  function updateBoss(m, dt){
+    m.enraged = m.hp < m.maxHp * 0.3;
+    const speedMult = m.enraged ? 1.5 : 1;
+    const dmgMult = m.enraged ? 1.3 : 1;
+
+    const d = m.x - player.x;
+    const dist = Math.abs(d);
+    if(dist > 50){
+      m.x -= Math.sign(d) * m.speed * speedMult * dt;
+    } else {
+      m.attackCd -= dt;
+      if(m.attackCd <= 0){
+        m.attackCd = 1.1;
+        dealDamageToPlayer(Math.round(m.dmg * dmgMult));
+      }
+    }
+
+    // slam pattern: periodic shockwave, telegraphed
+    if(m.slamWindup > 0){
+      m.slamWindup -= dt;
+      if(m.slamWindup <= 0){
+        const slamDist = Math.abs(m.x - player.x);
+        if(slamDist < 170){
+          sfx.slam();
+          screenShake = 14;
+          dealDamageToPlayer(Math.round(m.dmg * 1.6));
+        }
+      }
+    } else {
+      m.slamTimer -= dt;
+      if(m.slamTimer <= 0){
+        m.slamTimer = m.enraged ? 3 : 4.5;
+        m.slamWindup = 0.5;
+      }
+    }
+
+    // sync boss bar
+    const pct = Math.max(0, m.hp / m.maxHp) * 100;
+    document.getElementById('boss-bar-fill').style.width = pct + '%';
+  }
+
+  function dealDamageToPlayer(dmg){
+    player.hp -= dmg;
+    player.hitFlash = 0.2;
+    sfx.hurt();
+    screenShake = Math.max(screenShake, 6);
+    const px = player.x;
+    spawnFloatText(px, groundY - 60, '-'+dmg, '#f87171');
+    if(player.hp <= 0){
+      player.hp = 0;
+      triggerGameOver(stage.isBoss ? `${stage.name} overwhelmed you.` : 'Your vitality gave out.');
+    }
+  }
+
+  // ================= HUD sync =================
+  function syncHUD(){
+    const hpPct = Math.max(0, player.hp / player.maxHp) * 100;
+    const fill = document.getElementById('hp-fill');
+    fill.style.width = hpPct + '%';
+    fill.classList.toggle('hp-buffed', player.buffTimer > 0);
+    document.getElementById('hp-text').textContent = Math.max(0,Math.round(player.hp)) + ' / ' + player.maxHp;
+    document.getElementById('timer-num').textContent = Math.ceil(timeLeft);
+    document.getElementById('score-num').textContent = score;
+    document.getElementById('elixir-count').textContent = 'x' + elixirs;
+    document.getElementById('elixir-btn').disabled = elixirs <= 0;
+    document.getElementById('kills-num').textContent = killCount;
+  }
+
+  // ================= Render =================
+  function render(){
+    ctx.clearRect(0,0,W,H);
+    ctx.save();
+    if(screenShake > 0){
+      ctx.translate((Math.random()-0.5)*screenShake, (Math.random()-0.5)*screenShake);
+    }
+    drawGround();
+    drawAoeBursts();
+    for(const m of monsters) drawMonster(m);
+    drawProjectiles();
+    if(player) drawPlayer();
+    ctx.restore();
+  }
+
+  // ================= Main loop =================
+  function loop(ts){
+    if(!lastTs) lastTs = ts;
+    const dt = Math.min(0.05, (ts - lastTs)/1000);
+    lastTs = ts;
+    update(dt);
+    if(player) syncHUD();
+    render();
+    requestAnimationFrame(loop);
+  }
+
+  // ================= Init =================
+  resizeCanvas();
+  loadHighScores();
+  renderClassList();
+  renderHighScores('hs-list');
+  player = newPlayer();
+  monsters = [];
+  projectiles = [];
+  aoeBursts = [];
+  requestAnimationFrame(loop);
+
+})();
+</script>
+</body>
+</html>
