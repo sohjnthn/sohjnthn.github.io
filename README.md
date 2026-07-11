@@ -28,10 +28,12 @@ https://ais-dev-rfkgzszdffpwhuxay3kjt4-270049344261.asia-southeast1.run.app/
 Google AI Studio - Android smartphone application (created purely with text prompts; and file uploads):
 https://drive.google.com/file/d/1r3TGjv92U6FTl7J4MSJAywpweWzjMd6y/view?usp=drive_link
 
+Related Google AI Studio weblink:
+https://aistudio.google.com/apps/7079d3b3-a1c6-4a40-ba78-b948a6ebab22
+
 =
 
 The third learning course mentioned that Claude can help to create a desktop web browser game, so requested to create a game which is similar to MapleStorySEA, the result is the following:
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/mana_vale.html
 
-Related Google AI Studio weblink:
-https://aistudio.google.com/apps/7079d3b3-a1c6-4a40-ba78-b948a6ebab22
+
