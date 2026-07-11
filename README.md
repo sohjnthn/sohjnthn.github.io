@@ -33,7 +33,7 @@ https://aistudio.google.com/apps/7079d3b3-a1c6-4a40-ba78-b948a6ebab22
 
 =
 
-The third learning course mentioned that Claude can help to create a desktop web browser game, so requested to create a game which is similar to MapleStorySEA, the result is the following:
+The third learning course mentioned that Claude can help to create a desktop web browser game via chat prompts (there is a daily limit of allowed chat prompts to use), so requested to create a game which is similar to MapleStorySEA with one day of free chat prompts, the result is the following (download the file, and ensure that it is a .html file):
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/mana_vale.html
 
 
