@@ -36,4 +36,16 @@ https://aistudio.google.com/apps/7079d3b3-a1c6-4a40-ba78-b948a6ebab22
 The third learning course mentioned that Claude can help to create a desktop web browser game via chat prompts (there is a daily limit of allowed chat prompts to use), so requested to create a game which is similar to MapleStorySEA with one day of free chat prompts, the result is the following (download the file, ensure that it is a .html file, ad run the file via a desktop web browser):
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/mana_vale.html
 
+The first prompt which was used:
+"How to create a game by using Claude for free"
+
+The example prompt which Claude provided:
+"Build me a browser-based Flappy Bird-style game with HTML/JS. Player is a rocket dodging asteroids, score increases over time, game over on collision, restart button."
+
+The second prompt which was used:
+"Build me an Android mobile application-based MapleStorySEA-style game with HTML/JS. Player is defeating monsters, is allowed to use Power Elixirs, score increases over time, game over is for the player character losing all buffed HP, or for the time limit being used up for each stage for defeating all of the monsters."
+
+The reply prompt by Claude:
+"Architected original fantasy monster-hunting game with responsive mobile design and game state management.. This will be an original monster-hunting game in the same genre spirit (side-view, stage-based monster battling, elixir buffs) — I'll build it with its own art style and name rather than reusing MapleStory's copyrighted characters, art, or branding, since I can't reproduce another company's IP. It'll run as a mobile-friendly web app in the browser (touch controls, full-screen layout) — I can't compile it into a native Android APK from here, but you could later wrap this HTML in something like Capacitor/Cordova if you want an installable app.
+Let me build it."
 
