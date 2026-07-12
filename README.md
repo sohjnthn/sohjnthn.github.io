@@ -5,7 +5,7 @@ Practice based on two on-site AI Tools learning courses -
 
 2. Second learning course (Skills Development Academy - Advanced Prompting Strategies) for using the message chunking (chunk-process-return) text prompt method, so that there would be no need to actually type out the full filename(s) to be uploaded, for the requested assistance for editing the code.
 
-3. Third learning course (OOM Institute - WSQ Prompt Enginering Essentials - Building Effective AI Prompts)
+3. Third learning course (OOm Institute - WSQ Prompt Enginering Essentials - Building Effective AI Prompts)
 
 =
 
@@ -47,5 +47,7 @@ The second prompt which was used:
 
 The reply prompt by Claude:
 "Architected original fantasy monster-hunting game with responsive mobile design and game state management.. This will be an original monster-hunting game in the same genre spirit (side-view, stage-based monster battling, elixir buffs) — I'll build it with its own art style and name rather than reusing MapleStory's copyrighted characters, art, or branding, since I can't reproduce another company's IP. It'll run as a mobile-friendly web app in the browser (touch controls, full-screen layout) — I can't compile it into a native Android APK from here, but you could later wrap this HTML in something like Capacitor/Cordova if you want an installable app.
+
+Also for the third learning course, learnt that Claude is able to create websites (referring to the index.html code which needs to be provided to GitHub Pages), so directly requested for Claude to create a website with reference to https://sohjnthn.github.io 's Tips tab webpage (avoid the Home and About tabs webpages):
 Let me build it."
 
