@@ -1,7 +1,7 @@
 Practice for AI Tools
 Practice based on two on-site AI Tools learning courses -
 
-1. First learning course (Bells Institute of Higher Learnning - Supercharge your work with GenAI) for creating index.html for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application
+1. First learning course (Bells Institute of Higher Learning - Supercharge your work with GenAI) for creating index.html for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application
 
 2. Second learning course (Skills Development Academy - Advanced Prompting Strategies) for using the message chunking (chunk-process-return) text prompt method, so that there would be no need to actually type out the full filename(s) to be uploaded, for the requested assistance for editing the code.
 
