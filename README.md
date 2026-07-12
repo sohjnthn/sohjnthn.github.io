@@ -5,7 +5,7 @@ Practice based on two on-site AI Tools learning courses -
 
 2. Second learning course (Skills Development Academy - Advanced Prompting Strategies) for using the message chunking (chunk-process-return) text prompt method, so that there would be no need to actually type out the full filename(s) to be uploaded, for the requested assistance for editing the code.
 
-3. Third learning course (OOm Institute - WSQ Prompt Enginering Essentials - Building Effective AI Prompts)
+3. Third learning course (OOm Digital, Tech & AI Institute - WSQ Prompt Enginering Essentials - Building Effective AI Prompts)
 
 =
 
