@@ -54,3 +54,6 @@ This issue has been resolved by creating a new GitHub Pages repository, with tip
 (but since hotlinking is being frowed upon, would remove the "https://sohjnthn.github.io/" part, and try to restore as many images to be uploaded to the new repository as much as possible):
 
 https://sohjnthn.github.io/sohjnthnclaude.github.io/
+
+LinkedIn post weblink for the third learning course:
+https://www.linkedin.com/posts/soh-jiong-hao-69aa38186_based-on-the-third-learning-course-able-ugcPost-7484256901090734080-y5zE/?utm_source=share&utm_medium=member_android&rcm=ACoAACvvhNYBMb6mucouV3AWe-2sRMS_LwxCRRA
