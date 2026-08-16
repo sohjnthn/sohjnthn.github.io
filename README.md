@@ -120,3 +120,5 @@ https://cmsvsh2rq003og4twuwzsumz3.zapier.app/
 n8n .json file, for the email workflow equivalent, by the Google Large Language Model (seems that this cannot be shared via an n8n weblink): 
 
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/n8n-email-workflow.json
+
+Similarly, the person using the file needs to have the corresponding own n8n free account, to create a workflow, and to import the file, but there is an error, so the web browser tab needs to be in incognito mode, so that signing in to Google would not be blocked by the error messages which appear in the non-incognito mode web browser tab.
