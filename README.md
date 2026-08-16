@@ -77,6 +77,7 @@ Before the fifth learning course started, tried out the free Zapier account emai
 [1]
 
 Non-editable Zapier workflow:
+
 https://zapier.com/templates/details/for-job-finding-purposes-9671c5
 
 Related files:
@@ -90,6 +91,7 @@ https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Manually%20triggered%20
 [2]
 
 Editable Zapier workflow:
+
 https://zapier.com/templates/details/for-job-finding-purposes-a922c0
 
 Related file:
