@@ -1,0 +1,60 @@
+{
+  "name": "Weekly Assets Backup Email",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtHour": 4,
+              "value": 1,
+              "daysOfWeek": [
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger-node",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "sohjnthn@gmail.com",
+        "subject": "Weekly Scheduled Assets Backup",
+        "emailType": "html",
+        "message": "Hello,<br><br>\n\nHere are your requested weekly reference web links:<br><br>\n\n1. Google Drive Image: <a href=\"https://drive.google.com/file/d/15uzszJ8ZQwGjlxcx76QjinT1lcHB91JG/view?usp=drive_link\">https://drive.google.com/file/d/15uzszJ8ZQwGjlxcx76QjinT1lcHB91JG/view?usp=drive_link</a><br><br>\n\n2. YouTube Video:<br>\n<a href=\"https://youtu.be/2vl-uhVJIZ4?si=5k2ENqW80tWp1kVw\">https://youtu.be/2vl-uhVJIZ4?si=5k2ENqW80tWp1kVw</a><br><br>\n\n3. Google Drive Android .apk:<br>\n<a href=\"https://drive.google.com/file/d/1-IZIKzmi3-IGesBbj5r2Zk_QBpvH7IPe/view?usp=drive_link\">https://drive.google.com/file/d/1-IZIKzmi3-IGesBbj5r2Zk_QBpvH7IPe/view?usp=drive_link</a><br><br>\n\nThis is an automated sync sent every Sunday at 12:00 PM SGT."
+      },
+      "id": "gmail-node",
+      "name": "Send a message",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {}
+}
