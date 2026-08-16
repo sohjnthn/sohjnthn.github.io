@@ -122,3 +122,9 @@ n8n .json file, for the email workflow equivalent, by the Google Large Language 
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/n8n-email-workflow.json
 
 Similarly, the person using the file needs to have the corresponding own n8n free account, to create a workflow, and to import the file, but there is an error, so the web browser tab needs to be in incognito mode, so that signing in to Google would not be blocked by the error messages which appear in the non-incognito mode web browser tab.
+
+=
+
+n8n .json file, for the survey/feedback workflow equivalent:
+
+https://github.com/sohjnthn/sohjnthn.github.io/blob/main/My%20workflow%202.json
