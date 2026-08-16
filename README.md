@@ -90,6 +90,23 @@ https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Manually%20triggered%20
 
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Editable%20Zapier%20workflow%20version%20-%20Able%20to%20edit%20original%20email%20address%20to%20another%20one%2C%20for%20testing%20purposes.png
 
+The message's HTML text to enter is as follows:
+
+<p>Here's your weekly Sunday update:</p>
+
+<h3>📸 Image:</h3>
+<p><a href="https://drive.google.com/file/d/15uzszJ8ZQwGjlxcx76QjinT1lcHB91JG/view?usp=drive_link">View Image</a></p>
+
+<hr />
+
+<h3>🎥 YouTube Video:</h3>
+<p><a href="https://youtu.be/2vl-uhVJIZ4?si=syhPdoxsSrHu_VcS">Watch YouTube Video</a></p>
+
+<hr />
+
+<h3>📥 Download:</h3>
+<p><a href="https://drive.google.com/file/d/1C9x_9srtvq6E0aaiQKoyfemOtTWwMzJe/view?usp=sharing">Download .apk File</a></p>
+
 =
 
 The Zapier Survey/Feedback form took very long to resolve for three questions and their selectable options.
