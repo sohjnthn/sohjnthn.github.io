@@ -74,11 +74,9 @@ https://www.linkedin.com/posts/soh-jiong-hao-69aa38186_based-on-the-third-learni
 
 Before the fifth learning course started, tried out the free Zapier account email workflow:
 
-[1]
+"Edited the weblink, and have tested with another personal email address, Zapier would require an email verification first before allowing the non-creator user to use the edited weblink. Before publishing, the non-creator user needs to ensure that the To email address field value is edited to the same email address for registering for the non-creator user's Zapier account, to prevent the email from being sent to the creator Zapier user's email address.
 
-Non-editable Zapier workflow:
-
-https://zapier.com/templates/details/for-job-finding-purposes-9671c5
+https://zapier.com/templates/details/for-job-finding-purposes-1dbcdc?secret=MTp0ZW1wbGF0ZTpRbVB2Z09fMTU5TVB4ajlWMnExdG9pZXk3NkxmODNwcnctcEE4d1RyQzhjOmQ3aHgxMQ "
 
 Related files:
 
@@ -88,12 +86,5 @@ https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Send%20daily%20test%20i
 
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Manually%20triggered%20test%20for%20Zapier%20workflow%20-%20Email%20screenshot%20image.png
 
-[2]
-
-Editable Zapier workflow:
-
-https://zapier.com/templates/details/for-job-finding-purposes-a922c0
-
-Related file:
 
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Editable%20Zapier%20workflow%20version%20-%20Able%20to%20edit%20original%20email%20address%20to%20another%20one%2C%20for%20testing%20purposes.png
