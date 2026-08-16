@@ -78,7 +78,7 @@ Before the fifth learning course started, tried out the free Zapier account emai
 
 https://zapier.com/templates/details/for-job-finding-purposes-1dbcdc?secret=MTp0ZW1wbGF0ZTpRbVB2Z09fMTU5TVB4ajlWMnExdG9pZXk3NkxmODNwcnctcEE4d1RyQzhjOmQ3aHgxMQ 
 
-Press the second step of the Zapier workflow, ensure that the receiving email address is the non-creator user's email address, then click on Publish. Thank you."
+Press the second step of the Zapier workflow, ensure that the receiving email address is the non-creator user's email address, then click on Test Run. Thank you."
 
 Related files:
 
