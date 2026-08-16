@@ -89,3 +89,11 @@ https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Send%20daily%20test%20i
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Manually%20triggered%20test%20for%20Zapier%20workflow%20-%20Email%20screenshot%20image.png
 
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Editable%20Zapier%20workflow%20version%20-%20Able%20to%20edit%20original%20email%20address%20to%20another%20one%2C%20for%20testing%20purposes.png
+
+=
+
+The Zapier Survey/Feedback form took very long to resolve for three questions and their selectable options.
+
+https://zapier.com/templates/details/test-zapier-survey-form-d627c0?secret=MTp0ZW1wbGF0ZTpib3ByVjVnRF9LVmlGX3hhYkIxSHBwNGRPaHdEb1kxYW5CazQ1dWFXX2xjOmlzbXdndw
+
+https://cmsvsh2rq003og4twuwzsumz3.zapier.app/
