@@ -74,8 +74,10 @@ https://www.linkedin.com/posts/soh-jiong-hao-69aa38186_based-on-the-third-learni
 
 Before the fifth learning course started, tried out the free Zapier account email workflow:
 
-1) Non-editable Zapier workflow:
-   https://zapier.com/templates/details/for-job-finding-purposes-9671c5
+[1]
+
+Non-editable Zapier workflow:
+https://zapier.com/templates/details/for-job-finding-purposes-9671c5
 
 Related files:
 
@@ -85,8 +87,10 @@ https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Send%20daily%20test%20i
 
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Manually%20triggered%20test%20for%20Zapier%20workflow%20-%20Email%20screenshot%20image.png
 
-2) Editable Zapier workflow:
-   https://zapier.com/templates/details/for-job-finding-purposes-a922c0
+[2]
+
+Editable Zapier workflow:
+https://zapier.com/templates/details/for-job-finding-purposes-a922c0
 
 Related file:
 
