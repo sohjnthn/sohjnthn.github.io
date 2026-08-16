@@ -1,0 +1,131 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Notification Routing Dispatcher",
+        "formDescription": "Notification Routing Dispatcher",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Email address",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "Name"
+            },
+            {
+              "fieldLabel": "How should a main character purchase equipment for the main character from the Maple Auction?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Check for the cheapest, clean (non-Spell Trace/Star Force/Normal Potential/Additional Potential enhanced, but can have Additional Stats in blue text), then slowly enhance them with event and Daily Gift items."
+                  },
+                  {
+                    "option": "Check for the most expensive equipment as they boost the clean damage range for the main character the most."
+                  },
+                  {
+                    "option": "Check for equipment without following a guideline."
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "How do you defeat each of Normal Akechi Mitsuhide's three parts?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Use the Ascent skill once."
+                  },
+                  {
+                    "option": "Use any other attack skill which causes less total % skill damage for all hits for the initial attack."
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "If your Magic damage type Maple Union configuration has too many Magician characters who are at least lv250, such that you need to the Maple Union pieces are starting to overlap with each other, what would you carry out?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Keep the overlapping as it is."
+                  },
+                  {
+                    "option": "Re-create the Magic damage type Maple Union configuration, starting with the at least lv200 Warrior Maple Union pieces, to eventually resolve the overlapping."
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "Comments"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        0
+      ],
+      "id": "912fa041-6576-489a-8767-f88d28a3327b",
+      "name": "On form submission",
+      "webhookId": "68045f62-cc66-46db-b71f-961cbd47bb3c"
+    },
+    {
+      "parameters": {
+        "sendTo": "sohjnthn@gmail.com",
+        "subject": "Test n8n survey email",
+        "emailType": "text",
+        "message": "=Hello,\n\nA new automated routing form has been submitted. Here are the selected survey responses:\n\nSurvey Results:\n\n• How should a main character purchase equipment: {{ $('On form submission').item.json['How should a main character purchase equipment for the main character from the Maple Auction?'] }}\n\n• How do you defeat each of Normal Akechi Mitsuhide's three parts? {{ $('On form submission').item.json[\"How do you defeat each of Normal Akechi Mitsuhide's three parts?\"] }}\n\n• If your Magic damage type Maple Union configuration has too many Magician characters who are at least lv250, such that you need to the Maple Union pieces are starting to overlap with each other, what would you carry out?: {{ $('On form submission').item.json['If your Magic damage type Maple Union configuration has too many Magician characters who are at least lv250, such that you need to the Maple Union pieces are starting to overlap with each other, what would you carry out?'] }}\n\nThis email was securely dispatched via your local n8n engine.\n\n---\nThis email was sent automatically with n8n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "942ae61a-2713-40bd-81e9-51856ff7cf23",
+      "name": "Send a message",
+      "webhookId": "8206e35f-9547-4666-85e2-90c16e27ec4b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WhMfp864Bx9iKgir",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "46b5a810-cfdc-4935-9da9-08cdc2f9d27d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e0574a3cef859c56f5b295bfad767dd10b003bf1771ee94905361cf2096a2399"
+  },
+  "nodeGroups": [],
+  "id": "Rj34Ao180Ma9VEgE",
+  "tags": []
+}
