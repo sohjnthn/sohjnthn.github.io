@@ -114,3 +114,9 @@ The Zapier Survey/Feedback form took very long to resolve for three questions an
 https://zapier.com/templates/details/test-zapier-survey-form-d627c0?secret=MTp0ZW1wbGF0ZTpib3ByVjVnRF9LVmlGX3hhYkIxSHBwNGRPaHdEb1kxYW5CazQ1dWFXX2xjOmlzbXdndw
 
 https://cmsvsh2rq003og4twuwzsumz3.zapier.app/
+
+=
+
+n8n .json file, for the email workflow equivalent, by the Google Large Language Model (seems that this cannot be shared via an n8n weblink): 
+
+https://github.com/sohjnthn/sohjnthn.github.io/blob/main/n8n-email-workflow.json
