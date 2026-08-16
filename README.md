@@ -1,11 +1,25 @@
 Practice for AI Tools
 Practice based on two on-site AI Tools learning courses -
 
-1. First learning course (Bells Institute of Higher Learning - Supercharge your work with GenAI) for creating index.html for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application
+1. 18 April, 25 April, and 2 May 2026 -
+   First learning course (Bells Institute of Higher Learning - Supercharge your work with GenAI) for creating index.html
+   for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application
 
-2. Second learning course (Skills Development Academy - Advanced Prompting Strategies) for using the message chunking (chunk-process-return) text prompt method, so that there would be no need to actually type out the full filename(s) to be uploaded, for the requested assistance for editing the code.
+2. 6 June, and 7 June 2026 -
+   Second learning course (Skills Development Academy - Advanced Prompting Strategies) for using the message chunking
+   (chunk-process-return) text prompt method, so that there would be no need to actually type out the full filename(s) to
+   be uploaded, for the requested assistance for editing the code.
 
-3. Third learning course (OOm Digital, Tech & AI Institute - WSQ Prompt Enginering Essentials - Building Effective AI Prompts)
+3. 11 July, and 12 July 2026 -
+   Third learning course (OOm Digital, Tech & AI Institute - WSQ Prompt Enginering Essentials - Building Effective AI
+   Prompts)
+
+4. 5 September 2026 -
+   Fourth learning course (Singapore Polytechnic - Building a Low-Code Application with Generative Artificial Intelligence)
+
+   
+5. 12 September, 19 September, and 26 September 2026 -
+   Fifth learning course (Bells Institute of Higher Learning - Integrating Digital Tools and Technologies in the Workplace)
 
 =
 
@@ -57,3 +71,23 @@ https://sohjnthn.github.io/sohjnthnclaude.github.io/
 
 LinkedIn post weblink for the third learning course:
 https://www.linkedin.com/posts/soh-jiong-hao-69aa38186_based-on-the-third-learning-course-able-ugcPost-7484256901090734080-y5zE/?utm_source=share&utm_medium=member_android&rcm=ACoAACvvhNYBMb6mucouV3AWe-2sRMS_LwxCRRA
+
+Before the fifth learning course started, tried out the free Zapier account email workflow:
+
+1) Non-editable Zapier workflow:
+   https://zapier.com/templates/details/for-job-finding-purposes-9671c5
+
+Related files:
+
+https://github.com/sohjnthn/sohjnthn.github.io/blob/main/TECHNICAL%20CASE%20STUDY_%20AUTOMATED%20WEEKLY%20RESOURCE%20%26%20SOFTWARE%20DEPLOYMENT%20SYSTEM.pdf
+
+https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Send%20daily%20test%20image%20email%20to%20sohjnthn%40gmail.com%20-%20v4.png
+
+https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Manually%20triggered%20test%20for%20Zapier%20workflow%20-%20Email%20screenshot%20image.png
+
+2) Editable Zapier workflow:
+   https://zapier.com/templates/details/for-job-finding-purposes-a922c0
+
+Related file:
+
+https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Editable%20Zapier%20workflow%20version%20-%20Able%20to%20edit%20original%20email%20address%20to%20another%20one%2C%20for%20testing%20purposes.png
