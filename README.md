@@ -128,3 +128,11 @@ Similarly, the person using the file needs to have the corresponding own n8n fre
 n8n .json file, for the survey/feedback workflow equivalent:
 
 https://github.com/sohjnthn/sohjnthn.github.io/blob/main/My%20workflow%202.json
+
+=
+
+Asked Google - Gemini, who advised that the non-Google AI Studio Android application has a serious security issue, due to hotlinking images from https://sohjnthn.github.io - Tips webpage ; and has provided the correct edited App.tsx file, containing the original incorrect filenames, and which state the  required local assets folder image file names.
+
+The images needs to be in the local assets folder, and need to be renamed such that whitespace characters are replaced with underscore character, and capital letters/alphabets need to be changed to small letters.
+
+Would work on this for the local build.
