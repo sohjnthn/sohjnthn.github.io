@@ -181,4 +181,13 @@ cd android
 Go to android/app/build/outputs/apk/release/app-release.apk
 
 
+The Google Drive weblink for the .apk file is https://drive.google.com/file/d/1oyytVlg49VT8RT_5PTcGEcpLuwTCx2mE/view?usp=sharing
+
+Google - Gemini edited App.tsx to the following: 
+
+https://github.com/sohjnthn/sohjnthnmanus.github.io/blob/main/App.tsx 
+
+Thank you.
+
+
 The Google Drive weblink is https://drive.google.com/file/d/1oyytVlg49VT8RT_5PTcGEcpLuwTCx2mE/view?usp=sharing
