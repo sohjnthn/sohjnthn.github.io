@@ -136,3 +136,49 @@ Asked Google - Gemini, who advised that the non-Google AI Studio Android applica
 The images needs to be in the local assets folder, and need to be renamed such that whitespace characters are replaced with underscore character, and capital letters/alphabets need to be changed to small letters.
 
 Would work on this for the local build.
+
+Update:
+
+Google - Gemini provided the process which would not need to use the free EAS Android build to generate the .apk file. This is the Android application with the non-default application logo; and the non-default splash screen (the screen when the application is loading for the first time).
+
+
+Based on resolving serious security issue for incorrectly hotlinking sohjnthn.github.io Tips webpage images to non-Google Studio Android application, after the App.tsx and assets folder's image file renaming, Google - Gemini advised to:
+
+NOT TO RUN "npm audit fix --force"
+
+[1] CLEAR CACHE, AND START METRO:
+
+1) "git checkout package.json package-lock.json" twice, which ensured that both files have the original, restored numbers of code lines
+
+2) "npm install" once
+
+, without the double quotation marks
+
+3) "npx expo start -c" once
+
+4) Press a for android
+
+Restart this process if local build fails due to missing assets folder image file
+
+MAKE SURE NO CRASHES; AND NO UI ISSUES FOR TAB SWITCHING NAVIGATION, AND FOR CLICKING ON TOOLS
+
+=
+
+[2] TEST DEBUG BUILD if [1] passes
+
+npx expo run:Android
+
+=
+
+[3] TEST RELEASE BUILD if [1], and [2] pass
+
+Press Ctrl+C (keyboard combination)
+
+cd android
+
+./gradlew assembleRelease
+
+Go to android/app/build/outputs/apk/release/app-release.apk
+
+
+The Google Drive weblink is https://drive.google.com/file/d/1oyytVlg49VT8RT_5PTcGEcpLuwTCx2mE/view?usp=sharing
