@@ -190,5 +190,3 @@ https://github.com/sohjnthn/sohjnthnmanus.github.io/blob/main/App.tsx
 
 
 Thank you.
-
-
