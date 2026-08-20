@@ -72,6 +72,8 @@ https://sohjnthn.github.io/sohjnthnclaude.github.io/
 LinkedIn post weblink for the third learning course:
 https://www.linkedin.com/posts/soh-jiong-hao-69aa38186_based-on-the-third-learning-course-able-ugcPost-7484256901090734080-y5zE/?utm_source=share&utm_medium=member_android&rcm=ACoAACvvhNYBMb6mucouV3AWe-2sRMS_LwxCRRA
 
+=
+
 Before the fifth learning course started, tried out the free Zapier account email workflow:
 
 "Edited the weblink, and have tested with another personal email address, Zapier would require an email verification first before allowing the non-creator user to use the edited weblink. Before publishing, the non-creator user needs to ensure that the To email address field value is edited to the same email address for registering for the non-creator user's Zapier account, to prevent the email from being sent to the creator Zapier user's email address.
