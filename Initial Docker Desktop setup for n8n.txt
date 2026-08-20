@@ -1,0 +1,195 @@
+None selected 
+
+Skip to content
+Using Gmail with screen readers
+initial 
+Initial Docker setup for n8n
+Inbox
+
+Soh Jiong Hao <sohjnthn@gmail.com>
+16 Aug 2026, 08:28 (2 days ago)
+to me
+
+Skip to main content
+Accessibility help
+AI Mode
+All
+Short videos
+News
+Forums
+More
+Upgrade
+
+
+
+
+
+
+is n8n free account after trial duration still free to use
+No, an n8n Cloud trial account is not free to use after the trial ends; you must upgrade to a paid plan to keep using that cloud workspace. However, n8n is permanently free if you download and self-host the software yourself. 
+image.png
+n8n Community
+ +3
+n8n Cloud vs. Self-Hosted
+n8n Cloud Trial:
+Lasts for 14 days with access to Pro features.
+Automatically expires without charging you if you do not add a card or upgrade.
+Your workspace and workflows will lock and eventually get deleted if you do not subscribe. 
+image.png
+n8n Community
+ +5
+n8n Community Edition (Self-Hosted):
+100% free forever.
+Run it on your own server or computer using Docker or npm.
+Includes unlimited executions and core integrations, though you manage the hosting upkeep yourself. 
+image.png
+n8n Community
+ +2
+If you'd like, I can help you with:
+Step-by-step instructions on how to self-host n8n for free using Docker
+Tips on how to export your workflows from an expiring cloud trial
+
+
+
+
+image.png
+n8n Community
+
+Trying to reactivate my account 90 days after free trial
+N8n Cloud Data Recovery: N8n Cloud free trial workspaces and their data are permanently deleted and unrecoverable 90 days after th...
+image.png
+n8n Community
+
+Request to Recover Missing Project and Extend Free Trial - Questions
+https://future-is-coming.app.n8n.cloud/ I believe this may have happened because my free trial expired. I was still in the process...
+image.png
+N8N
+
+n8n Plans and Pricing - n8n.io
+When you start a free trial on the Business plan, you'll get full access to all Business features for 14 days. No credit card is r...
+image.jpeg
+Show all
+
+
+Step-by-step instructions on how to self-host n8n for free using Docker
+Here is the step-by-step guide to self-host n8n for free using Docker.
+You can run this on your local computer (Windows, Mac, or Linux) for testing, or deploy it to a free/cheap cloud server (like Oracle Cloud Free Tier, DigitalOcean, or AWS EC2) to keep it running 24/7. 
+Prerequisites
+Before you start, make sure you have Docker and Docker Compose installed on your system. 
+If you are on Windows or Mac, download and run Docker Desktop.
+If you are on Linux, install Docker using your package manager. 
+Step 1: Create a Project Directory
+Open your terminal (or Command Prompt / PowerShell on Windows) and create a folder to keep your n8n setup organized. 
+bash
+mkdir n8n-local
+cd n8n-local
+Use code with caution.
+
+Step 2: Create the Configuration File
+You need to create a file named docker-compose.yml inside this folder. This file tells Docker exactly how to download, configure, and run n8n. 
+Create a new file named docker-compose.yml using a text editor (like VS Code, Notepad, or Nano).
+Copy and paste the following configuration into the file: 
+yaml
+version: '3.8'
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.local/share/n8n
+    environment:
+      - N8N_SECURE_COOKIE=false
+
+volumes:
+  n8n_data:
+    external: false
+Use code with caution.
+
+Save and close the file. 
+Step 3: Launch n8n
+In your terminal, make sure you are still inside the n8n-local folder where your docker-compose.yml file is saved. Run the following command to start n8n: 
+bash
+docker compose up -d
+Use code with caution.
+
+(Note: If you are using an older version of Docker, you might need to type docker-compose up -d with a hyphen instead.)
+What this does:
+-d runs the container in "detached" mode (in the background).
+Docker will download the official n8n image (this takes a minute the first time).
+It creates a permanent storage space (volumes) so your workflows and credentials are saved even if you restart your computer. 
+Step 4: Access the n8n Dashboard
+Once the command finishes, open your web browser and go to:
+👉 http://localhost:5678 
+You will be greeted by the n8n setup screen. Follow the prompts to create your owner account (this is stored entirely locally on your machine). 
+How to Manage Your n8n Instance
+To stop n8n: Run docker compose down from your project folder.
+To start it again: Run docker compose up -d.
+To update n8n to the latest version: Run docker compose pull followed by docker compose up -d. 
+To help you get the most out of your new setup, let me know if you want to know:
+How to import workflows you exported from your trial account
+How to expose your local n8n to the internet using tunneling tools (like tunnels or ngrok) so webhooks can trigger your workflows automatically 
+
+
+
+
+
+Mpire Solutions
+
+How to Use n8n for Free and Run Unlimited Automations
+How do I host n8n for free? You can host n8n at no cost by deploying it on platforms like Docker, local servers or free tiers of c...
+
+
+Reddit
+
+How Do i get free n8n access for longer time : r/n8n
+Comments Section If you are using it for personal projects and to improve your n8n skills, then you can host it locally in your la...
+
+
+n8n Community
+
+What are the free hosting or generous free plan hosting for workflow but not render or railway
+The best genuinely free, always-on option is Oracle Cloud's Always Free tier. You get an Ampere ARM VM that runs 24/7 at no cost, ...
+Show all
+
+
+What are n8n workflows for?
+n8n workflows are used to automate repetitive tasks and connect different apps together without writing code. They act as a visual bridge between services, allowing data to flow automatically from one app to another based on triggers you define. 
+Instead of manually copying data, checking for updates, or sending repetitive emails, you build a workflow once, and n8n runs it automatically. 
+Core Components of a Workflow
+Every n8n workflow is built using a combination of nodes: 
+Triggers: The event that starts the workflow (e.g., "When a new email arrives", "Every day at 9:00 AM", or "When a webhook is received").
+Actions: What n8n should do with the data (e.g., "Create a row in Google Sheets", "Send a Slack message", or "Generate a PDF").
+Logic/Data Nodes: Tools to filter data, split paths (if/then conditions), or format text and dates. 
+Common Use Cases for n8n Workflows
+1. Lead Management & CRM Updates
+Example: When a new lead submits a form on your website (Typeform/Webflow), n8n automatically adds them to your CRM (HubSpot/Salesforce), sends a notification to your sales channel on Slack, and drafts a personalized welcome email in Gmail. 
+2. Data Synchronization & Backups
+Example: Every night, n8n grabs new invoices from your e-commerce platform (Shopify/Stripe), backs up the raw data into a database (PostgreSQL/MySQL), and uploads a PDF copy to Google Drive or Dropbox. 
+3. AI & Content Automation
+Example: When you add a content topic to Notion, n8n sends the prompt to an AI service (OpenAI/Anthropic) to generate a social media caption, passes it through an image generator, and schedules the post on LinkedIn. 
+4. Project Management Alerts
+Example: If a high-priority bug is opened in GitHub or Jira, n8n can immediately ping the engineering team on Microsoft Teams and create a calendar event for an emergency sync.
+n8n vs. Zapier / Make
+While tools like Zapier do similar things, n8n workflows stand out because:
+No Volume Limits: Since you are self-hosting, you can run millions of tasks for free without hitting a monthly limit.
+Advanced Logic: n8n easily handles complex loops, data merges, and custom JavaScript/Python code snippets right inside the workflow.
+Privacy: Your data never leaves your server, making it ideal for sensitive business data. 
+If you are ready to build your first automation, tell me which apps you want to connect or what manual task you are trying to eliminate, and I can design a custom workflow layout for you!
+
+
+
+
+
+AccuWeb Hosting
+
+What is n8n? Workflow Automation Tool, Features & Self-Hosting
+n8n is a Fair-code workflow automation platform that allows users to connect apps, APIs, and services to automate repetitive tasks...
+
+...
+
+[Message clipped]  View entire message
+n8n ica_notification@ica.gov.sg. Press Tab to insert.
