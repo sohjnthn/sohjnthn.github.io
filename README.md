@@ -139,6 +139,11 @@ https://github.com/sohjnthn/sohjnthn.github.io/commit/868c88c8161aef72947cb7d0be
 
 =
 
+Zapier screenshot images if logged in:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/6a9b2f7a78c43d030360bf65f48b71575b6d9f90
+
+=
+
 Asked Google - Gemini, who advised that the non-Google AI Studio Android application has a serious security issue, due to hotlinking images from https://sohjnthn.github.io - Tips webpage ; and has provided the correct edited App.tsx file, containing the original incorrect filenames, and which state the  required local assets folder image file names.
 
 The images needs to be in the local assets folder, and need to be renamed such that whitespace characters are replaced with underscore character, and capital letters/alphabets need to be changed to small letters.
