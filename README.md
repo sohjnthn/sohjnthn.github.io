@@ -144,6 +144,16 @@ https://github.com/sohjnthn/sohjnthn.github.io/commit/6a9b2f7a78c43d030360bf65f4
 
 =
 
+Tried the AI Tool "Make" via it's related AI chatbot, but the free credits ran out very fast.
+
+The scheduled email scenario can be replicated by copying and pasting the text from one of the previously received emails.
+
+For the survey/feedback form response email which was created with the equivalent n8n workflow's json file's text, submitting a form once does not trigger the automatic email, unless Run Once is being clicked on, so this did not work, and ran out of the free credits.
+
+https://eu1.make.com/public/shared-scenario/Yia93isL24w/weekly-sunday-links-email
+
+=
+
 Asked Google - Gemini, who advised that the non-Google AI Studio Android application has a serious security issue, due to hotlinking images from https://sohjnthn.github.io - Tips webpage ; and has provided the correct edited App.tsx file, containing the original incorrect filenames, and which state the  required local assets folder image file names.
 
 The images needs to be in the local assets folder, and need to be renamed such that whitespace characters are replaced with underscore character, and capital letters/alphabets need to be changed to small letters.
