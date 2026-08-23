@@ -158,6 +158,8 @@ Tried the AI Tool "Make" via it's related AI chatbot, but the free credits ran o
 
 The scheduled email scenario can be replicated by copying and pasting the text from one of the previously received emails; but was not triggered manually (may need to be run manually).
 
+I apologise, found that the timing was not set for the Make - Schedule Email scenario, thank you.
+
 For the survey/feedback form response email which was created with the equivalent n8n workflow's json file's text, submitting a form once does not trigger the automatic email, unless Run Once is being clicked on, so this did not work, and ran out of the free credits.
 
 https://eu1.make.com/public/shared-scenario/Yia93isL24w/weekly-sunday-links-email
