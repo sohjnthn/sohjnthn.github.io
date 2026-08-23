@@ -137,6 +137,10 @@ n8n screenshot images (can only view via computer):
 
 https://github.com/sohjnthn/sohjnthn.github.io/commit/d44a6e87c73425b4ad624db48743bc924157261f
 
+I apologise, added a comment with the screenshot image for resolving the issue, to the n8n GitHub commit webpage, as the n8n email was triggered 4 hours later as compared to the expected timing.
+
+Thank you.
+
 =
 
 Zapier's two templates' reference screenshot images GitHub commit weblink:
