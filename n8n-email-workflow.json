@@ -11,32 +11,40 @@
           ]
         }
       },
-      "id": "schedule-trigger-node",
+      "id": "3f5f344f-a7bd-45b5-b585-941ff4ef3ea7",
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.1,
       "position": [
-        450,
-        300
+        80,
+        -112
       ]
     },
     {
       "parameters": {
         "sendTo": "sohjnthn@gmail.com",
         "subject": "Weekly Scheduled Assets Backup",
-        "emailType": "html",
-        "message": "Hello,<br><br>\n\nHere are your requested weekly reference web links:<br><br>\n\n1. Google Drive Image: <a href=\"https://drive.google.com/file/d/15uzszJ8ZQwGjlxcx76QjinT1lcHB91JG/view?usp=drive_link\">https://drive.google.com/file/d/15uzszJ8ZQwGjlxcx76QjinT1lcHB91JG/view?usp=drive_link</a><br><br>\n\n2. YouTube Video:<br>\n<a href=\"https://youtu.be/2vl-uhVJIZ4?si=5k2ENqW80tWp1kVw\">https://youtu.be/2vl-uhVJIZ4?si=5k2ENqW80tWp1kVw</a><br><br>\n\n3. Google Drive Android .apk:<br>\n<a href=\"https://drive.google.com/file/d/1-IZIKzmi3-IGesBbj5r2Zk_QBpvH7IPe/view?usp=drive_link\">https://drive.google.com/file/d/1-IZIKzmi3-IGesBbj5r2Zk_QBpvH7IPe/view?usp=drive_link</a><br><br>\n\nThis is an automated sync sent every Sunday at 12:00 PM SGT."
+        "message": "Hello,<br><br>\n\nHere are your requested weekly reference web links:<br><br>\n\n1. Google Drive Image: <a href=\"https://drive.google.com/file/d/15uzszJ8ZQwGjlxcx76QjinT1lcHB91JG/view?usp=drive_link\">https://drive.google.com/file/d/15uzszJ8ZQwGjlxcx76QjinT1lcHB91JG/view?usp=drive_link</a><br><br>\n\n2. YouTube Video:<br>\n<a href=\"https://youtu.be/2vl-uhVJIZ4?si=5k2ENqW80tWp1kVw\">https://youtu.be/2vl-uhVJIZ4?si=5k2ENqW80tWp1kVw</a><br><br>\n\n3. Google Drive Android .apk:<br>\n<a href=\"https://drive.google.com/file/d/1-IZIKzmi3-IGesBbj5r2Zk_QBpvH7IPe/view?usp=drive_link\">https://drive.google.com/file/d/1-IZIKzmi3-IGesBbj5r2Zk_QBpvH7IPe/view?usp=drive_link</a><br><br>\n\nThis is an automated sync sent every Sunday at 12:00 PM SGT.",
+        "options": {}
       },
-      "id": "gmail-node",
+      "id": "10d05ae7-9098-4828-9e79-2f4f0903c478",
       "name": "Send a message",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        680,
-        300
-      ]
+        320,
+        -112
+      ],
+      "webhookId": "10c183ec-d299-490b-9a46-1d689ad36821",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WhMfp864Bx9iKgir",
+          "name": "Gmail account"
+        }
+      }
     }
   ],
+  "pinData": {},
   "connections": {
     "Schedule Trigger": {
       "main": [
@@ -51,5 +59,17 @@
     }
   },
   "active": true,
-  "settings": {}
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "8fba154b-d254-4103-849f-c0c31d700381",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e0574a3cef859c56f5b295bfad767dd10b003bf1771ee94905361cf2096a2399"
+  },
+  "nodeGroups": [],
+  "id": "BoQ6nw11yYEjuVPq",
+  "tags": []
 }
