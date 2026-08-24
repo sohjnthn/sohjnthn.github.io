@@ -162,6 +162,8 @@ I apologise, found that the timing was not set for the Make - Schedule Email sce
 
 For the survey/feedback form response email which was created with the equivalent n8n workflow's json file's text, submitting a form once does not trigger the automatic email, unless Run Once is being clicked on, so this did not work, and ran out of the free credits.
 
+Make - Feedback/Survey with automatic response email cannot proceed due to the Google Forms Quota Limit error message.
+
 https://eu1.make.com/public/shared-scenario/Yia93isL24w/weekly-sunday-links-email
 
 =
