@@ -168,6 +168,17 @@ https://eu1.make.com/public/shared-scenario/Yia93isL24w/weekly-sunday-links-emai
 
 =
 
+The Google - Large Language Model recommended to try out Google Forms which allows responses to be recorded in Google Sheets.
+
+https://docs.google.com/forms/d/e/1FAIpQLSdLQHREndC8IozPjq4_AZMixrX8VKFm5sp9DTbp5YMnW1F3lQ/viewform?usp=sharing&ouid=115594574291281702265
+
+The initially advised JavaScript code to provide did not work; so asked for Google - Gemini's advice, to obtain the correct JavaScript code to use, and for how to validate the Email field value.
+
+Thank you.
+
+
+=
+
 Asked Google - Gemini, who advised that the non-Google AI Studio Android application has a serious security issue, due to hotlinking images from https://sohjnthn.github.io - Tips webpage ; and has provided the correct edited App.tsx file, containing the original incorrect filenames, and which state the  required local assets folder image file names.
 
 The images needs to be in the local assets folder, and need to be renamed such that whitespace characters are replaced with underscore character, and capital letters/alphabets need to be changed to small letters.
