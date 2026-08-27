@@ -174,6 +174,12 @@ https://docs.google.com/forms/d/e/1FAIpQLSdLQHREndC8IozPjq4_AZMixrX8VKFm5sp9DTbp
 
 The initially advised JavaScript code to provide did not work; so asked for Google - Gemini's advice, to obtain the correct JavaScript code to use, and for how to validate the Email field value.
 
+https://github.com/sohjnthn/sohjnthn.github.io/commit/d055fdd8f0add73f40c95a8f659abf68ecb3b548
+
+https://github.com/sohjnthn/sohjnthn.github.io/commit/b45c27ce541e0b4fe01ca247d9854de7d88974e1
+
+https://github.com/sohjnthn/sohjnthn.github.io/commit/4a2bc261ef3c360b6c51a506642d9d783c42ffad
+
 Thank you.
 
 
