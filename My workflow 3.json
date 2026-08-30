@@ -1,0 +1,177 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "For testing MapleStorySEA Unfunded Gameplay Tips AI Chatbot (with Google Gemini Chat Model) based on a few Google - Blogger notes for the MapleStorySEA Unfunded Gameplay tips.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "527bcbd6-2d04-486a-9ecf-316872ce2067",
+      "name": "When chat message received",
+      "webhookId": "e92119b9-77f5-47cf-99a6-84ff41cb6e0d"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        288,
+        0
+      ],
+      "id": "6351cde0-6ddf-4b41-9951-5e07c33165ef",
+      "name": "AI Agent",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        240
+      ],
+      "id": "82349f35-c284-4aae-b5e0-edef1dbcdb79",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "QTCBE1V90ayjx1aI",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        368,
+        240
+      ],
+      "id": "a53be4c8-0825-4337-a9da-0090a75a4fe5",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "description": "Base this chatbot's information only on https://maplestoryseatips.blogspot.com/2016/03/maplesea-contents-page-of-facebook-notes.html?m=1 (and its stated weblinks); and do not use MapleStory Global terminologies and exclusive content.",
+        "workflowId": {
+          "__rl": true,
+          "value": "PW41k75N7WUk386A",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/PW41k75N7WUk386A",
+          "cachedResultName": "My Sub-Workflow 1"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "MapleStorySEA Unfunded Player Gameplay Tips based on Google - Blogger": "Base the information only on https://maplestoryseatips.blogspot.com/2016/03/maplesea-contents-page-of-facebook-notes.html?m=1 content and terminologies (do not use content and terminologies which are exclusive to MapleStory Global)"
+          },
+          "matchingColumns": [
+            "MapleStorySEA Unfunded Player Gameplay Tips based on Google - Blogger"
+          ],
+          "schema": [
+            {
+              "id": "MapleStorySEA Unfunded Player Gameplay Tips based on Google - Blogger",
+              "displayName": "MapleStorySEA Unfunded Player Gameplay Tips based on Google - Blogger",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        240
+      ],
+      "id": "5575f9e0-b05c-4bb9-a9ea-2c9d248c1fe8",
+      "name": "Call 'My Sub-Workflow 1'"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'My Sub-Workflow 1'": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Asia/Singapore",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "407e9422-c5be-4687-b353-5fc2d0082776",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e0574a3cef859c56f5b295bfad767dd10b003bf1771ee94905361cf2096a2399"
+  },
+  "nodeGroups": [],
+  "id": "hF0X0Tbp5MH4MQ4I",
+  "tags": []
+}
