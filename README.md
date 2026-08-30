@@ -187,6 +187,11 @@ Thank you.
 
 =
 
+n8n AI Chatbot with the Google Gemini Chat Model - The number of allowed queries is very less:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/db9a6112247f0f25fedebcbd1249081e4004add3
+
+=
+
 Asked Google - Gemini, who advised that the non-Google AI Studio Android application has a serious security issue, due to hotlinking images from https://sohjnthn.github.io - Tips webpage ; and has provided the correct edited App.tsx file, containing the original incorrect filenames, and which state the  required local assets folder image file names.
 
 The images needs to be in the local assets folder, and need to be renamed such that whitespace characters are replaced with underscore character, and capital letters/alphabets need to be changed to small letters.
