@@ -139,6 +139,8 @@ https://github.com/sohjnthn/sohjnthn.github.io/commit/d44a6e87c73425b4ad624db487
 
 I apologise, added a comment with the screenshot image for resolving the issue, to the n8n GitHub commit webpage, as the n8n email was triggered 4 hours later as compared to the expected timing.
 
+The correct way to resolve this is to go to Settings for the n8n workflow, to select the timezone of the workflow as the local timezone.
+
 Thank you.
 
 =
