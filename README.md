@@ -258,4 +258,7 @@ https://app.jotform.com/262471082687464
 
 It is very difficult to teach the AI Chatbot to display image/text, even though have tried the different menus to provide the user text prompt condition to provide them. The hardcoded version for traditional (non-low/no-code) AI Tools would be better.
 
+Jotform website can be downloaded as smartphone application:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/a131dbec303797a9ba28eb62abed77aff241ccab
+
 Thank you.
