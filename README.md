@@ -256,5 +256,6 @@ The 4th learning course taught about low-code AI Tools for generating desktop we
 Desktop website:
 https://app.jotform.com/262471082687464
 
-Thank you.
+It is very difficult to teach the AI Chatbot to display image/text, even though have tried the different menus to provide the user text prompt condition to provide them. The hardcoded version for traditional (non-low/no-code) AI Tools would be better.
 
+Thank you.
