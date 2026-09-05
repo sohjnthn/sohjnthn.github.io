@@ -247,7 +247,16 @@ The Google Drive weblink for the .apk file is https://drive.google.com/file/d/1o
 
 Google - Gemini edited App.tsx to the following: 
 
-https://github.com/sohjnthn/sohjnthnmanus.github.io/blob/main/App.tsx 
+https://github.com/sohjnthn/sohjnthnmanus.github.io/blob/main/App.tsx
 
+=
 
+The 4th learning course taught about low-code AI Tools for generating websites and Android applications with the drag-and-drop user interface; or structure, and with the AI Chatbot to train, do not have the time to put in everything like the traditional method (Google AI Studio; or non-Google AI Studio initial AI Tool-generated single file), so would share the two weblinks:
+
+Android application:
+https://app.jotform.com/262471049655462
+
+Desktop website:
+https://app.jotform.com/262471082687464
 Thank you.
+
