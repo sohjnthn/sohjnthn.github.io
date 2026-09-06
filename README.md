@@ -261,4 +261,11 @@ It is very difficult to teach the AI Chatbot to display image/text, even though 
 Jotform website can be downloaded as smartphone application:
 https://github.com/sohjnthn/sohjnthn.github.io/commit/a131dbec303797a9ba28eb62abed77aff241ccab
 
+The mobile web 
+browser-downloaded Android application file for Jotform.
+
+https://drive.google.com/file/d/1fOxc5y5S4JQu92N0FdKkraRWjUgkMrOl/view?usp=drivesdk
+
+Thank you.
+
 Thank you.
