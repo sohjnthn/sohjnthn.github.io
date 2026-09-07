@@ -266,6 +266,12 @@ browser-downloaded Android application file for Jotform.
 
 https://drive.google.com/file/d/1fOxc5y5S4JQu92N0FdKkraRWjUgkMrOl/view?usp=drivesdk
 
-Thank you.
+Looks like there is no need to re-publish the website.
+
+The AI Chatbot synchronises the text and images which were newly added to the knowledge base's q&a section.
+
+But to see images, need to say "display images for [search term]".
+
+Entering the search terms only displays the text answer.
 
 Thank you.
