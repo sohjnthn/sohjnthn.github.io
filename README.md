@@ -275,3 +275,10 @@ But to see images, need to say "display images for [search term]".
 Entering the search terms only displays the text answer.
 
 Thank you.
+
+=
+
+5th learning course reference weblinks:
+
+Reference for new Gmail account for registering for a new Zapier account for using the 14-day trial non-free features:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/43da464c2afb921ef65247f47348e8b6cc087d38
