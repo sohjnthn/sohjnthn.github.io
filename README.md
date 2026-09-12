@@ -282,3 +282,6 @@ Thank you.
 
 Reference for new Gmail account for registering for a new Zapier account for using the 14-day trial non-free features:
 https://github.com/sohjnthn/sohjnthn.github.io/commit/43da464c2afb921ef65247f47348e8b6cc087d38
+
+Reference with repeating email - body - content issue, for Zapier split categories workflow:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/8ac558e93555b68a87d7f06cb5bdf3c181d45d1c
