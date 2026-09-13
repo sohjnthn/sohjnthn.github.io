@@ -286,7 +286,7 @@ Free Zapier account restrictions after the 14-day trial duration (period) has ex
 
 [1]
 
-Reference for new Gmail account for registering for a new Zapier account for using the 14-day trial non-free features
+Reference for new Gmail account for registering for a new Zapier account for using the 14-day trial non-free features:
 https://github.com/sohjnthn/sohjnthn.github.io/commit/43da464c2afb921ef65247f47348e8b6cc087d38
 
 Added the comment section for the screenshot images, for the retry with free Zapier account, which would not scroll down all the way to the comment when accessed:
@@ -294,7 +294,7 @@ https://github.com/sohjnthn/sohjnthn.github.io/commit/43da464c2afb921ef65247f473
 
 [2]
 
-Reference with repeating email - body - content issue, for Zapier split categories workflow
+Reference with repeating email - body - content issue, for Zapier split categories workflow:
 https://github.com/sohjnthn/sohjnthn.github.io/commit/8ac558e93555b68a87d7f06cb5bdf3c181d45d1c
 
 Added the comment section for the screenshot images, for the retry with free Zapier account, which would not scroll down all the way to the comment when accessed:
