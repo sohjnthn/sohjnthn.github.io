@@ -278,6 +278,12 @@ Thank you.
 
 =
 
+Recently asked Manus AI if it (the AI Chatbot) is able to display text, images, and/or videos based on single word user text prompts, it advised to directly put this in the Instruction below the original text for constraining the knowledge base; and for the professional, and concise tone to use - This really worked succeessfully.
+
+https://manus.im/app/project/Yq2FrjPtA4daF6dVWEX8bZ
+
+=
+
 5th learning course reference weblinks:
 
 Free Zapier account restrictions after the 14-day trial duration (period) has expired, but Retest Step is still able to work, to correct any understanding -
