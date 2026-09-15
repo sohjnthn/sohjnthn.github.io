@@ -17,8 +17,10 @@ Practice based on two on-site AI Tools learning courses -
 4. 5 September 2026 -
    Fourth learning course (Singapore Polytechnic - Building a Low-Code Application with Generative Artificial Intelligence)
 
+   This learning course only provides the SP Certificate; does not provide the WSQ Certificate; and only provides the related record for the MySkillsFuture - Careers and Skills Passport.
+
    
-5. 12 September, 19 September, and 26 September 2026 -
+6. 12 September, 19 September, and 26 September 2026 -
    Fifth learning course (Bells Institute of Higher Learning - Integrating Digital Tools and Technologies in the Workplace)
 
 =
