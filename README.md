@@ -309,3 +309,13 @@ https://github.com/sohjnthn/sohjnthn.github.io/commit/8ac558e93555b68a87d7f06cb5
 
 Added the comment section for the screenshot images, for the retry with free Zapier account, which would not scroll down all the way to the comment when accessed:
 https://github.com/sohjnthn/sohjnthn.github.io/commit/8ac558e93555b68a87d7f06cb5bdf3c181d45d1c#commitcomment-200183709
+
+=
+
+Note on 19 September 2026:
+
+The Google - Gemini AI Chatbots (for which the Instructions can be provided) have changed to be created via Notebooks; Gems are now for creating mini-applications.
+
+Tried to provide the same text prompt for ChatGPT - New Project, and Google - Gemini - Notebooks, but they are unable to display weblinks to the instructions' images, and/or videos.
+
+Only Manus AI's Project for the AI Chatbot is able to do so, by displaying the clickable weblinks which bring the user to the images, an/or videos.
