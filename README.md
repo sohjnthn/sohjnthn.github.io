@@ -324,3 +324,8 @@ Only Manus AI's Project for the AI Chatbot is able to do so, by displaying the c
 
 Re-uploading the .json files for workflows which were created before attending the 5th onsite AI Tools learning course:
 https://github.com/sohjnthn/sohjnthn.github.io/commit/3df758171581aaf7b4e89eb951b76c98db6529e0
+
+=
+
+5th onsite AI Tools learning course - 14-day trial period n8n Telegram workflow:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/534dc39448483fd7d96cd0aefa24c70a020f8aa7
