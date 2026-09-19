@@ -205,7 +205,7 @@ Update:
 Google - Gemini provided the process which would not need to use the free EAS Android build to generate the .apk file. This is the Android application with the non-default application logo; and the non-default splash screen (the screen when the application is loading for the first time).
 
 
-Based on resolving serious security issue for incorrectly hotlinking sohjnthn.github.io Tips webpage images to non-Google Studio Android application, after the App.tsx and assets folder's image file renaming, Google - Gemini advised to:
+Based on resolving serious security issue for incorrectly hotlinking sohjnthn.github.io Tips webpage images to non-Google Studio Android application, after the App.tsx and assets folder's image files renaming (use small letters/alphabets; and change whitespace characters " " to underscore characters "_"), Google - Gemini advised to:
 
 NOT TO RUN "npm audit fix --force"
 
