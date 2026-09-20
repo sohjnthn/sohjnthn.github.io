@@ -1,3 +1,6 @@
+Note:
+To avoid being illegal, the desktop websites; and Android applications which were created, use non-work content.
+
 Practice for AI Tools
 Practice based on two on-site AI Tools learning courses -
 
