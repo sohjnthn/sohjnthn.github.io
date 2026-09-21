@@ -347,6 +347,6 @@ Running locally did not work, have to use a free EAS build to do so, for the log
 
 Google - Gemini advised to add .easignore to the root (the project) folder, so able to see the past, and current builds when logged in to the EAS account.
 
-Cannot resolve the app logo issue, so this would take more than 2 days to resolve when not at work, thank you.
+Cannot resolve the app logo issue despite Google - Gemini's advice, so this would not be resolved any further, thank you.
 
 https://drive.google.com/file/d/1llv2P3cnJI48Mc8GqJzbpXB_pbRyVCjX/view?usp=drivesdk
