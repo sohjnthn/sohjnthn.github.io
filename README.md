@@ -339,4 +339,4 @@ Decided that cannot share the current non-work website and Android application, 
 
 Website: https://sohjnthn.github.io/sohjnthnaquavital.github.io/
 
-Android application: 
+Android application (Google - Gemini advised to add in .easignore for the root (the project) folder, so able to see the current, and past builds for the free EAS account): 
