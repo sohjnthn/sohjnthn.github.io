@@ -339,4 +339,14 @@ Decided that cannot share the current non-work website and Android application, 
 
 Website: https://sohjnthn.github.io/sohjnthnaquavital.github.io/
 
-Android application (Google - Gemini advised to add in .easignore for the root (the project) folder, so able to see the current, and past builds for the free EAS account): 
+Android application (Google - Gemini advised to add in .easignore for the root (the project) folder, so able to see the current, and past builds for the free EAS account).
+
+Encountered issues for changing the Android application - logo image (unable to resolve); and splash screen image (able to resolve).
+
+Running locally did not work, have to use a free EAS build to do so, for the logo image.
+
+Google - Gemini advised to add .easignore to the root (the project) folder, so able to see the past, and current builds when logged in to the EAS account.
+
+Cannot resolve the app logo issue, so this would take more than 2 days to resolve when not at work, thank you.
+
+https://drive.google.com/file/d/1llv2P3cnJI48Mc8GqJzbpXB_pbRyVCjX/view?usp=drivesdk
