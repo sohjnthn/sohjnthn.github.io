@@ -347,6 +347,56 @@ Running locally did not work, have to use a free EAS build to do so, for the log
 
 Google - Gemini advised to add .easignore to the root (the project) folder, so able to see the past, and current builds when logged in to the EAS account.
 
-Cannot resolve the app logo issue despite Google - Gemini's advice, so this would not be resolved any further, thank you.
+Somehow resolved the app logo issue despite Google - Gemini's advice, thank you.
 
-https://drive.google.com/file/d/1llv2P3cnJI48Mc8GqJzbpXB_pbRyVCjX/view?usp=drivesdk
+https://drive.google.com/file/d/1mlnvFGSrDSyNyQmFleMOyMN0GAYcl0a_/view?usp=sharing
+
+The process which was advised by Google - Gemini is as follows:
+
+"Three-stage local building for Android .apk file
+
+Based on resolving serious security issue for incorrectly hotlinking sohjnthn.github.io Tips webpage images to non-Google Studio Android application, after the App.tsx and assets folder's image file renaming, Google - Gemini advised to:
+
+NOT TO RUN "npm audit fix --force"
+
+[1] CLEAR CACHE, AND START METRO:
+
+npx expo prebuild --clean
+
+npx expo start --clear
+
+1) "git checkout package.json package-lock.json" twice, which ensured that both files have the original, restored numbers of code lines
+
+2) "npm install" once
+
+, without the double quotation marks
+
+3) "npx expo start -c" once
+
+4) Press a for android
+
+Restart this process if local build fails due to missing assets folder image file
+
+MAKE SURE NO CRASHES; AND NO UI ISSUES FOR TAB SWITCHING NAVIGATION, AND FOR CLICKING ON TOOLS
+
+=
+
+[2] TEST DEBUG BUILD if [1] passes
+
+npx expo run:Android
+
+=
+
+[3] TEST RELEASE BUILD if [1], and [2] pass
+
+Press Ctrl+C (keyboard combination)
+
+cd android
+
+./gradlew assembleRelease
+
+Go to android/app/build/outputs/apk/release/app-release.apk
+
+=
+
+While the project folder - app.json - all .png filenames should be the same and should be different from the default (should be renamed) to be able to change the splash screen - the loading screen when the app is first opened."
