@@ -353,6 +353,9 @@ https://drive.google.com/file/d/1mlnvFGSrDSyNyQmFleMOyMN0GAYcl0a_/view?usp=shari
 
 It is noted that the splash image displays the centre of the application logo image by default.
 
+The two mentioned images:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/a391814fc8e14a22059707df4dcb0ebcd20274fd
+
 The process which was advised by Google - Gemini is as follows:
 
 "Three-stage local building for Android .apk file
