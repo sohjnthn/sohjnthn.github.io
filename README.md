@@ -351,6 +351,8 @@ Somehow resolved the app logo issue despite Google - Gemini's advice, thank you.
 
 https://drive.google.com/file/d/1mlnvFGSrDSyNyQmFleMOyMN0GAYcl0a_/view?usp=sharing
 
+It is noted that the splash image displays the centre of the application logo image by default.
+
 The process which was advised by Google - Gemini is as follows:
 
 "Three-stage local building for Android .apk file
