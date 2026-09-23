@@ -406,3 +406,9 @@ Go to android/app/build/outputs/apk/release/app-release.apk
 =
 
 While the project folder - app.json - all .png filenames should be the same and should be different from the default (should be renamed) to be able to change the splash screen - the loading screen when the app is first opened."
+
+=
+
+Reference if splash logo needs to display more of application logo:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/78a438e66eacdc546bcfdd90cc63836584cd32c5
+
