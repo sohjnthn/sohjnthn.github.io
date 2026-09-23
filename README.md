@@ -32,7 +32,8 @@ All of the following, for only the first two learning courses, should now have t
 
 [1]
 
-GitHub Pages weblink (mainly used Google Gemini (most effective as compared to GitHub Copilot, and ChatGPT) to resolve the index.html code issues (including the white, blank webpage) by informing of each encountered issue; and providing the entire index.html code; created with the index.html code from ChatGPT):
+This GitHub repository's website:
+GitHub Pages weblink - mainly used Google Gemini (more effective as compared to GitHub Copilot, and ChatGPT) to resolve the index.html code issues (including the white, blank webpage) by informing of each encountered issue; and providing the entire index.html code; created with the index.html code from ChatGPT):
 https://sohjnthn.github.io
 
 [2]
