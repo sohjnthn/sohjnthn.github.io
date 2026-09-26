@@ -342,8 +342,7 @@ https://github.com/sohjnthn/sohjnthn.github.io/commit/81a30cb40b135d7f2557f41c3c
 =
 
 5th onsite AI Tools learning course - 14-day trial period AI News Agent:
-
-
+https://github.com/sohjnthn/sohjnthn.github.io/commit/eeb61a5ff03bfce256693fc5c104454cfcdad170
 
 =
 
