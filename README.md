@@ -322,7 +322,7 @@ The Google - Gemini AI Chatbots (for which the Instructions can be provided) hav
 
 Tried to provide the same text prompt for ChatGPT - New Project, and Google - Gemini - Notebooks, but they are unable to display weblinks to the instructions' images, and/or videos.
 
-Only Manus AI's Project for the AI Chatbot is able to do so, by displaying the clickable weblinks which bring the user to the images, an/or videos.
+Only Manus AI's Project for the AI Chatbot is able to do so, by displaying the clickable weblinks which bring the user to the images, and/or videos.
 
 =
 
