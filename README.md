@@ -336,7 +336,7 @@ https://github.com/sohjnthn/sohjnthn.github.io/commit/534dc39448483fd7d96cd0aefa
 
 =
 
-5th onsite AI Tools learning course - 14-day trial period Telegram and OpenAI Chat Model workflow - Unable to execute as ran out of OpenAI Credits:
+5th onsite AI Tools learning course - 14-day trial period Telegram and OpenAI Chat Model workflow (now successful):
 https://github.com/sohjnthn/sohjnthn.github.io/commit/81a30cb40b135d7f2557f41c3ccc8ed2a913972f
 
 =
