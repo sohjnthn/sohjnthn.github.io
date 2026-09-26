@@ -331,8 +331,13 @@ https://github.com/sohjnthn/sohjnthn.github.io/commit/3df758171581aaf7b4e89eb951
 
 =
 
-5th onsite AI Tools learning course - 14-day trial period n8n Telegram workflow:
+5th onsite AI Tools learning course - 14-day trial period n8n Telegram and Google Gemini Chat Model workflow:
 https://github.com/sohjnthn/sohjnthn.github.io/commit/534dc39448483fd7d96cd0aefa24c70a020f8aa7
+
+=
+
+5th onsite AI Tools learning course - 14-day trial period Telegram and OpenAI Chat Model workflow - Unable to execute as ran out of OpenAI Credits:
+https://github.com/sohjnthn/sohjnthn.github.io/commit/81a30cb40b135d7f2557f41c3ccc8ed2a913972f
 
 =
 
