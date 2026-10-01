@@ -6,27 +6,35 @@ Practice based on two on-site AI Tools learning courses -
 
 1. 18 April, 25 April, and 2 May 2026 -
    First learning course (Bells Institute of Higher Learning - Supercharge your work with GenAI) for creating index.html
-   for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application
+   for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application.
+
+   The WSQ Certificate is for Generative AI Application     
+       Development and Deployment-1.
 
 2. 6 June, and 7 June 2026 -
    Second learning course (Skills Development Academy - Advanced Prompting Strategies) for using the message chunking
    (chunk-process-return) text prompt method, so that there would be no need to actually type out the full filename(s) to
    be uploaded, for the requested assistance for editing the code.
 
+   The WSQ Certificate is for Prompt Engineering-2.
+
 3. 11 July, and 12 July 2026 -
    Third learning course (OOm Digital, Tech & AI Institute - WSQ Prompt Enginering Essentials - Building Effective AI
-   Prompts)
+   Prompts).
+
+   The WSQ Certificate is for Content Strategy-4.
 
 4. 5 September 2026 -
-   Fourth learning course (Singapore Polytechnic - Building a Low-Code Application with Generative Artificial Intelligence)
+   Fourth learning course (Singapore Polytechnic - Building a Low-Code Application with Generative Artificial Intelligence).
 
    This learning course only provides the SP Certificate; does not provide the WSQ Certificate; and only provides the related record for the MySkillsFuture - Careers and Skills Passport.
-
    
-6. 12 September, 19 September, and 26 September 2026 -
-   Fifth learning course (Bells Institute of Higher Learning - Integrating Digital Tools and Technologies in the Workplace)
+5. 12 September, 19 September, and 26 September 2026 -
+   Fifth learning course (Bells Institute of Higher Learning - Integrating Digital Tools and Technologies in the Workplace).
 
    The learning institute's certificate would not be provided; while the WSQ certificate would be provided.
+
+   The WSQ Certificate is for Emerging Technology Synthesis-3.
 
 =
 
