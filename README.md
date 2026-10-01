@@ -26,6 +26,8 @@ Practice based on two on-site AI Tools learning courses -
 6. 12 September, 19 September, and 26 September 2026 -
    Fifth learning course (Bells Institute of Higher Learning - Integrating Digital Tools and Technologies in the Workplace)
 
+   The learning institute's certificate would not be provided; while the WSQ certificate would be provided.
+
 =
 
 All of the following, for only the first two learning courses, should now have the same YouTube videos; songs' lyrics by ChatGPT for the first to second songs, and Google - Gemini for the third to fourth songs; music, and female unison voices by Suno; and the same PowerPoint Slides files from Google Slides -
