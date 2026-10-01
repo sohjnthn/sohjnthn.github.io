@@ -8,8 +8,7 @@ Practice based on two on-site AI Tools learning courses -
    First learning course (Bells Institute of Higher Learning - Supercharge your work with GenAI) for creating index.html
    for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application.
 
-   The WSQ Certificate is for Generative AI Application     
-       Development and Deployment-1.
+   The WSQ Certificate is for Generative AI Application Development and Deployment-1.
 
 2. 6 June, and 7 June 2026 -
    Second learning course (Skills Development Academy - Advanced Prompting Strategies) for using the message chunking
