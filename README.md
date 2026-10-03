@@ -1,4 +1,4 @@
-Good morning, my name is Jiong Hao. I wish to look for a non-remote, full-time, basic, entry-level AI Tools job for creating desktop websites, and Android applications in Singapore, with a notice period of one month, for a monthly salary of 2,900.
+Good morning, my name is Jiong Hao. I wish to look for a non-remote, full-time, basic, entry-level AI Tools job for creating desktop websites, and Android applications in Singapore, with a notice period of one month, for a monthly salary of 2,900. Thank you.
 
 Note:
 To avoid being illegal, the desktop websites; and Android applications which were created, use non-work content.
