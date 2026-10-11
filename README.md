@@ -10,7 +10,11 @@ Practice based on two on-site AI Tools learning courses -
    First learning course (Bells Institute of Higher Learning - Supercharge your work with GenAI) for creating index.html
    for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application.
 
+https://github.com/sohjnthn/sohjnthn.github.io/blob/main/SOH_JIONG_HAO_SXXXX302C_SUPERCHARGE_YOUR_WORK_WITH_GEN_AI.pdf
+
    The WSQ Certificate is for Generative AI Application Development and Deployment-1.
+
+   https://github.com/sohjnthn/sohjnthn.github.io/blob/main/2%20May%202026%20Certificate%20-%20Image%20height%20extended%20version.pdf
 
 2. 6 June, and 7 June 2026 -
    Second learning course (Skills Development Academy - Advanced Prompting Strategies) for using the message chunking
@@ -19,13 +23,16 @@ Practice based on two on-site AI Tools learning courses -
 
    The WSQ Certificate is for Prompt Engineering-2.
 
-3. 11 July, and 12 July 2026 -
+   https://github.com/sohjnthn/sohjnthn.github.io/blob/main/07%20June%202026%20Certificate%20-%20Height%20extended%20version.pdf
+
+4. 11 July, and 12 July 2026 -
    Third learning course (OOm Digital, Tech & AI Institute - WSQ Prompt Enginering Essentials - Building Effective AI
    Prompts).
 
    The WSQ Certificate is for Content Strategy-4.
+   https://github.com/sohjnthn/sohjnthn.github.io/blob/main/11%20to%2012%20July%202026%20WSQ%20Certificate%20Height%20Extended%20Version.pdf
 
-4. 5 September 2026 -
+6. 5 September 2026 -
    Fourth learning course (Singapore Polytechnic - Building a Low-Code Application with Generative Artificial Intelligence).
 
    This learning course only provides the SP Certificate; does not provide the WSQ Certificate; and only provides the related record for the MySkillsFuture - Careers and Skills Passport.
