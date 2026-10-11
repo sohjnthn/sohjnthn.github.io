@@ -35,7 +35,11 @@ Practice based on two on-site AI Tools learning courses -
 
    The learning institute's certificate would be provided much later.
 
+https://github.com/sohjnthn/sohjnthn.github.io/blob/main/SOH_JIONG_HAO_SXXXX302C_INTEGRATING_DIGITAL_TOOLS_AND_TECHNOLOGIES_IN_THE_WORKPLACE.pdf
+
    The WSQ Certificate is for Emerging Technology Synthesis-3.
+
+   https://github.com/sohjnthn/sohjnthn.github.io/blob/main/5th%20AI%20Tools%20Learning%20Course%20-%20WSQ%20Certificate.pdf
 
 =
 
