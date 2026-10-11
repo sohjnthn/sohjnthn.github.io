@@ -33,7 +33,7 @@ Practice based on two on-site AI Tools learning courses -
 5. 12 September, 19 September, and 26 September 2026 -
    Fifth learning course (Bells Institute of Higher Learning - Integrating Digital Tools and Technologies in the Workplace).
 
-   The learning institute's certificate would not be provided; while the WSQ certificate would be provided.
+   The learning institute's certificate would be provided much later.
 
    The WSQ Certificate is for Emerging Technology Synthesis-3.
 
