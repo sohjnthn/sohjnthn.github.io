@@ -9,8 +9,8 @@ Practice based on two on-site AI Tools learning courses -
 1. 18 April, 25 April, and 2 May 2026 -
    First learning course (Bells Institute of Higher Learning - Supercharge your work with GenAI) for creating index.html
    for a website with ChatGPT, and Google AI Studio - Website and Android smartphone application.
-
-https://github.com/sohjnthn/sohjnthn.github.io/blob/main/SOH_JIONG_HAO_SXXXX302C_SUPERCHARGE_YOUR_WORK_WITH_GEN_AI.pdf
+   
+   https://github.com/sohjnthn/sohjnthn.github.io/blob/main/SOH_JIONG_HAO_SXXXX302C_SUPERCHARGE_YOUR_WORK_WITH_GEN_AI.pdf
 
    The WSQ Certificate is for Generative AI Application Development and Deployment-1.
 
@@ -21,23 +21,28 @@ https://github.com/sohjnthn/sohjnthn.github.io/blob/main/SOH_JIONG_HAO_SXXXX302C
    (chunk-process-return) text prompt method, so that there would be no need to actually type out the full filename(s) to
    be uploaded, for the requested assistance for editing the code.
 
+   https://github.com/sohjnthn/sohjnthn.github.io/blob/main/APS_155213_SOH_JIONG_HAO_2026-06-07.pdf
+
    The WSQ Certificate is for Prompt Engineering-2.
 
    https://github.com/sohjnthn/sohjnthn.github.io/blob/main/07%20June%202026%20Certificate%20-%20Height%20extended%20version.pdf
 
-4. 11 July, and 12 July 2026 -
+3. 11 July, and 12 July 2026 -
    Third learning course (OOm Digital, Tech & AI Institute - WSQ Prompt Enginering Essentials - Building Effective AI
    Prompts).
 
+   https://github.com/sohjnthn/sohjnthn.github.io/blob/main/certificate_3566_85706.pdf
+
    The WSQ Certificate is for Content Strategy-4.
+
    https://github.com/sohjnthn/sohjnthn.github.io/blob/main/11%20to%2012%20July%202026%20WSQ%20Certificate%20Height%20Extended%20Version.pdf
 
-6. 5 September 2026 -
+4. 5 September 2026 -
    Fourth learning course (Singapore Polytechnic - Building a Low-Code Application with Generative Artificial Intelligence).
 
    This learning course only provides the SP Certificate; does not provide the WSQ Certificate; and only provides the related record for the MySkillsFuture - Careers and Skills Passport.
-
-https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Certificate(COC_Building%20a%20Low-Code%20Application).pdf
+ 
+   https://github.com/sohjnthn/sohjnthn.github.io/blob/main/Certificate(COC_Building%20a%20Low-Code%20Application).pdf
    
 5. 12 September, 19 September, and 26 September 2026 -
    Fifth learning course (Bells Institute of Higher Learning - Integrating Digital Tools and Technologies in the Workplace).
